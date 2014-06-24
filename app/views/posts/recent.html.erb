@@ -1,0 +1,9 @@
+<h1>Home</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li><a href="<%= post_url(post.id) %>"><%= post.title %></a></li>
+  <% end %>
+</ul>
+
+<%= link_to "Write a new story", new_user_post_url(current_user.id) %>

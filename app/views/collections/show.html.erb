@@ -1,0 +1,39 @@
+<h1><%= @collection.title %></h1>
+
+<button id="find-posts-for-collection">Add Posts To Your Collection</button>
+
+<div class="hidden">
+  <button id="hide-collections">Done</button>
+  <ul>
+    <% @posts.each do |post| %>
+      <li><%= post.title %></li>
+      <form action="<%= post_collection_feeds_url(post.id) %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="collection_feed[collection_id]" value="<%= @collection.id %>">
+        <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
+
+        <button>Add To Collection</button>
+      </form>
+    <% end %>
+  </ul>
+</div>
+
+<ul>
+  <% @collection_posts.each do |collection_post| %>
+    <li><%= link_to collection_post.title, post_url(collection_post.id) %></li>
+  <% end %>
+</ul>
+
+<script>
+  $(document).ready(function() {
+    $("#find-posts-for-collection").on("click", function() {
+      $("div").removeClass("hidden");
+      $("#find-posts-for-collection").addClass("hidden");
+    });
+
+    $("#hide-collections").on("click", function() {
+      $("div").addClass("hidden");
+      $("#find-posts-for-collection").removeClass("hidden");
+    });
+  });
+</script>

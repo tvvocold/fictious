@@ -1,0 +1,9 @@
+<h1>Your Collections</h1>
+
+<ul>
+  <% @collections.each do |collection| %>
+    <li><%= link_to collection.title, collection_url(collection.id) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create Collection", new_user_collection_url(current_user.id) %>

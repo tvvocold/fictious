@@ -1,0 +1,18 @@
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+<label id="title-input">Title</label><br>
+<input type="text" name="post[title]" id="title-input" value="<%= @post.title %>">
+
+<br>
+
+<label id="subtitle-input">Subtitle</label><br>
+<input type="text" name="post[subtitle]" id="subtitle-input" value="<%= @post.subtitle %>">
+
+<br>
+
+<label id="content-input">Content</label><br>
+<textarea name="post[content]" id="content-input" value=""><%= @post.content %></textarea>
+
+<br>
+
+<button>Submit Post</button>

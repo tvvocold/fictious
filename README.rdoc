@@ -1,0 +1,69 @@
+== README
+
+1. Users
+  - username
+  - password
+
+2. Posts
+  - user_id
+  - title
+  - subtitle
+  - image
+  - content
+
+3. Collections
+  - user_id
+  - ??
+
+  belongs_to Collection
+  belongs_to Post
+
+4. Comments
+  - user_id
+  - post_id/parent_id
+  - content
+
+5. Subscriptions
+  - content_id
+  - subscriber_id
+
+6. Groups
+
+7. Likes
+  - user_id
+  - post_id
+
+Associations:
+1. User
+  - has_many :posts
+  - has_many :subscriptions, foreign_key: :subscriber_id, as: :subscribeable
+  - has_many :subscribers, through: :subscriptions, source: :subscriber
+  - has_many :comments
+  - has_many :collections
+  - has_many :owned_groups, class_name: "Group"
+  - has_many :joined_groups
+
+2. Post
+  - belongs_to :user
+  - belongs_to :feed
+  - belongs_to :collection
+  - has_many :comments
+  - has_many :likes
+
+3. Collection
+  - belongs_to :user
+  - has_many :posts
+
+4. Comment
+  - belongs_to :user
+  - belongs_to :post
+  - belongs_to :parent
+  - has_many :children
+
+5. Subscriber
+  - belongs_to :subscribeable
+  - belongs_to :subscription, class_name: "User"
+
+7. Group
+  - belongs_to :mod, class_name: "User"
+  - has_many :users
