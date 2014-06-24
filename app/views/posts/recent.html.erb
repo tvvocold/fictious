@@ -6,4 +6,6 @@
   <% end %>
 </ul>
 
-<!-- <%#= #link_to "Write a new story", new_user_post_url(current_user.id) %> -->
+<% if logged_in? %>
+  <%= link_to "Write a new story", new_user_post_url(current_user.id) %>
+<% end %>
