@@ -1,0 +1,221 @@
+2014-06-24T21:01:39.329206+00:00 heroku[api]: Enable Logplex by byatt.griffin@gmail.com
+2014-06-24T21:01:39.329285+00:00 heroku[api]: Release v2 created by byatt.griffin@gmail.com
+2014-06-24T21:08:29+00:00 heroku[slug-compiler]: Slug compilation started
+2014-06-24T21:09:11.282408+00:00 heroku[api]: Scale to web=1 by byatt.griffin@gmail.com
+2014-06-24T21:09:12.241988+00:00 heroku[api]: Set DATABASE_URL config vars by byatt.griffin@gmail.com
+2014-06-24T21:09:12.242053+00:00 heroku[api]: Release v3 created by byatt.griffin@gmail.com
+2014-06-24T21:09:12.330207+00:00 heroku[api]: Attach HEROKU_POSTGRESQL_NAVY resource by byatt.griffin@gmail.com
+2014-06-24T21:09:12+00:00 heroku[slug-compiler]: Slug compilation finished
+2014-06-24T21:09:12.330335+00:00 heroku[api]: Release v4 created by byatt.griffin@gmail.com
+2014-06-24T21:09:12.440887+00:00 heroku[api]: Set LANG, RAILS_ENV, RACK_ENV, SECRET_KEY_BASE config vars by byatt.griffin@gmail.com
+2014-06-24T21:09:12.440968+00:00 heroku[api]: Release v5 created by byatt.griffin@gmail.com
+2014-06-24T21:09:12.623241+00:00 heroku[api]: Deploy 7f3b1ea by byatt.griffin@gmail.com
+2014-06-24T21:09:12.623297+00:00 heroku[api]: Release v6 created by byatt.griffin@gmail.com
+2014-06-24T21:09:21.375698+00:00 app[web.1]: [2014-06-24 21:09:21] INFO  ruby 2.0.0 (2014-05-08) [x86_64-linux]
+2014-06-24T21:09:21.375668+00:00 app[web.1]: [2014-06-24 21:09:21] INFO  WEBrick 1.3.1
+2014-06-24T21:09:21.376409+00:00 app[web.1]: [2014-06-24 21:09:21] INFO  WEBrick::HTTPServer#start: pid=2 port=40375
+2014-06-24T21:09:17.454292+00:00 heroku[web.1]: Starting process with command `bin/rails server -p 40375 -e production`
+2014-06-24T21:09:21.543419+00:00 heroku[web.1]: State changed from starting to up
+2014-06-24T21:16:37.467617+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=18b39d90-c3ef-420c-b11d-53d4574cbc39 fwd="74.64.125.94" dyno=web.1 connect=2ms service=199ms status=500 bytes=1754
+2014-06-24T21:16:37.844213+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=fictious.herokuapp.com request_id=6a6acb63-cf0d-494e-a769-e034ca382afa fwd="74.64.125.94" dyno=web.1 connect=2ms service=9ms status=404 bytes=1829
+2014-06-24T21:16:55.563627+00:00 heroku[api]: Starting process with command `bundle exec rake db:migrate` by byatt.griffin@gmail.com
+2014-06-24T21:16:59.581570+00:00 heroku[run.1470]: Awaiting client
+2014-06-24T21:16:59.628060+00:00 heroku[run.1470]: Starting process with command `bundle exec rake db:migrate`
+2014-06-24T21:16:59.624180+00:00 heroku[run.1470]: State changed from starting to up
+2014-06-24T21:17:09.553900+00:00 heroku[run.1470]: State changed from up to complete
+2014-06-24T21:17:10.667287+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=f9e92520-e20b-4bbb-8238-554925131832 fwd="74.64.125.94" dyno=web.1 connect=3ms service=21ms status=500 bytes=1754
+2014-06-24T21:17:12.664589+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=2ff4fb6b-619e-4f39-9e92-09dc70a9d40f fwd="74.64.125.94" dyno=web.1 connect=3ms service=14ms status=500 bytes=1754
+2014-06-24T21:17:09.541172+00:00 heroku[run.1470]: Process exited with status 0
+2014-06-24T21:17:30.482154+00:00 heroku[api]: Starting process with command `rails c` by byatt.griffin@gmail.com
+2014-06-24T21:17:39.706439+00:00 heroku[run.3254]: State changed from starting to up
+2014-06-24T21:17:39.665909+00:00 heroku[run.3254]: Starting process with command `rails c`
+2014-06-24T21:17:39.622576+00:00 heroku[run.3254]: Awaiting client
+2014-06-24T21:17:52.731158+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=95699a07-3032-4d42-86ae-3b0e4f70cec2 fwd="74.64.125.94" dyno=web.1 connect=20ms service=34ms status=500 bytes=1754
+2014-06-24T21:17:54.498088+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=861375b7-9b7f-4052-bbf0-610557726aac fwd="74.64.125.94" dyno=web.1 connect=22ms service=14ms status=500 bytes=1754
+2014-06-24T21:18:02.087419+00:00 heroku[run.3254]: State changed from up to complete
+2014-06-24T21:18:02.070973+00:00 heroku[run.3254]: Process exited with status 0
+2014-06-24T21:18:25.676264+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=a51b941e-1c27-43ad-9fc3-e3d666b7b855 fwd="74.64.125.94" dyno=web.1 connect=1ms service=32ms status=500 bytes=1754
+2014-06-24T21:18:55.586543+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=69133f79-4f10-4101-a732-702ccbb86024 fwd="74.64.125.94" dyno=web.1 connect=2ms service=13ms status=500 bytes=1754
+2014-06-24T21:19:01.217890+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=8374b8d9-1f7d-4965-a490-758ceeed9aa5 fwd="74.64.125.94" dyno=web.1 connect=2ms service=14ms status=500 bytes=1754
+2014-06-24T21:20:05.663473+00:00 heroku[api]: Starting process with command `rails c` by byatt.griffin@gmail.com
+2014-06-24T21:20:12.700744+00:00 heroku[run.7633]: State changed from starting to up
+2014-06-24T21:20:12.705310+00:00 heroku[run.7633]: Awaiting client
+2014-06-24T21:20:12.759462+00:00 heroku[run.7633]: Starting process with command `rails c`
+2014-06-24T21:20:22.146379+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=7fde31c5-1a5c-4739-96da-46d4a7ce885f fwd="74.64.125.94" dyno=web.1 connect=2ms service=11ms status=500 bytes=1754
+2014-06-24T21:20:52.615263+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=6ffae6bb-b4b4-4746-a283-07a6d318d960 fwd="74.64.125.94" dyno=web.1 connect=4ms service=16ms status=500 bytes=1754
+2014-06-24T21:21:35.687732+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=3a06c831-b9ae-4182-9ba5-dc5cb1692cc6 fwd="74.64.125.94" dyno=web.1 connect=1ms service=20ms status=500 bytes=1754
+2014-06-24T21:22:28.689272+00:00 heroku[router]: at=info method=GET path="/users/new" host=fictious.herokuapp.com request_id=3da58f14-bd0e-488d-bf73-c2a3b1a06490 fwd="74.64.125.94" dyno=web.1 connect=1ms service=45ms status=200 bytes=2021
+2014-06-24T21:22:28.849411+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=03b1d466-abbf-4632-b1d0-610ae2b97974 fwd="74.64.125.94" dyno=web.1 connect=1ms service=10ms status=404 bytes=1829
+2014-06-24T21:22:28.846835+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=a49fa781-fcf9-4e7c-8b8d-866c84ad474d fwd="74.64.125.94" dyno=web.1 connect=1ms service=9ms status=404 bytes=1829
+2014-06-24T21:22:34.223568+00:00 heroku[router]: at=info method=GET path="/session/new" host=fictious.herokuapp.com request_id=ae6bc132-11a4-4733-a891-c2997c688b53 fwd="74.64.125.94" dyno=web.1 connect=1ms service=43ms status=200 bytes=1982
+2014-06-24T21:22:34.373328+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=099faccf-befc-46bf-89e8-905bb1075180 fwd="74.64.125.94" dyno=web.1 connect=1ms service=66ms status=404 bytes=1829
+2014-06-24T21:22:34.316199+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=fe10d780-bd24-413d-8817-0e0f46029aac fwd="74.64.125.94" dyno=web.1 connect=1ms service=12ms status=404 bytes=1829
+2014-06-24T21:22:46.863783+00:00 heroku[router]: at=info method=POST path="/session" host=fictious.herokuapp.com request_id=9bdb9e11-c5c2-4f2c-b4ea-41e86db57b0a fwd="74.64.125.94" dyno=web.1 connect=4ms service=22ms status=200 bytes=2225
+2014-06-24T21:22:46.961100+00:00 heroku[router]: at=info me
+thod=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=2be2fceb-7f1e-4de9-8459-ef70ddec8ab6 fwd="74.64.125.94" dyno=web.1 connect=1ms service=9ms status=404 bytes=1829
+2014-06-24T21:22:47.016293+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=b3eeb144-9014-41dd-b72d-3195c71c0282 fwd="74.64.125.94" dyno=web.1 connect=21ms service=25ms status=404 bytes=1829
+2014-06-24T21:22:50.220690+00:00 heroku[router]: at=info method=GET path="/users/new" host=fictious.herokuapp.com request_id=3e929cca-9f42-492e-a67a-9f47837dfc1a fwd="74.64.125.94" dyno=web.1 connect=2ms service=13ms status=304 bytes=775
+2014-06-24T21:22:50.312618+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=d6afcd0e-5cc3-41ab-8b75-e1d6e77bce8b fwd="74.64.125.94" dyno=web.1 connect=1ms service=10ms status=404 bytes=1829
+2014-06-24T21:22:50.308269+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=acf66a05-91e2-487c-8872-425fdad496e6 fwd="74.64.125.94" dyno=web.1 connect=1ms service=11ms status=404 bytes=1829
+2014-06-24T21:22:58.258378+00:00 heroku[router]: at=info method=POST path="/users" host=fictious.herokuapp.com request_id=20ad7ddf-ace6-40eb-8c22-9e5621581e36 fwd="74.64.125.94" dyno=web.1 connect=2ms service=135ms status=302 bytes=948
+2014-06-24T21:22:58.307761+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=a2430470-11f5-4cfc-84fb-3d5f87279674 fwd="74.64.125.94" dyno=web.1 connect=2ms service=14ms status=200 bytes=1713
+2014-06-24T21:22:58.388475+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=4934dc5f-d612-4871-8f49-d9c02de9303a fwd="74.64.125.94" dyno=web.1 connect=2ms service=9ms status=404 bytes=1829
+2014-06-24T21:22:58.396246+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=26d19651-cdff-4fd8-a68f-f5673e304651 fwd="74.64.125.94" dyno=web.1 connect=1ms service=10ms status=404 bytes=1829
+2014-06-24T21:23:07.642328+00:00 heroku[router]: at=info method=GET path="/users/2/posts/new" host=fictious.herokuapp.com request_id=40e6468d-596a-477f-ba2d-5a24d6250149 fwd="74.64.125.94" dyno=web.1 connect=3ms service=27ms status=200 bytes=2168
+2014-06-24T21:23:08.171576+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=8e26fa9d-b538-461a-bbca-d1c327274343 fwd="74.64.125.94" dyno=web.1 connect=1ms service=14ms status=404 bytes=1829
+2014-06-24T21:23:08.176423+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=bc5e1689-3074-49f4-aaca-c0c58bcf27bc fwd="74.64.125.94" dyno=web.1 connect=3ms service=17ms status=404 bytes=1829
+2014-06-24T21:23:15.655476+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=c9053c7b-efc7-447d-86c8-9ec018ffa18d fwd="74.64.125.94" dyno=web.1 connect=1ms service=19ms status=304 bytes=785
+2014-06-24T21:23:15.740930+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=56ff9bc5-dc95-4d3b-9fa5-f4f425bdbbaa fwd="74.64.125.94" dyno=web.1 connect=1ms service=9ms status=404 bytes=1829
+2014-06-24T21:23:15.744692+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=61caa54d-eda4-428b-bf44-369240f59ea2 fwd="74.64.125.94" dyno=web.1 connect=1ms service=11ms status=404 bytes=1829
+2014-06-24T21:23:17.606587+00:00 heroku[router]: at=info method=GET path="/users/2/collections" host=fictious.herokuapp.com request_id=12b43850-baff-4bea-8e41-854dbe8977b3 fwd="74.64.125.94" dyno=web.1 connect=1ms service=22ms status=200 bytes=1691
+2014-06-24T21:23:17.687779+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=37b695a5-3a00-4fa0-88e5-32b82d96b628 fwd="74.64.125.94" dyno=web.1 connect=1ms service=9ms status=404 bytes=1829
+2014-06-24T21:23:17.688481+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=b5e92036-66d7-4135-a732-0527d681a2a2 fwd="74.64.125.94" dyno=web.1 connect=1ms service=13ms status=404 bytes=1829
+2014-06-24T21:23:35.006850+00:00 heroku[router]: at=info method=GET path="/users/2/collections" host=fictious.herokuapp.com request_id=6d56ff73-cbb8-4806-82dc-74de1e6c37a2 fwd="74.64.125.94" dyno=web.1 connect=1ms service=14ms status=304 bytes=785
+2014-06-24T21:23:35.117951+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=cefbc350-a9f2-46f2-afe5-e92807f17ef3 fwd="74.64.125.94" dyno=web.1 connect=3ms service=7ms status=404 bytes=1829
+2014-06-24T21:23:35.093896+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=62e19d9d-eeac-4e14-81fc-a82f3010bc93 fwd="74.64.125.94" dyno=web.1 connect=4ms service=7ms status=404 bytes=1829
+2014-06-24T21:23:37.652637+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=e7da400a-b1c7-46c6-a6e3-f6823064d57c fwd="74.64.125.94" dyno=web.1 connect=6ms service=35ms status=304 bytes=785
+2014-06-24T21:23:37.738144+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=d993c2d6-8753-42c9-b4cd-472e971de813 fwd="74.64.125.94" dyno=web.1 connect=2ms service=17ms status=404 bytes=1829
+2014-06-24T21:23:37.743659+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=9e3f3ca7-4f1f-4cd2-9201-2d348b0f3da6 fwd="74.64.125.94" dyno=web.1 connect=1ms service=21ms status=404 bytes=1829
+2014-06-24T21:23:43.495816+00:00 heroku[router]: at=info method=GET path="/users/2/posts/new" host=fictious.herokuapp.com request_id=e7361d30-50c0-43cf-bb39-8e543534a4f0 fwd="74.64.125.94" dyno=web.1 connect=1ms service=16ms status=304 bytes=785
+2014-06-24T21:23:43.577317+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=0205d78f-9b5d-49c3-b8a1-fd4409e5a463 fwd="74.64.125.94" dyno=web.1 connect=2ms service=11ms status=404 bytes=1829
+2014-06-24T21:23:43.574928+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=5d258609-1cba-4908-b903-0926f3b73b21 fwd="74.64.125.94" dyno=web.1 connect=1ms service=9ms status=404 bytes=1829
+2014-06-24T21:23:59.315779+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=b29af61a-a713-452d-8dd3-ab4a56a850d0 fwd="74.64.125.94" dyno=web.1 connect=1ms service=13ms status=304 bytes=785
+2014-06-24T21:23:59.402926+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=7947063c-fa3e-4606-ab8a-6698827fd6cf fwd="74.64.125.94" dyno=web.1 connect=1ms service=9ms status=404 bytes=1829
+2014-06-24T21:23:59.404811+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=ed7f4e6a-94a8-4b2c-a61c-61883a376ad8 fwd="74.64.125.94" dyno=web.1 connect=5ms service=9ms status=404 bytes=1829
+2014-06-24T21:24:04.197586+00:00 heroku[router]: at=info method=GET path="/session" host=fictious.herokuapp.com request_id=2df01a2f-9075-41b7-a04f-0f487dba8814 fwd="74.64.125.94" dyno=web.1 connect=1ms service=13ms status=404 bytes=1829
+2014-06-24T21:24:08.057767+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=a26c47dc-607d-4e8f-8558-5b2926a14bde fwd="74.64.125.94" dyno=web.1 connect=2ms service=15ms status=304 bytes=785
+2014-06-24T21:24:08.142799+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=233eaef1-3cd1-42cf-8b93-335adba1ac30 fwd="74.64.125.94" dyno=web.1 connect=1ms service=8ms status=404 bytes=1829
+2014-06-24T21:24:08.229900+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=6ed27468-fa70-4240-8a46-dd39d428871b fwd="74.64.125.94" dyno=web.1 connect=3ms service=65ms status=404 bytes=1829
+2014-06-24T21:24:10.485735+00:00 heroku[router]: at=info method=GET path="/session" host=fictious.herokuapp.com request_id=ba196013-4432-4930-bf24-7ec6b767c3ea fwd="74.64.125.94" dyno=web.1 connect=1ms service=10ms status=404 bytes=1829
+2014-06-24T21:26:31.159765+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=e88076d8-b290-4c9e-ad97-da71c5b6c45e fwd="74.64.125.94" dyno=web.1 connect=0ms service=14ms status=304 bytes=785
+2014-06-24T21:26:31.334982+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=2d9b6a95-9bae-422d-87ed-a6333b2f2c4f fwd="74.64.125.94" dyno=web.1 connect=1ms service=18ms status=404 bytes=1829
+2014-06-24T21:26:31.326892+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=e9afde1a-e068-4c5b-b994-99eb49968a9b fwd="74.64.125.94" dyno=web.1 connect=0ms service=13ms status=404 bytes=1829
+2014-06-24T21:26:34.355496+00:00 heroku[router]: at=info method=GET path="/session" host=fictious.herokuapp.com request_id=64ef8653-3fc6-4c27-ab85-96debfa751c6 fwd="74.64.125.94" dyno=web.1 connect=1ms service=9ms status=404 bytes=1829
+2014-06-24T21:28:29.444637+00:00 heroku[run.7633]: State changed from up to complete
+2014-06-24T21:28:29.419994+00:00 heroku[run.7633]: Process exited with status 0
+2014-06-24T21:30:50+00:00 heroku[slug-compiler]: Slug compilation started
+2014-06-24T21:31:06+00:00 heroku[slug-compiler]: Slug compilation finished
+2014-06-24T21:31:06.862534+00:00 heroku[web.1]: State changed from up to starting
+2014-06-24T21:31:10.204384+00:00 app[web.1]: => Booting WEBrick
+2014-06-24T21:31:10.204397+00:00 app[web.1]: => Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
+2014-06-24T21:31:10.165265+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:170:in `select'
+2014-06-24T21:31:10.165279+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:76:in `tap'
+2014-06-24T21:31:10.165380+00:00 app[web.1]: [2014-06-24 21:31:10] INFO  going to shutdown ...
+2014-06-24T21:31:10.165273+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:14:in `run'
+2014-06-24T21:31:10.165287+00:00 app[web.1]: 	bin/rails:8:in `<main>'
+2014-06-24T21:31:10.165271+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:160:in `start'
+2014-06-24T21:31:10.165282+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:40:in `run_command!'
+2014-06-24T21:31:10.204398+00:00 app[web.1]: => Ctrl-C to shutdown server
+2014-06-24T21:31:10.165270+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:32:in `start'
+2014-06-24T21:31:10.165284+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands.rb:17:in `<top (required)>'
+2014-06-24T21:31:10.165786+00:00 app[web.1]: [2014-06-24 21:31:10] INFO  WEBrick::HTTPServer#start done.
+2014-06-24T21:31:10.204400+00:00 app[web.1]: Exiting
+2014-06-24T21:31:10.165268+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:170:in `block in start'
+2014-06-24T21:31:10.165276+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/server.rb:69:in `start'
+2014-06-24T21:31:10.165285+00:00 app[web.1]: 	bin/rails:8:in `require'
+2014-06-24T21:31:10.165251+00:00 app[web.1]: [2014-06-24 21:31:10] FATAL SignalException: SIGTERM
+2014-06-24T21:31:10.165278+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:81:in `block in server'
+2014-06-24T21:31:10.204395+00:00 app[web.1]: => Run `rails server -h` for more startup options
+2014-06-24T21:31:10.165274+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:264:in `start'
+2014-06-24T21:31:10.204391+00:00 app[web.1]: => Rails 4.1.1 application starting in production on http://0.0.0.0:40375
+2014-06-24T21:31:10.165281+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:76:in `server'
+2014-06-24T21:31:06.673740+00:00 heroku[api]: Release v7 created by byatt.griffin@gmail.com
+2014-06-24T21:31:06.673668+00:00 heroku[api]: Deploy 18a481d by byatt.griffin@gmail.com
+2014-06-24T21:31:09.606037+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2014-06-24T21:31:11.427688+00:00 heroku[web.1]: Process exited with status 143
+2014-06-24T21:31:14.983682+00:00 app[web.1]: [2014-06-24 21:31:14] INFO  WEBrick::HTTPServer#start: pid=2 port=59494
+2014-06-24T21:31:14.983206+00:00 app[web.1]: [2014-06-24 21:31:14] INFO  ruby 2.0.0 (2014-05-08) [x86_64-linux]
+2014-06-24T21:31:14.983183+00:00 app[web.1]: [2014-06-24 21:31:14] INFO  WEBrick 1.3.1
+2014-06-24T21:31:10.677233+00:00 heroku[web.1]: Starting process with command `bin/rails server -p 59494 -e production`
+2014-06-24T21:31:15.576100+00:00 heroku[web.1]: State changed from starting to up
+2014-06-24T21:31:50.041880+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=5f28e2ce-e0ab-4f22-a6f5-2972f8943a29 fwd="74.64.125.94" dyno=web.1 connect=1ms service=487ms status=200 bytes=1876
+2014-06-24T21:31:50.462551+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=dbe7dc76-3f10-4fc2-a446-21916dee6c45 fwd="74.64.125.94" dyno=web.1 connect=0ms service=13ms status=404 bytes=1829
+2014-06-24T21:31:50.474311+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=2f00e882-e332-4bd7-882e-43f3ef6cdbbf fwd="74.64.125.94" dyno=web.1 connect=4ms service=21ms status=404 bytes=1829
+2014-06-24T21:31:52.440440+00:00 heroku[router]: at=info method=POST path="/session" host=fictious.herokuapp.com request_id=b6935a40-fc24-4913-88c3-199734140ec4 fwd="74.64.125.94" dyno=web.1 connect=1ms service=33ms status=302 bytes=900
+2014-06-24T21:31:52.485860+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=25c801af-8ea3-4162-843a-ee4ecd292984 fwd="74.64.125.94" dyno=web.1 connect=1ms service=22ms status=500 bytes=1754
+2014-06-24T21:32:45.996487+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=6281dbc4-effd-4302-9bf9-b88f7569dff3 fwd="74.64.125.94" dyno=web.1 connect=1ms service=269ms status=500 bytes=1754
+2014-06-24T21:32:56.706463+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=82fc2f20-38e7-40db-86ba-ba9ceb43470e fwd="74.64.125.94" dyno=web.1 connect=1ms service=20ms status=500 bytes=1754
+2014-06-24T21:34:52.810632+00:00 heroku[api]: Starting process with command `bundle exec rake db:migrate` by byatt.griffin@gmail.com
+2014-06-24T21:34:57.596708+00:00 heroku[run.1680]: Starting process with command `bundle exec rake db:migrate`
+2014-06-24T21:34:57.559127+00:00 heroku[run.1680]: Awaiting client
+2014-06-24T21:34:57.473023+00:00 heroku[run.1680]: State changed from starting to up
+2014-06-24T21:35:20.291371+00:00 heroku[run.1680]: State changed from up to complete
+2014-06-24T21:35:20.272866+00:00 heroku[run.1680]: Process exited with status 0
+2014-06-24T21:35:29.799219+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=5182d3ff-fbc6-4dd3-b5b5-0b54c548fa0f fwd="74.64.125.94" dyno=web.1 connect=1ms service=90ms status=500 bytes=1754
+2014-06-24T21:35:36.941978+00:00 heroku[router]: at=info method=GET path="/users/new" host=fictious.herokuapp.com request_id=05b7f137-056d-4773-8d4d-b656a55b0bc5 fwd="74.64.125.94" dyno=web.1 connect=1ms service=44ms status=304 bytes=775
+2014-06-24T21:35:37.042113+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=def153ce-1bae-4602-8609-f6ac5df014e1 fwd="74.64.125.94" dyno=web.1 connect=2ms service=14ms status=404 bytes=1829
+2014-06-24T21:35:37.036122+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=14914b93-e07c-4077-ac3d-15e342784878 fwd="74.64.125.94" dyno=web.1 connect=1ms service=21ms status=404 bytes=1829
+2014-06-24T21:35:41.382493+00:00 heroku[router]: at=info method=GET path="/session/new" host=fictious.herokuapp.com request_id=32450e97-ce38-4fdc-ada4-101dbbefeea2 fwd="74.64.125.94" dyno=web.1 connect=1ms service=32ms status=304 bytes=735
+2014-06-24T21:35:41.475593+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=b677295b-c664-4e28-a6cd-b63e91e5e74d fwd="74.64.125.94" dyno=web.1 connect=1ms service=13ms status=404 bytes=1829
+2014-06-24T21:35:41.486228+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=4bcee126-d1ef-47fb-9d77-caa333a31de8 fwd="74.64.125.94" dyno=web.1 connect=1ms service=22ms status=404 bytes=1829
+2014-06-24T21:35:46.209944+00:00 heroku[router]: at=info method=POST path="/session" host=fictious.herokuapp.com request_id=6403e877-c4ae-4cb1-acde-a40a9df6d73f fwd="74.64.125.94" dyno=web.1 connect=1ms service=46ms status=200 bytes=2225
+2014-06-24T21:35:46.314171+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=de3e071e-6536-4de9-a7e4-7d33f1a6a5ed fwd="74.64.125.94" dyno=web.1 connect=1ms service=29ms status=404 bytes=1829
+2014-06-24T21:35:46.325556+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=c9b59087-9ecb-432f-a053-48f1117486cc fwd="74.64.125.94" dyno=web.1 connect=1ms service=35ms status=404 bytes=1829
+2014-06-24T21:35:49.318423+00:00 heroku[router]: at=info method=GET path="/users/new" host=fictious.herokuapp.com request_id=2ede599b-78db-4069-a0d9-96d0e0c4fc49 fwd="74.64.125.94" dyno=web.1 connect=1ms service=24ms status=304 bytes=775
+2014-06-24T21:35:49.420315+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=4a312c09-298a-4be3-bb93-bd7bed93e766 fwd="74.64.125.94" dyno=web.1 connect=1ms service=24ms status=404 bytes=1829
+2014-06-24T21:35:49.411971+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2
+.css" host=fictious.herokuapp.com request_id=92743425-a434-48c9-be29-9aa5e414dfe4 fwd="74.64.125.94" dyno=web.1 connect=1ms service=20ms status=404 bytes=1829
+2014-06-24T21:35:55.525298+00:00 heroku[router]: at=info method=POST path="/users" host=fictious.herokuapp.com request_id=96627ce7-41ad-44a9-b73b-3af9071226b7 fwd="74.64.125.94" dyno=web.1 connect=1ms service=257ms status=302 bytes=948
+2014-06-24T21:35:55.567672+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=a6bbb2ce-6cb0-4453-aac6-a4d5dd2af925 fwd="74.64.125.94" dyno=web.1 connect=1ms service=16ms status=200 bytes=1922
+2014-06-24T21:35:55.655651+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=53b996ad-67b4-42c2-8d8f-d90ac2181563 fwd="74.64.125.94" dyno=web.1 connect=1ms service=17ms status=404 bytes=1829
+2014-06-24T21:35:55.652633+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=0eef074c-6997-4481-a0f2-fb928753f683 fwd="74.64.125.94" dyno=web.1 connect=1ms service=16ms status=404 bytes=1829
+2014-06-24T21:36:01.292021+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=f2638af1-b3be-4ee0-9f94-5f5860661878 fwd="74.64.125.94" dyno=web.1 connect=1ms service=20ms status=304 bytes=785
+2014-06-24T21:36:01.373509+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=a52381cf-6cb2-43bf-bd7b-6b0fcf17832a fwd="74.64.125.94" dyno=web.1 connect=3ms service=11ms status=404 bytes=1829
+2014-06-24T21:36:01.380236+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=a317a0a3-31ab-4f32-9d30-0fecd00e7323 fwd="74.64.125.94" dyno=web.1 connect=5ms service=17ms status=404 bytes=1829
+2014-06-24T21:36:03.290029+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=e0f3353d-b434-4e6d-876e-cecd3daa4c85 fwd="74.64.125.94" dyno=web.1 connect=1ms service=15ms status=304 bytes=785
+2014-06-24T21:36:03.391014+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=7dfbb240-c412-42c8-8590-d8e05f36d872 fwd="74.64.125.94" dyno=web.1 connect=2ms service=15ms status=404 bytes=1829
+2014-06-24T21:36:03.385948+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=653ebd95-141e-4f6d-8f9a-fca1b98ff1f1 fwd="74.64.125.94" dyno=web.1 connect=1ms service=8ms status=404 bytes=1829
+2014-06-24T21:36:03.851983+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=9c3c49ca-0c45-402d-8565-777104834ee6 fwd="74.64.125.94" dyno=web.1 connect=1ms service=36ms status=304 bytes=785
+2014-06-24T21:36:03.939269+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=2dfab04a-bb38-4c03-ab61-b91e1d7cdc6a fwd="74.64.125.94" dyno=web.1 connect=1ms service=21ms status=404 bytes=1829
+2014-06-24T21:36:03.941957+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=88654d0e-6924-4332-bdac-60cad6dcc4f8 fwd="74.64.125.94" dyno=web.1 connect=1ms service=23ms status=404 bytes=1829
+2014-06-24T21:36:04.226906+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=5a5d45cb-e884-4691-bf32-719663d7dc30 fwd="74.64.125.94" dyno=web.1 connect=1ms service=14ms status=304 bytes=785
+2014-06-24T21:36:04.323477+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=adf1ea59-4a2a-461d-8843-dec3fa21d336 fwd="74.64.125.94" dyno=web.1 connect=1ms service=26ms status=404 bytes=1829
+2014-06-24T21:36:04.319228+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=679814db-221c-4bee-b11c-47c689746152 fwd="74.64.125.94" dyno=web.1 connect=1ms service=22ms status=404 bytes=1829
+2014-06-24T21:36:06.580783+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=77bc5b8a-4204-4328-8f55-ca65092290c9 fwd="74.64.125.94" dyno=web.1 connect=2ms service=16ms status=404 bytes=1829
+2014-06-24T21:36:06.582422+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=2063ff75-8789-4c20-ab3d-9d522e4201c0 fwd="74.64.125.94" dyno=web.1 connect=2ms service=11ms status=404 bytes=1829
+2014-06-24T21:36:06.491388+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=29e62249-a38f-4103-90e4-e64138afb765 fwd="74.64.125.94" dyno=web.1 connect=1ms service=47ms status=304 bytes=785
+2014-06-24T21:36:08.671144+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=31bb2cd1-3f9b-413c-b724-87eb79551c16 fwd="74.64.125.94" dyno=web.1 connect=1ms service=13ms status=304 bytes=785
+2014-06-24T21:36:08.750973+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=90749195-c622-48eb-a68d-9f781a61d94f fwd="74.64.125.94" dyno=web.1 connect=1ms service=11ms status=404 bytes=1829
+2014-06-24T21:36:08.752425+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=d4789b2e-683d-49d8-a861-58525b141a7d fwd="74.64.125.94" dyno=web.1 connect=1ms service=10ms status=404 bytes=1829
+2014-06-24T21:37:14.795037+00:00 heroku[web.1]: State changed from up to starting
+2014-06-24T21:37:18.873431+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2014-06-24T21:37:19.737113+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:170:in `block in start'
+2014-06-24T21:37:19.836315+00:00 app[web.1]: => Run `rails server -h` for more startup options
+2014-06-24T21:37:19.737121+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:264:in `start'
+2014-06-24T21:37:19.737127+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:76:in `tap'
+2014-06-24T21:37:19.836307+00:00 app[web.1]: => Booting WEBrick
+2014-06-24T21:37:19.737117+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:160:in `start'
+2014-06-24T21:37:19.836312+00:00 app[web.1]: => Rails 4.1.1 application starting in production on http://0.0.0.0:59494
+2014-06-24T21:37:19.737102+00:00 app[web.1]: [2014-06-24 21:37:19] FATAL SignalException: SIGTERM
+2014-06-24T21:37:19.737119+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:14:in `run'
+2014-06-24T21:37:19.737123+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/server.rb:69:in `start'
+2014-06-24T21:37:19.737125+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:81:in `block in server'
+2014-06-24T21:37:19.737133+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands.rb:17:in `<top (required)>'
+2014-06-24T21:37:19.737134+00:00 app[web.1]: 	bin/rails:8:in `require'
+2014-06-24T21:37:19.737136+00:00 app[web.1]: 	bin/rails:8:in `<main>'
+2014-06-24T21:37:19.737145+00:00 app[web.1]: [2014-06-24 21:37:19] INFO  going to shutdown ...
+2014-06-24T21:37:19.737110+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:170:in `select'
+2014-06-24T21:37:19.737129+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:76:in `server'
+2014-06-24T21:37:19.737115+00:00 app[web.1]: 	/app/vendor/ruby-2.0.0/lib/ruby/2.0.0/webrick/server.rb:32:in `start'
+2014-06-24T21:37:19.737131+00:00 app[web.1]: 	/app/vendor/bundle/ruby/2.0.0/gems/railties-4.1.1/lib/rails/commands/commands_tasks.rb:40:in `run_command!'
+2014-06-24T21:37:19.836317+00:00 app[web.1]: => Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
+2014-06-24T21:37:19.737147+00:00 app[web.1]: [2014-06-24 21:37:19] INFO  WEBrick::HTTPServer#start done.
+2014-06-24T21:37:19.836319+00:00 app[web.1]: => Ctrl-C to shutdown server
+2014-06-24T21:37:19.836321+00:00 app[web.1]: Exiting
+2014-06-24T21:37:19.647263+00:00 heroku[web.1]: Starting process with command `bin/rails server -p 15504 -e production`
+2014-06-24T21:37:21.262401+00:00 heroku[web.1]: Process exited with status 143
+2014-06-24T21:37:29.161747+00:00 app[web.1]: [2014-06-24 21:37:29] INFO  ruby 2.0.0 (2014-05-08) [x86_64-linux]
+2014-06-24T21:37:29.161721+00:00 app[web.1]: [2014-06-24 21:37:29] INFO  WEBrick 1.3.1
+2014-06-24T21:37:29.162339+00:00 app[web.1]: [2014-06-24 21:37:29] INFO  WEBrick::HTTPServer#start: pid=2 port=15504
+2014-06-24T21:37:29.684889+00:00 heroku[web.1]: State changed from starting to up
+2014-06-24T21:37:31.044751+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=b9708acc-8bea-486f-a777-447025241e80 fwd="74.64.125.94" dyno=web.1 connect=1ms service=638ms status=304 bytes=785
+2014-06-24T21:37:31.063181+00:00 heroku[router]: at=info method=POST path="/session" host=fictious.herokuapp.com request_id=3b22d857-6054-4ed8-9910-d605ba3a0b46 fwd="74.64.125.94" dyno=web.1 connect=1ms service=353ms status=302 bytes=900
+2014-06-24T21:37:31.417039+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=a68f6afa-9ed1-4168-85b8-13e5e50a1c7b fwd="74.64.125.94" dyno=web.1 connect=1ms service=11ms status=404 bytes=1829
+2014-06-24T21:37:31.496874+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=ba27aeda-a80b-4dd6-baec-2e880b0da00e fwd="74.64.125.94" dyno=web.1 connect=42ms service=19ms status=404 bytes=1829
+2014-06-24T21:37:34.655235+00:00 heroku[router]: at=info method=POST path="/session" host=fictious.herokuapp.com request_id=7f9ee1ae-3d64-4b42-9604-8e095f415e5b fwd="74.64.125.94" dyno=web.1 connect=2ms service=23ms status=302 bytes=900
+2014-06-24T21:37:34.698008+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=d2830362-afb6-408b-b8ed-17b055c18f50 fwd="74.64.125.94" dyno=web.1 connect=1ms service=20ms status=500 bytes=1754
+2014-06-24T21:37:38.617100+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=78a538a8-d020-41a1-b32b-28c5d37187bb fwd="74.64.125.94" dyno=web.1 connect=39ms service=114ms status=500 bytes=1754
+2014-06-24T21:39:11.657939+00:00 heroku[router]: at=info method=GET path="/users/new" host=fictious.herokuapp.com request_id=895825aa-708a-44f2-a8ca-2585fa228a81 fwd="74.64.125.94" dyno=web.1 connect=8ms service=133ms status=304 bytes=775
+2014-06-24T21:39:11.846690+00:00 heroku[router]: at=info method=GET path="/assets/application-c1de948ec3df90ce008d39d5c739c813.js" host=fictious.herokuapp.com request_id=77bcee46-28b6-4a5b-8f3b-c32204756a4e fwd="74.64.125.94" dyno=web.1 connect=48ms service=18ms status=404 bytes=1829
+2014-06-24T21:39:11.855905+00:00 heroku[router]: at=info method=GET path="/assets/application-b0cb59beda157d868bc57e62a51776e2.css" host=fictious.herokuapp.com request_id=7819a05b-ea1a-4a5d-a629-019ed29809ce fwd="74.64.125.94" dyno=web.1 connect=41ms service=35ms status=404 bytes=1829
+2014-06-24T21:39:51.587364+00:00 heroku[router]: at=info method=GET path="/" host=fictious.herokuapp.com request_id=0e7ea227-5cb6-40d1-a98d-5785321ff69a fwd="74.64.125.94" dyno=web.1 connect=23ms service=59ms status=500 bytes=1754
