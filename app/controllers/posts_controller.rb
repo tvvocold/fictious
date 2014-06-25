@@ -47,7 +47,8 @@ class PostsController < ApplicationController
   end
 
   def subscription_feed
-    @posts = current_user.subscription_posts
+    @user = current_user
+    @posts = (@user.subscription_posts + @user.collection_sub_posts).uniq
   end
 
   private
