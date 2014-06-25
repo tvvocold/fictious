@@ -1,5 +1,6 @@
 == README
 
+== RAILS-COMPLETE (still need backbone, css, js, refactoring)
 1. Users
   - username
   - password
@@ -28,43 +29,28 @@
   - collection_id
   - subscriber_id
 
-6. Groups
-
-7. Likes
+6. Likes
   - user_id
   - post_id
 
-Associations:
-1. User
-  - has_many :posts
-  - has_many :subscriptions, foreign_key: :subscriber_id, as: :subscribeable
-  - has_many :subscribers, through: :subscriptions, source: :subscriber
-  - has_many :comments
-  - has_many :collections
-  - has_many :owned_groups, class_name: "Group"
-  - has_many :joined_groups
+== TODO
 
-2. Post
-  - belongs_to :user
-  - belongs_to :feed
-  - belongs_to :collection
-  - has_many :comments
-  - has_many :likes
+1. Groups
+  - belongs to mod
+  - has many writers
 
-3. Collection
-  - belongs_to :user
-  - has_many :posts
+1.5 Notifications
 
-4. Comment
-  - belongs_to :user
-  - belongs_to :post
-  - belongs_to :parent
-  - has_many :children
+2. Add cancan authorization
 
-5. Subscriber
-  - belongs_to :subscribeable
-  - belongs_to :subscription, class_name: "User"
+3. OAuth
 
-7. Group
-  - belongs_to :mod, class_name: "User"
-  - has_many :users
+4. Rich Text Editor
+
+5. Javascript for add collection/posts popups
+
+6. Auto-save for "Drafts"
+
+7. CSS
+
+8. Backbone views for index
