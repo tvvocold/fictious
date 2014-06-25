@@ -55,12 +55,14 @@ ActiveRecord::Schema.define(version: 20140625020147) do
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
 
   create_table "subscriptions", force: true do |t|
-    t.integer  "user_id",       null: false
+    t.integer  "user_id"
     t.integer  "subscriber_id", null: false
+    t.integer  "collection_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "subscriptions", ["subscriber_id", "collection_id"], name: "index_subscriptions_on_subscriber_id_and_collection_id", unique: true, using: :btree
   add_index "subscriptions", ["subscriber_id", "user_id"], name: "index_subscriptions_on_subscriber_id_and_user_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|

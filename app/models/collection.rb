@@ -5,4 +5,5 @@ class Collection < ActiveRecord::Base
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
   has_many :collection_feeds, class_name: "CollectionFeed", foreign_key: :collection_id
   has_many :posts, through: :collection_feeds, source: :post
+  has_many :subscribers, class_name: "Subscription", foreign_key: :subscriber_id
 end

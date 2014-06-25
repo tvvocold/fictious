@@ -24,8 +24,9 @@
   - content_id
   - subscriber_id
 
-  belongs_to subscriber
-  belongs_to 
+5.5 Collection_Subscriptions
+  - collection_id
+  - subscriber_id
 
 6. Groups
 
