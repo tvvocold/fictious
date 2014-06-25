@@ -1,22 +1,28 @@
-<h1><%= @user.username %></h1>
+<header class="image-container-home">
 
-<form action="<%= user_subscriptions_url(@user.id) %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
+</header>
 
-  <button>Follow User</button>
-</form>
+<section class="view-content">
+  <h1 class="username"><%= @user.username %></h1>
 
-<h3><%= @user.username %>'s Recent Posts</h3>
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= link_to post.title, post_url(post.id) %></li>
-  <% end %>
-</ul>
+  <form action="<%= user_subscriptions_url(@user.id) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
 
-<h3><%= @user.username %>'s Collections</h3>
-<ul>
-  <% @collections.each do |collection| %>
-    <li><%= link_to collection.title, collection_url(collection.id) %></li>
-  <% end %>
-</ul>
+    <button class="button">Follow User</button>
+  </form>
+
+  <h3><%= @user.username %>'s Recent Posts</h3>
+  <ul>
+    <% @posts.each do |post| %>
+      <li><%= link_to post.title, post_url(post.id) %></li>
+    <% end %>
+  </ul>
+
+  <h3><%= @user.username %>'s Collections</h3>
+  <ul>
+    <% @collections.each do |collection| %>
+      <li><%= link_to collection.title, collection_url(collection.id) %></li>
+    <% end %>
+  </ul>
+</section>

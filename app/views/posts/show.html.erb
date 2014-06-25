@@ -1,6 +1,10 @@
+<header class="image-container-home">
+
+</header>
+
 <h1><%= @post.title %> by <%= link_to @author.username, user_url(@author.id) %></h1>
 <h3><%= @post.subtitle %></h3>
-<button id="find-posts-for-collection">Add Post To Your Collection</button>
+<button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
 
 <div class="collection-list hidden">
   <button id="hide-collections">Done</button>
@@ -12,7 +16,7 @@
         <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
         <input type="hidden" name="collection_feed[post_id]" value="<%= @post.id %>">
 
-        <button>Add To Collection</button>
+        <button class="button">Add To Collection</button>
       </form>
     <% end %>
   </ul>

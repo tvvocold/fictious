@@ -7,21 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
+
+<nav class="main-nav">
   <% if logged_in? %>
-    <%= current_user.username %>
-    <%= link_to 'Home', root_url %>
+    <ul>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to current_user.username, user_url(current_user.id) %></li>
+      <li><%= link_to 'Collections', user_collections_url(current_user.id) %></li>
+      <li><%= link_to 'Subscriptions', user_subscriptions_url(current_user.id) %></li>
+      <li><%= link_to 'Groups', user_groups_url(current_user.id) %></li>
+      <li><a href="<%= notifications_url %>">You have <%= current_user.notifications.count %> notifications</a></li>
+    </ul>
     <%= button_to 'Sign Out', session_url, method: :delete %>
-    <%= link_to 'Collections', user_collections_url(current_user.id) %>
-    <%= link_to 'Subscriptions', user_subscriptions_url(current_user.id) %>
-    <%= link_to 'Groups', user_groups_url(current_user.id) %>
-    <a href="<%= notifications_url %>">You have <%= current_user.notifications.count %> notifications</a>
   <% else %>
     <%= link_to 'Sign In', new_session_url %>
     <%= link_to 'Sign Up', new_user_url %>
   <% end %>
 </nav>
-<%= yield %>
 
+<div class="content">
+  <h1 class="home-button">F.</h1>
+  <%= yield %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $(".home-button").on("click", function() {
+      $(".content").toggleClass("slide-content")
+      $(".main-nav").toggleClass("slide-out-nav")
+    });
+  });
+</script>
 </body>
 </html>

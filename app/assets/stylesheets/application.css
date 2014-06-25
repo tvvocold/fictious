@@ -13,3 +13,160 @@
  *= require_tree .
  *= require_self
  */
+
+  html, body, h1, form, label, div, li, ul, a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+  }
+
+  input[type="email"],
+  button,
+  input[type="password"],
+  input[type="text"],
+  input[type="submit"] {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    background: transparent;
+    color: inherit;
+    -webkit-appearance: none;
+    box-sizing: content-box;
+    width: auto;
+    display: inline-block;
+  }
+
+  input[type="submit"] {
+    display: inline;
+    cursor: pointer;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  .main-nav {
+    /*display: none;*/
+    width: 280px;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: -280px;
+    box-sizing: border-box;
+    background-color: #191918;
+    color: rgba(255,255,255,0.65);
+    -webkit-transition: left .5s ease;
+  }
+
+  .main-nav > ul {
+
+  }
+
+  .main-nav > ul > li {
+
+  }
+
+  .main-nav > ul > li > a {
+    display: inline-block;
+    padding: 15px;
+  }
+
+  .slide-out-nav {
+    left: 0;
+    -webkit-transition: left .5s ease;
+  }
+
+  .content {
+    position: relative;
+    left: 0;
+    -webkit-transition: left .5s ease;
+  }
+
+  .slide-content {
+    left: 280px;
+    -webkit-transition: left .5s ease;
+  }
+
+  .button {
+    display: inline-block;
+    height: 38px;
+    line-height: 37px;
+    padding: 0 16px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 100px;
+  }
+
+  .new-post-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .home-button {
+    display: inline-block;
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: serif;
+    z-index: 1000;
+  }
+
+  .home-nav {
+    height: 35px;
+    border-top:
+    position: absolute;
+    top: 20px;
+    left: 42%;
+  }
+
+  .home-nav > ul {
+    position: absolute;
+    bottom: 55px;
+    border-top: 1px solid #ccc;
+    max-width: 640px;
+    width: 100%;
+    left: 20%;
+    right: 10%;
+  }
+
+  .home-nav > ul > li {
+    list-style: none;
+  }
+
+  .home-nav > ul > li > a {
+    padding: 20px;
+    font-size: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  .clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .image-container-home {
+    height: 437px;
+    position: relative;
+    border-bottom: 1px solid black;
+  }
+
+  .view-content {
+    width: 640px;
+    margin: auto;
+  }
