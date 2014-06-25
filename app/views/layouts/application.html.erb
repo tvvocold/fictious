@@ -15,6 +15,7 @@
     <%= link_to 'Collections', user_collections_url(current_user.id) %>
     <%= link_to 'Subscriptions', user_subscriptions_url(current_user.id) %>
     <%= link_to 'Groups', user_groups_url(current_user.id) %>
+    <a href="<%= notifications_url %>">You have <%= current_user.notifications.count %> notifications</a>
   <% else %>
     <%= link_to 'Sign In', new_session_url %>
     <%= link_to 'Sign Up', new_user_url %>

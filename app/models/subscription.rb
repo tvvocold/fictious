@@ -9,4 +9,6 @@ class Subscription < ActiveRecord::Base
 
   belongs_to :collection
   has_many :collection_posts, through: :collection, source: :posts
+
+  has_many :notifications, as: :notifiable
 end

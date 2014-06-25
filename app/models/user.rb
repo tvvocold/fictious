@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   has_many :joined_groups, through: :group_users, source: :group
   has_many :group_requests, class_name: "GroupRequest", foreign_key: :user_id
 
+  has_many :notifications
+
   after_initialize :ensure_session_token!
 
   def self.find_by_credentials(username, password)

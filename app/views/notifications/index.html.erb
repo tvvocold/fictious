@@ -1,0 +1,7 @@
+<h1>Your Notifications</h1>
+
+<ul>
+  <% @notifications.each do |notification| %>
+    <li><%= notification.content %></li>
+  <% end %>
+</ul>
