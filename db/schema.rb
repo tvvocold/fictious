@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625020147) do
+ActiveRecord::Schema.define(version: 20140625144217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,33 @@ ActiveRecord::Schema.define(version: 20140625020147) do
   end
 
   add_index "collections", ["owner_id", "title"], name: "index_collections_on_owner_id_and_title", unique: true, using: :btree
+
+  create_table "group_requests", force: true do |t|
+    t.integer  "group_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_requests", ["group_id", "user_id"], name: "index_group_requests_on_group_id_and_user_id", unique: true, using: :btree
+
+  create_table "group_users", force: true do |t|
+    t.integer  "group_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_users", ["group_id", "user_id"], name: "index_group_users_on_group_id_and_user_id", unique: true, using: :btree
+
+  create_table "groups", force: true do |t|
+    t.integer  "mod_id",     null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["mod_id"], name: "index_groups_on_mod_id", using: :btree
 
   create_table "likes", force: true do |t|
     t.integer  "user_id",    null: false

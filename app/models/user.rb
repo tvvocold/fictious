@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
   has_many :collection_subs, through: :subscribers, source: :collection
   has_many :collection_sub_posts, through: :collection_subs, source: :posts
 
+  has_many :owned_groups, class_name: "Group", foreign_key: :mod_id
+  has_many :group_users
+  has_many :joined_groups, through: :group_users, source: :group
+  has_many :group_requests, class_name: "GroupRequest", foreign_key: :user_id
+
   after_initialize :ensure_session_token!
 
   def self.find_by_credentials(username, password)

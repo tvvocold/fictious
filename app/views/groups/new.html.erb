@@ -1,0 +1,10 @@
+<h1>Create a Writers' Group</h1>
+
+<form action="<%= user_groups_url(current_user.id) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label id="name-input">Name of Group</label>
+  <input type="text" name="group[name]" value="">
+
+  <button>Create Group</button>
+</form>
