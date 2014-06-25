@@ -2,6 +2,6 @@
 
 <ul>
 <% @subscriptions.each do |subscription| %>
-  <li><%= User.find(subscription.user_id).username %></li>
+  <li><%= subscription.username %></li>
 <% end %>
 </ul>
