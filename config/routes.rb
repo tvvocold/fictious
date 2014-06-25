@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :groups do
         resources :group_requests, only: [:create, :destroy]
       end
-      resources :groups_users, only: [:create, :destroy]
+      resources :group_users, only: [:create, :destroy]
     end
   end
   resource :session

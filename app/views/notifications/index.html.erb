@@ -2,6 +2,17 @@
 
 <ul>
   <% @notifications.each do |notification| %>
-    <li><%= notification.content %></li>
+    <% if notification.notifiable_type == "GroupRequest" %>
+      <li><%= notification.content %></li>
+      <form action="<%= user_group_users_url(current_user.id) %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="group_user[group_id]" value="<%= notification.content_id %>">
+
+        <button>Accept Invitation</button>
+      </form>
+      <%= button_to "Decline Invitation", group_request_url(notification.content_id), method: :delete %>
+    <% else %>
+      <li><%= notification.content %></li>
+    <% end %>
   <% end %>
 </ul>
