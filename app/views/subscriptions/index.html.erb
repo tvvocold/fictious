@@ -2,6 +2,6 @@
 
 <ul>
 <% @subscriptions.each do |subscription| %>
-  <li><%= subscription.username %></li>
+  <li><%= link_to subscription.username, user_url(subscription.id) %></li>
 <% end %>
 </ul>
