@@ -36,10 +36,13 @@
 == TODO
 
 1. Groups
-  - belongs to mod
-  - has many writers
+  - mostly done, just need to accept request (tied to notifications)
 
 1.5 Notifications
+  - polymorphic
+  - likes
+  - follows
+  - group requests
 
 2. Add cancan authorization
 
