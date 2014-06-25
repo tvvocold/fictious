@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   def index
-    @collections = Collection.all
+    @collections = current_user.collections
   end
 
   def new

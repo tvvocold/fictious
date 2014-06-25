@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         resources :collection_feeds, only: [:create, :destroy]
       end
       resources :collections
+      resources :subscriptions, only: [:create, :destroy, :index]
     end
   end
 

@@ -1,0 +1,7 @@
+<h1>Subscriptions</h1>
+
+<ul>
+<% @subscriptions.each do |subscription| %>
+  <li><%= User.find(subscription.user_id).username %></li>
+<% end %>
+</ul>

@@ -2,7 +2,7 @@
 
 <button id="find-posts-for-collection">Add Posts To Your Collection</button>
 
-<div class="hidden">
+<div class="collection-list hidden">
   <button id="hide-collections">Done</button>
   <ul>
     <% @posts.each do |post| %>
@@ -27,12 +27,12 @@
 <script>
   $(document).ready(function() {
     $("#find-posts-for-collection").on("click", function() {
-      $("div").removeClass("hidden");
+      $(".collection-list").removeClass("hidden");
       $("#find-posts-for-collection").addClass("hidden");
     });
 
     $("#hide-collections").on("click", function() {
-      $("div").addClass("hidden");
+      $(".collection-list").addClass("hidden");
       $("#find-posts-for-collection").removeClass("hidden");
     });
   });

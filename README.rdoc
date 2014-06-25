@@ -15,9 +15,6 @@
   - user_id
   - ??
 
-  belongs_to Collection
-  belongs_to Post
-
 4. Comments
   - user_id
   - post_id/parent_id
@@ -26,6 +23,9 @@
 5. Subscriptions
   - content_id
   - subscriber_id
+
+  belongs_to subscriber
+  belongs_to 
 
 6. Groups
 

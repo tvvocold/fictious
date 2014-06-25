@@ -1,5 +1,5 @@
 <h1><%= @user.username %></h1>
-
+<%= button_to "Follow", user_subscriptions_url(@user), method: :post %>
 
 <h3><%= @user.username %>'s Recent Posts</h3>
 <ul>
