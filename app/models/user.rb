@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :collections, class_name: "Collection", foreign_key: :owner_id
   has_many :subscribers, class_name: "Subscription", foreign_key: :subscriber_id
   has_many :subscriptions, through: :subscribers, source: :user
+  has_many :subscription_posts, through: :subscriptions, source: :posts
 
   after_initialize :ensure_session_token!
 

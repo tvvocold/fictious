@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to => "posts#recent"
-
+  get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
   shallow do
     resources :users do
       resources :posts do

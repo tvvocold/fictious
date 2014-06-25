@@ -46,6 +46,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def subscription_feed
+    @posts = current_user.subscription_posts
+  end
+
   private
 
   def post_params
