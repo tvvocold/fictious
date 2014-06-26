@@ -1,5 +1,8 @@
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
+<label id="image-input">Image</label>
+<input type="file" name="post[image]">
+
 <label id="title-input">Title</label><br>
 <input type="text" name="post[title]" id="title-input" value="<%= @post.title %>">
 

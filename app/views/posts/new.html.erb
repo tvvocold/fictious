@@ -6,6 +6,6 @@
 
 <%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
 
-<form action="<%= user_posts_url(current_user.id) %>" method="post">
+<form action="<%= user_posts_url(current_user.id) %>" method="post" enctype="multipart/form-data">
   <%= render "shared/posts_form" %>
 </form>

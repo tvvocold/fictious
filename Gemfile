@@ -31,6 +31,10 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', require: true
 
+gem "paperclip", github: 'thoughtbot/paperclip' 
+
+gem "aws-sdk"
+
 gem 'figaro'
 
 gem 'cancan'
