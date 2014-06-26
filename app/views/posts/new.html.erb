@@ -6,6 +6,24 @@
 
 <%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
 
-<form action="<%= user_posts_url(current_user.id) %>" method="post" enctype="multipart/form-data">
-  <%= render "shared/posts_form" %>
-</form>
+<%= form_for @post, url: user_posts_url(current_user.id) do |f| %>
+  <%= f.file_field :image %>
+  <%= f.text_field :title %>
+  <%= f.text_field :subtitle %>
+  <%= f.hidden_field :content, id: 'content-input' %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<section id="content" contenteditable="true">WRITE HERE</section>
+
+<script>
+  $(document).ready(function() {
+
+      $('#content').keyup(function() {
+        content = $('#content').html();
+        $("#content-input").attr('value', content);
+      });
+
+
+  });
+</script>

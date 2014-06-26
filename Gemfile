@@ -31,7 +31,12 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', require: true
 
-gem "paperclip", github: 'thoughtbot/paperclip' 
+gem "paperclip", github: 'thoughtbot/paperclip'
+
+gem 'serialize_json-rails'
+
+# For image upload with ajax
+gem 'remotipart', '~> 1.2'
 
 gem "aws-sdk"
 
