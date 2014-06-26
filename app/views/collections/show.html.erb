@@ -12,22 +12,23 @@
     <button>Follow Collection</button>
   </form>
 <% else %>
-  <button id="find-posts-for-collection">Add Posts To Your Collection</button>
+  <button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
 
   <div class="collection-list hidden">
-    <button id="hide-collections">Done</button>
-    <ul>
-      <% @posts.each do |post| %>
-        <li><%= post.title %></li>
-        <form action="<%= post_collection_feeds_url(post.id) %>" method="post">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="hidden" name="collection_feed[collection_id]" value="<%= @collection.id %>">
-          <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
+    <div class="collection-list-container">
+      <h5>Select Post</h5>
+      <ul>
+        <% @posts.each do |post| %>
+          <li><form action="<%= post_collection_feeds_url(post.id) %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="collection_feed[collection_id]" value="<%= @collection.id %>">
+            <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
 
-          <button>Add To Collection</button>
-        </form>
-      <% end %>
-    </ul>
+            <button class="collection-button"><%= post.title %></button>
+          </form></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 <% end %>
 
@@ -40,8 +41,8 @@
 <script>
   $(document).ready(function() {
     $("#find-posts-for-collection").on("click", function() {
-      $(".collection-list").removeClass("hidden");
-      $("#find-posts-for-collection").addClass("hidden");
+      $(".collection-list").toggleClass("hidden");
+      $("#find-posts-for-collection").toggleClass("hidden");
     });
 
     $("#hide-collections").on("click", function() {

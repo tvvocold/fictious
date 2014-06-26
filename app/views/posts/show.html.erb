@@ -2,51 +2,53 @@
 
 </header>
 
-<h1><%= @post.title %> by <%= link_to @author.username, user_url(@author.id) %></h1>
-<h3><%= @post.subtitle %></h3>
-<button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
+<div class="view-content">
+  <h1><%= @post.title %> by <%= link_to @author.username, user_url(@author.id) %></h1>
+  <h3><%= @post.subtitle %></h3>
+  <button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
 
-<div class="collection-list hidden">
-  <button id="hide-collections">Done</button>
-  <ul>
-    <% @collections.each do |collection| %>
-      <li><%= collection.title %></li>
-      <form action="<%= post_collection_feeds_url(@post.id) %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
-        <input type="hidden" name="collection_feed[post_id]" value="<%= @post.id %>">
+  <div class="collection-list hidden">
+    <div class="collection-list-container">
+      <h5>Publish in a collection</h5>
+      <ul>
+        <% @collections.each do |collection| %>
+          <li><form action="<%= post_collection_feeds_url(@post.id) %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
+            <input type="hidden" name="collection_feed[post_id]" value="<%= @post.id %>">
 
-        <button class="button">Add To Collection</button>
-      </form>
-    <% end %>
-  </ul>
+            <button class="collection-button"><%= collection.title %></button>
+          </form></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <p><%= @post.content %></p>
+
+  <% if current_user == @author %>
+  <a href="<%= edit_post_url(@post.id) %>">Edit Post</a>
+  <% end %>
+
+  <!-- DO LATER: GET THIS INTO THE SHOW CONTROLLER -->
+
+  <% if Like.find_by(user_id: current_user.id, post_id: @post.id) || current_user == @author %>
+    <form action="<%= post_likes_url(@post.id) %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <button disabled><%= @post.likes.count %></button>
+    </form>
+  <% else %>
+    <form action="<%= post_likes_url(@post.id) %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <button>Like this.</button>
+    </form>
+  <% end %>
 </div>
-
-<p><%= @post.content %></p>
-
-<% if current_user == @author %>
-<a href="<%= edit_post_url(@post.id) %>">Edit Post</a>
-<% end %>
-
-<!-- DO LATER: GET THIS INTO THE SHOW CONTROLLER -->
-
-<% if Like.find_by(user_id: current_user.id, post_id: @post.id) || current_user == @author %>
-  <form action="<%= post_likes_url(@post.id) %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <button disabled><%= @post.likes.count %></button>
-  </form>
-<% else %>
-  <form action="<%= post_likes_url(@post.id) %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <button>Like this.</button>
-  </form>
-<% end %>
-
 <script>
   $(document).ready(function() {
     $("#find-posts-for-collection").on("click", function() {
-      $(".collection-list").removeClass("hidden");
-      $("#find-posts-for-collection").addClass("hidden");
+      $(".collection-list").toggleClass("hidden");
+      $("#find-posts-for-collection").toggleClass("hidden");
     });
 
     $("#hide-collections").on("click", function() {

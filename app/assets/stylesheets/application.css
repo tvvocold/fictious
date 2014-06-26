@@ -14,7 +14,7 @@
  *= require_self
  */
 
-  html, body, h1, form, label, div, li, ul, a {
+  html, body, h1, h3, h5, form, label, div, li, ul, a {
     margin: 0;
     padding: 0;
     border: 0;
@@ -22,6 +22,11 @@
     text-decoration: none;
     list-style: none;
     color: inherit;
+  }
+
+  h5 {
+    font-weight: bold;
+    margin: 5px 0;
   }
 
   input[type="email"],
@@ -125,17 +130,9 @@
     z-index: 1000;
   }
 
-  .home-nav {
-    height: 35px;
-    border-top:
-    position: absolute;
-    top: 20px;
-    left: 42%;
-  }
-
   .home-nav > ul {
     position: absolute;
-    bottom: 55px;
+    bottom: 0px;
     border-top: 1px solid #ccc;
     max-width: 640px;
     width: 100%;

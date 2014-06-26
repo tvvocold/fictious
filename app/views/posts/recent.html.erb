@@ -1,17 +1,16 @@
 <header class="image-container-home">
-
-</header>
-
-<div class="view-content">
   <nav class="home-nav">
     <ul class="clearfix">
       <li><%= link_to "Top 100", root_url %></li>
       <li><%= link_to "Reading List", reading_list_url %></li>
     </ul>
   </nav>
+</header>
+
+<div class="view-content">
 
   <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button" %>
-  
+
   <ul>
     <% @posts.each do |post| %>
       <li><a href="<%= post_url(post.id) %>"><%= post.title %></a></li>
