@@ -8,20 +8,33 @@
 
 <%= form_for @post, url: user_posts_url(current_user.id) do |f| %>
   <%= f.file_field :image %>
-  <%= f.text_field :title %>
-  <%= f.text_field :subtitle %>
+  <%= f.text_field :title, placeholder: 'Title' %>
+  <%= f.text_field :subtitle, placeholder: 'Subtitle' %>
   <%= f.hidden_field :content, id: 'content-input' %>
   <%= f.submit "Create" %>
 <% end %>
 
-<section id="content" contenteditable="true">WRITE HERE</section>
+<p id="content" contenteditable="true">Start writing</p>
 
 <script>
   $(document).ready(function() {
 
       $('#content').keyup(function() {
-        content = $('#content').html();
+        var content = $('#content').html();
         $("#content-input").attr('value', content);
+      });
+
+      var contents = $('#content').contents();
+      $(contents).wrap('<p></p>')
+
+      $('#content').keypress(function(event) {
+        if (event.which === 13) {
+          var paragraphs = $('#content').find('p');
+          if($('#content p:last').prev().hasClass('commentable') == false && $('#content p:last').prev().html() !== "<br>") {
+            $('#content p:last').prev().addClass('commentable');
+            $('#content p:last').prev().addClass((Math.random()*0xFFFFFF<<0).toString(16));
+          }
+        }
       });
 
 

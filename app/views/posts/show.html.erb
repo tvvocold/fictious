@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <p><%= @post.content %></p>
+  <p><%= @post.content.html_safe %></p>
 
   <% if current_user == @author %>
   <a href="<%= edit_post_url(@post.id) %>">Edit Post</a>
