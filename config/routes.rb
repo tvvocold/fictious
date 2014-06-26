@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :posts do
         resources :likes, only: [:create, :destroy]
         resources :collection_feeds, only: [:create, :destroy]
+        resources :comments
       end
       resources :collections
       resources :subscriptions, only: [:create, :destroy, :index]

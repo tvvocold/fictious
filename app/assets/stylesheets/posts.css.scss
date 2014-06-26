@@ -59,3 +59,41 @@
   -webkit-transform: rotate(45deg);
   box-shadow: 0 1px 1px rgba(0,0,0,0.25), 0 0 1px rgba(0,0,0,0.35);
 }
+
+.commentable-paragraph {
+  position: relative;
+}
+
+.comment-caller {
+  display: block;
+  height: 20px;
+  width: 20px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 2px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.comment-caller.hidden {
+  display: none;
+}
+
+.comment-caller:after {
+  content: '+';
+  display: block;
+  color: white;
+  text-align: center;
+}
+
+#new-comment-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+#new-comment-form.hidden {
+  display: none;
+}

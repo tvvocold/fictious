@@ -32,7 +32,7 @@
           var paragraphs = $('#content').find('p');
           if($('#content p:last').prev().hasClass('commentable') == false && $('#content p:last').prev().html() !== "<br>") {
             $('#content p:last').prev().addClass('commentable');
-            $('#content p:last').prev().addClass((Math.random()*0xFFFFFF<<0).toString(16));
+            $('#content p:last').prev().attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
           }
         }
       });

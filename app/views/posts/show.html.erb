@@ -24,7 +24,20 @@
     </div>
   </div>
 
-  <p><%= @post.content.html_safe %></p>
+  <div id="post-show-content">
+    <p><%= @post.content.html_safe %></p>
+  </div>
+
+  <form action="<%= post_comments_url(@post.id) %>" method="post" id="new-comment-form" class="hidden">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+    <input type="hidden" name="comment[user_id]" value="1">
+    <input type="hidden" id="p-data" name="comment[paragraph_index]" value="">
+    <label id="comment-content">Comment</label>
+    <textarea placeholder="Leave note..." id="comment-content" name="comment[content]" value="<%= current_user.id %>"></textarea>
+
+    <button>Leave Comment</button>
+  </form>
 
   <% if current_user == @author %>
   <a href="<%= edit_post_url(@post.id) %>">Edit Post</a>
@@ -33,7 +46,7 @@
   <!-- DO LATER: GET THIS INTO THE SHOW CONTROLLER -->
 
   <% if Like.find_by(user_id: current_user.id, post_id: @post.id) || current_user == @author %>
-    <form action="<%= post_likes_url(@post.id) %>" method="post">
+    <form action="<%= post_likes_url(@post.id) %>" method="post" class='button'>
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <button disabled><%= @post.likes.count %></button>
     </form>
@@ -44,6 +57,7 @@
     </form>
   <% end %>
 </div>
+
 <script>
   $(document).ready(function() {
     $("#find-posts-for-collection").on("click", function() {
@@ -51,9 +65,36 @@
       $("#find-posts-for-collection").toggleClass("hidden");
     });
 
-    $("#hide-collections").on("click", function() {
-      $(".collection-list").addClass("hidden");
-      $("#find-posts-for-collection").removeClass("hidden");
+    var paras = $('#post-show-content').find('p');
+    $.each(paras, function(i, val) {
+      if($(val).hasClass('commentable')) {
+        $(val).wrap('<div class="commentable-paragraph"></div>');
+        $(val).parent().append('<div class="comment-caller hidden"></div>')
+      }
     });
+
+    $('.commentable-paragraph').hover(function(event) {
+      $($(event.currentTarget).find('div')).removeClass('hidden');
+    }, function() {
+      $('.comment-caller').addClass('hidden');
+    });
+
+    $('.comment-caller').on('click', function(event) {
+      console.log($(event.target));
+      $('#new-comment-form').toggleClass('hidden');
+
+      var x = (event.pageX) + 40;
+      var y = (event.pageY);
+
+      $('#new-comment-form').css({
+        "left": x + "px",
+        "top": y + "px"
+      });
+
+      var targetPara = $(event.target).prev();
+      var data = $(targetPara).attr('data-id');
+      $('#p-data').attr('value', data);
+    });
+
   });
 </script>
