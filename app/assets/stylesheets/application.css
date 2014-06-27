@@ -223,7 +223,6 @@
   .view-content {
     width: 640px;
     margin: auto;
-    margin-top: 20px;
     -webkit-transition: right .5s ease;
   }
 
