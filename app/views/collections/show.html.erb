@@ -2,41 +2,43 @@
 
 </header>
 
+<div class="view-content">
 <h1><%= @collection.title %></h1>
 
-<% if @collection.owner != current_user %>
-  <form action="<%= user_subscriptions_url(@collection.owner.id) %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="subscription[collection_id]" value="<%= @collection.id %>">
+  <% if @collection.owner != current_user %>
+    <form action="<%= user_subscriptions_url(@collection.owner.id) %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="subscription[collection_id]" value="<%= @collection.id %>">
 
-    <button>Follow Collection</button>
-  </form>
-<% else %>
-  <button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
+      <button class="button new-post-button">Follow Collection</button>
+    </form>
+  <% else %>
+    <button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
 
-  <div class="collection-list hidden">
-    <div class="collection-list-container">
-      <h5>Select Post</h5>
-      <ul>
-        <% @posts.each do |post| %>
-          <li><form action="<%= post_collection_feeds_url(post.id) %>" method="post">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="hidden" name="collection_feed[collection_id]" value="<%= @collection.id %>">
-            <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
+    <div class="collection-list hidden">
+      <div class="collection-list-container">
+        <h5>Select Post</h5>
+        <ul>
+          <% @posts.each do |post| %>
+            <li><form action="<%= post_collection_feeds_url(post.id) %>" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="collection_feed[collection_id]" value="<%= @collection.id %>">
+              <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
 
-            <button class="collection-button"><%= post.title %></button>
-          </form></li>
-        <% end %>
-      </ul>
+              <button class="collection-button"><%= post.title %></button>
+            </form></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-<% end %>
-
-<ul>
-  <% @collection_posts.each do |collection_post| %>
-    <li><%= link_to collection_post.title, post_url(collection_post.id) %></li>
   <% end %>
-</ul>
+
+  <ul>
+    <% @collection_posts.each do |collection_post| %>
+      <li><%= link_to collection_post.title, post_url(collection_post.id) %></li>
+    <% end %>
+  </ul>
+</div>
 
 <script>
   $(document).ready(function() {

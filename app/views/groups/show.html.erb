@@ -2,31 +2,31 @@
 
 </header>
 
-<h1><%= @group.name %></h1>
+<div class="view-content">
+  <h1><%= @group.name %></h1>
 
-<%= button_to "Leave Group", group_url(@group.id) %>
+  <%= button_to "Leave Group", group_url(@group.id), method: :delete, class: 'button new-post-button' %>
 
-<form action="<%= group_group_requests_url(@group.id) %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <form action="<%= group_group_requests_url(@group.id) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>Person to Add
-    <input type="text" name="group_request[username]">
-  </label>
+    <input class="group-name-input" placeholder="Add a writer" type="text" name="group_request[username]">
 
-  <button>Add to Group</button>
-</form>
+    <button class="hidden">Add to Group</button>
+  </form>
 
-<h2>Member Writers</h2>
-<ul>
-  <% @writers.each do |writer| %>
-    <li><%= link_to writer.username, user_url(writer.id) %></li>
-  <% end %>
-</ul>
+  <h2>Member Writers</h2>
+  <ul>
+    <% @writers.each do |writer| %>
+      <li><%= link_to writer.username, user_url(writer.id) %></li>
+    <% end %>
+  </ul>
 
-<h2>Pending Writers</h2>
+  <h2>Pending Writers</h2>
 
-<ul>
-  <% @pending_writers.each do |writer| %>
-    <li><%= link_to writer.username, user_url(writer.id) %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @pending_writers.each do |writer| %>
+      <li><%= link_to writer.username, user_url(writer.id) %></li>
+    <% end %>
+  </ul>
+</div>

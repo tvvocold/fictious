@@ -2,21 +2,23 @@
 
 </header>
 
-<h1>Your Groups</h1>
+<div class="view-content">
+  <h1>Your Groups</h1>
 
-<%= link_to "Create a Writer's Group", new_user_group_url(current_user.id) %>
+  <%= link_to "Create a Writer's Group", new_user_group_url(current_user.id), class: 'button' %>
 
-<h2>Groups You Own</h2>
-<ul>
-  <% @owned_groups.each do |group| %>
-    <li><%= link_to group.name, group_url(group.id) %></li>
-  <% end %>
-</ul>
+  <h2>Groups You Own</h2>
+  <ul>
+    <% @owned_groups.each do |group| %>
+      <li><%= link_to group.name, group_url(group.id) %></li>
+    <% end %>
+  </ul>
 
 
-<h2>All Groups</h2>
-<ul>
-  <% @groups.each do |group| %>
-    <li><%= link_to group.name, group_url(group.id) %></li>
-  <% end %>
-</ul>
+  <h2>All Groups</h2>
+  <ul>
+    <% @groups.each do |group| %>
+      <li><%= link_to group.name, group_url(group.id) %></li>
+    <% end %>
+  </ul>
+</div>
