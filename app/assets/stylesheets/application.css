@@ -223,6 +223,7 @@
   .view-content {
     width: 640px;
     margin: auto;
+    margin-top: 20px;
     -webkit-transition: right .5s ease;
   }
 
@@ -235,4 +236,14 @@
     color: white;
     top: 50%;
     left: 27%;
+  }
+
+  .post-list {
+    margin-bottom: 20px;
+  }
+
+  .notification-button {
+    position: absolute;
+    top: 0;
+    right: 0;
   }

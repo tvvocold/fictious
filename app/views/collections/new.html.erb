@@ -2,14 +2,14 @@
 
 </header>
 
-<h1>New Collection</h1>
+<div class="view-content">
+  <form action="<%= user_collections_url(current_user.id) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-<form action="<%= user_collections_url(current_user.id) %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label id="title-input">Title</label>
-  <input type="text" name="collection[title]" value="<%= @collection.title %>">
+    <input placeholder="Title" id="title-input" type="text" name="collection[title]" class="title-input" value="<%= @collection.title %>">
 
-  <button>Create Collection</button>
+    <button class="button new-post-button" id="publish">Create Collection</button>
 
-</form>
+  </form>
+</div>

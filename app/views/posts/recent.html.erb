@@ -14,7 +14,7 @@
 
   <ul>
     <% @posts.each do |post| %>
-      <li>
+      <li class="post-list">
         <a href="<%= post_url(post.id) %>">
           <h3><%= post.title %><h3>
           <%= post.subtitle %>
