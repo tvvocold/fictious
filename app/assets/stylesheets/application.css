@@ -98,6 +98,20 @@
     -webkit-transition: left .5s ease;
   }
 
+
+  input.button {
+    display: inline-block;
+    height: 38px;
+    line-height: 37px;
+    padding: 0 16px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 100px;
+  }
+
   .button {
     display: inline-block;
     height: 38px;
@@ -115,6 +129,12 @@
     position: absolute;
     top: 20px;
     right: 20px;
+  }
+
+  .edit-post-button {
+    position: absolute;
+    top: 20px;
+    right: 175px;
   }
 
   .home-button {
@@ -160,8 +180,8 @@
   .image-container-home {
     height: 437px;
     position: relative;
-    border-bottom: 1px solid black;
     overflow: hidden;
+    background-image: url('app/assets/images/13681949513_85b2cc7ff5_o.jpg');
   }
 
   .image-container-home img {
@@ -169,7 +189,36 @@
     height: auto;
   }
 
+  .image-container-post {
+    position: relative;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 847px;
+    overflow: hidden;
+  }
+
+  .image-container-post img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+  }
+
   .view-content {
     width: 640px;
     margin: auto;
+    -webkit-transition: right .5s ease;
+  }
+
+  .post-title {
+    position: absolute;
+    width: 640px;
+    margin: auto;
+    font-size: 60px;
+    font-weight: 700;
+    color: white;
+    top: 50%;
+    left: 27%;
   }

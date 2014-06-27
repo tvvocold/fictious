@@ -1,20 +1,20 @@
-<header class="image-container-home">
+<!-- <header class="image-container-home">
 
-</header>
+</header> -->
 
-<h1>New Post</h1>
+<div class="view-content">
+  <%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
 
-<%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
+  <%= form_for @post, url: user_posts_url(current_user.id) do |f| %>
+    <%= f.file_field :image %><br>
+    <%= f.text_field :title, placeholder: 'Title', class: 'title-input' %><br>
+    <%= f.text_field :subtitle, placeholder: 'Subtitle' %><br>
+    <%= f.hidden_field :content, id: 'content-input' %><br>
+    <%= f.submit "Publish", class: 'button new-post-button' %>
+  <% end %>
 
-<%= form_for @post, url: user_posts_url(current_user.id) do |f| %>
-  <%= f.file_field :image %>
-  <%= f.text_field :title, placeholder: 'Title' %>
-  <%= f.text_field :subtitle, placeholder: 'Subtitle' %>
-  <%= f.hidden_field :content, id: 'content-input' %>
-  <%= f.submit "Create" %>
-<% end %>
-
-<p id="content" contenteditable="true">Start writing</p>
+  <p id="content" contenteditable="true">Write your story</p>
+</div>
 
 <script>
   $(document).ready(function() {
@@ -30,6 +30,7 @@
       $('#content').keypress(function(event) {
         if (event.which === 13) {
           var paragraphs = $('#content').find('p');
+          $('p').find('span').remove();
           if($('#content p:last').prev().hasClass('commentable') == false && $('#content p:last').prev().html() !== "<br>") {
             $('#content p:last').prev().addClass('commentable');
             $('#content p:last').prev().attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));

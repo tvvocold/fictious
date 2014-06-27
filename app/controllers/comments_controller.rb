@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   end
 
   def index
-
+    @comments = current_user.comments
+    render :json => @comments
   end
 
   def create
@@ -12,8 +13,15 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to :back
     else
-      fail
+      flash.now[:errors] = @comment.errors.full_messages
+      redirect_to :back
     end
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
+    @user = @comment.user
+    render :json => @user
   end
 
   private

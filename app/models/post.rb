@@ -8,4 +8,6 @@ class Post < ActiveRecord::Base
   has_many :collection_feeds
   has_many :collections, through: :collection_feeds, source: :collection
 
+  has_many :comments
+
 end
