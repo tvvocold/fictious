@@ -144,3 +144,29 @@
 .temp-text {
   color: rgba(0,0,0,0.3);
 }
+
+.edit-bar {
+  position: fixed;
+  display: none;
+  top: 270px;
+}
+
+.edit-bar.revealed {
+  display: block;
+}
+
+.edit-bar > ul {
+  background: black;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.edit-bar > ul > li {
+  float: left;
+  padding: 5px;
+  border-right: 1px solid white;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

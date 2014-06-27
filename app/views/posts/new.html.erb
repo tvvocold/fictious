@@ -13,15 +13,17 @@
     <%= f.submit "Publish", class: 'button new-post-button', id: 'publish' %>
   <% end %>
 
-  <p id="content" contenteditable="true">Write your story</p>
   <div class="edit-bar">
-    <ul>
-      <li>Bold</li>
-      <li>Italics</li>
-      <li>Underline</li>
+    <ul class="clearfix">
+      <li class="bold">Bold</li>
+      <li class="italics">Italics</li>
+      <li class="underline">Underline</li>
+      <li class="undo">Undo</li>
     </ul>
   </div>
-  
+
+  <p id="content" contenteditable="true">Write your story</p>
+
 </div>
 
 <script>
@@ -34,14 +36,69 @@
       $('#content').mouseup(function() {
         if (window.getSelection()) {
           var test = window.getSelection().toString();
-          // var moreTest = $(test)[0].focusNode.parentElement
-          // var el = $(moreTest).html().slice($(test)[0].focusOffset, $(test)[0].anchorOffset)
-          // console.log($(test)[0]);
-          // console.log(el)
           if (test.length > 3) {
-            var selected = '<strong>' + test + '</strong>';
-            document.activeElement.innerHTML =
-            document.activeElement.innerHTML.replace (test, selected);
+            $(".edit-bar").addClass('revealed');
+            $(document.activeElement).addClass('styled');
+            // $('#content').keydown(function(event) {
+            //   if (event.keyCode == '66' && event.shiftKey) {
+            //     event.preventDefault();
+            //     var selected = '<strong>' + test + '</strong>';
+            //     document.activeElement.innerHTML =
+            //     document.activeElement.innerHTML.replace (test, selected);
+            //     test = ''
+            //   } else if (event.keyCode == '85' && event.shiftKey) {
+            //     event.preventDefault();
+            //     var selected = '<u>' + test + '</u>';
+            //     document.activeElement.innerHTML =
+            //     document.activeElement.innerHTML.replace (test, selected);
+            //     test = ''
+            //   }
+            // });
+            $('.bold').click(function() {
+              var $element = $('#content').find('styled');
+              console.log($element.prevObject[0].innerHTML);
+              var selected = '<strong>' + test + '</strong>';
+              $element.prevObject[0].innerHTML =
+              $element.prevObject[0].innerHTML.replace (test, selected);
+              $element.removeClass('styled');
+              test = '';
+              $('.edit-bar').removeClass('revealed')
+            });
+
+            $('.italics').click(function() {
+              var $element = $('#content').find('styled');
+              console.log($element.prevObject[0].innerHTML);
+              var selected = '<em>' + test + '</em>';
+              $element.prevObject[0].innerHTML =
+              $element.prevObject[0].innerHTML.replace (test, selected);
+              $element.removeClass('styled');
+              test = '';
+              $('.edit-bar').removeClass('revealed')
+            });
+
+            $('.undo').click(function() {
+              var $element = $('#content').find('styled');
+              console.log($element.prevObject[0].innerHTML);
+              var selected = test;
+              $element.prevObject[0].innerHTML =
+              $element.prevObject[0].innerHTML.replace (test, selected);
+              $element.removeClass('styled');
+              test = '';
+              $('.edit-bar').removeClass('revealed')
+            });
+
+            $('.underline').click(function() {
+              var $element = $('#content').find('styled');
+              console.log($element.prevObject[0].innerHTML);
+              var selected = '<u>' + test + '</u>';
+              $element.prevObject[0].innerHTML =
+              $element.prevObject[0].innerHTML.replace (test, selected);
+              $element.removeClass('styled');
+              test = '';
+              $('.edit-bar').removeClass('revealed')
+            });
+          } else if (test.length < 3 && $('.edit-bar').hasClass('revealed')) {
+            $('.edit-bar').removeClass('revealed');
           }
         }
       });
