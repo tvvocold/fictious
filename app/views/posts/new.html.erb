@@ -10,33 +10,58 @@
     <%= f.text_field :title, placeholder: 'Title', class: 'title-input' %><br>
     <%= f.text_field :subtitle, placeholder: 'Subtitle' %><br>
     <%= f.hidden_field :content, id: 'content-input' %><br>
-    <%= f.submit "Publish", class: 'button new-post-button' %>
+    <%= f.submit "Publish", class: 'button new-post-button', id: 'publish' %>
   <% end %>
 
   <p id="content" contenteditable="true">Write your story</p>
+  <div class="edit-bar">
+    <ul>
+      <li>Bold</li>
+      <li>Italics</li>
+      <li>Underline</li>
+    </ul>
+  </div>
+  
 </div>
 
 <script>
   $(document).ready(function() {
 
-      $('#content').keyup(function() {
-        var content = $('#content').html();
-        $("#content-input").attr('value', content);
-      });
+    var contents = $('#content').contents();
+    $(contents).wrap('<p></p>')
 
-      var contents = $('#content').contents();
-      $(contents).wrap('<p></p>')
-
-      $('#content').keypress(function(event) {
-        if (event.which === 13) {
-          var paragraphs = $('#content').find('p');
-          $('p').find('span').remove();
-          if($('#content p:last').prev().hasClass('commentable') == false && $('#content p:last').prev().html() !== "<br>") {
-            $('#content p:last').prev().addClass('commentable');
-            $('#content p:last').prev().attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
+    $('#content').focus(function() {
+      $('#content').mouseup(function() {
+        if (window.getSelection()) {
+          var test = window.getSelection().toString();
+          // var moreTest = $(test)[0].focusNode.parentElement
+          // var el = $(moreTest).html().slice($(test)[0].focusOffset, $(test)[0].anchorOffset)
+          // console.log($(test)[0]);
+          // console.log(el)
+          if (test.length > 3) {
+            var selected = '<strong>' + test + '</strong>';
+            document.activeElement.innerHTML =
+            document.activeElement.innerHTML.replace (test, selected);
           }
         }
       });
+    });
+
+    $('#publish').hover(function() {
+      var paragraphs = $('#content').find('p');
+      _(paragraphs).each(function(paragraph) {
+        if($(paragraph).html() !== "<br>") {
+          $(paragraph).addClass('commentable');
+          $(paragraph).attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
+        } else if ($(paragraph).html() === "<br>") {
+          $(paragraph).removeClass('commentable');
+        } else {
+          console.log("WHAT?")
+        }
+      });
+      var content = $('#content').html();
+      $("#content-input").attr('value', content);
+    });
 
 
   });

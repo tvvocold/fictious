@@ -2,9 +2,45 @@
 
 </header>
 
-<h1>Edit Post</h1>
+<div class="view-content">
 
-<form action="<%= post_url(@post.id) %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <%= render "shared/posts_form" %>
-</form>
+  <%= form_for @post, url: post_url(@post.id) do |f| %>
+    <%= f.file_field :image %><br>
+    <%= f.text_field :title, placeholder: 'Title', class: 'title-input' %><br>
+    <%= f.text_field :subtitle, placeholder: 'Subtitle' %><br>
+    <%= f.hidden_field :content, id: 'content-input' %><br>
+    <%= f.submit "Publish", class: 'button new-post-button', id: 'publish' %>
+  <% end %>
+
+  <div id="content" contenteditable="true"><%= @post.content.html_safe %></div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#publish').hover(function() {
+      var paragraphs = $('#content').find('p');
+      var repeatData = _(paragraphs).filter(function(paragraph) {
+        return $(paragraph).attr('data-id') === $(paragraph).prev().attr('data-id');
+      });
+
+      _(repeatData).each(function(paragraph) {
+        $(paragraph).removeClass('commentable');
+        $(paragraph).removeAttr('data-id');
+      });
+
+      _(paragraphs).each(function(paragraph) {
+        if($(paragraph).hasClass('commentable') == false && $(paragraph).html() !== "<br>") {
+          $(paragraph).addClass('commentable');
+          $(paragraph).attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
+        } else if ($(paragraph).hasClass('commentable')) {
+          if ($(paragraph).attr('data-id') === $(paragraph).prev().attr('data-id')) {
+            console.log("Yup");
+          }
+        }
+      });
+      var content = $('#content').html();
+      $("#content-input").removeAttr('value');
+      $("#content-input").attr('value', content);
+    });
+  });
+</script>

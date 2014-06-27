@@ -1,3 +1,4 @@
+<div class="content-wrapper">
 <header class="image-container-post">
   <%= image_tag @post.image.url %>
   <h1 class="post-title"><%= @post.title %> by <%= link_to @author.username, user_url(@author.id) %></h1>
@@ -75,6 +76,7 @@
     </form>
   <% end %>
 </div>
+</div>
 
 <script type="application/json" id="bootstrapped_comments_json">
   { "comments": <%= @comments.to_json.html_safe %> }
@@ -105,7 +107,7 @@
     $.each(paras, function(i, val) {
       if($(val).hasClass('commentable')) {
         $(val).wrap('<div class="commentable-paragraph"></div>');
-        $(val).parent().append('<div class="comment-caller hidden"><p>+</p></div>')
+        $(val).parent().append('<div class="comment-caller hidden"></div>')
       }
     });
 
@@ -137,8 +139,11 @@
 
       $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
         _(data).each(function(comment) {
+          console.log(comment.paragraph_index);
+          console.log($(event.target).prev());
           if (comment.paragraph_index === $(event.target).prev().attr('data-id')) {
             $.get('/comments/' + comment.id, function(userData) {
+              console.log(userData, comment)
               $('#comments').append('<h5>' + userData.username + '</h5>' + comment.content + '<br>')
             });
           };

@@ -43,6 +43,12 @@ class PostsController < ApplicationController
     @post.destroy()
   end
 
+  # def json_content
+  #   @post = Post.find(params[:id])
+  #   @content = @post.content
+  #   render :json => @content
+  # end
+
   def recent
     @posts = Post.all
   end
