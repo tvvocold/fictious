@@ -4,12 +4,13 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = current_user.comments
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
     render :json => @comments
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     if @comment.save
       redirect_to :back
     else
@@ -27,6 +28,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:user_id, :post_id, :paragraph_index, :content)
+    params.require(:comment).permit(:post_id, :paragraph_index, :content)
   end
 end
