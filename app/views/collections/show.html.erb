@@ -6,7 +6,7 @@
 <h1><%= @collection.title %></h1>
 
   <% if @collection.owner != current_user %>
-    <form action="<%= user_subscriptions_url(@collection.owner.id) %>" method="post">
+    <form action="<%= user_collections_url(@collection.owner.id) %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="subscription[collection_id]" value="<%= @collection.id %>">
 
