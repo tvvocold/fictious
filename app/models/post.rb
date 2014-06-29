@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   validates :title, :subtitle, :author, :content, presence: true
-  has_attached_file :image, :default_url => "/images/:style/missing.png"
+  has_attached_file :image, :styles => { :thumb => "32x32#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :author, class_name: "User", foreign_key: :author_id

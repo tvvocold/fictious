@@ -14,7 +14,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-
+    @subscription = Subscription.find(params[:id])
+    @subscription.destroy()
+    redirect_to :back
   end
 
   def index

@@ -7,6 +7,7 @@
 
   <ul>
     <% @collections.each do |collection| %>
+      <%= image_tag collection.collection_photo.url(:small) %>
       <li><%= link_to collection.title, collection_url(collection.id) %></li>
     <% end %>
   </ul>

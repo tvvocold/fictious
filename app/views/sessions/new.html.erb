@@ -1,6 +1,12 @@
 <h1>Sign In</h1>
 
 <%= flash[:errors] if flash[:errors] %>
-<form action="<%= session_url %>" method="post">
-  <%= render "shared/form" %>
-</form>
+<%= form_for @user, url: session_url do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit %>
+<% end %>

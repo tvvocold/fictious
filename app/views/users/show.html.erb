@@ -1,16 +1,23 @@
-<header class="image-container-home">
-
-</header>
-
-<section class="view-content">
+<section class="view-content profile-content">
+  <%= image_tag @user.profile_picture.url(:regular), class: "profile-picture"%>
   <h1 class="username"><%= @user.username %></h1>
 
-  <form action="<%= user_subscriptions_url(@user.id) %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
+  <% if @subscription %>
+    <form action="<%= subscription_url(@subscription.id) %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
 
-    <button class="button">Follow User</button>
-  </form>
+      <button class="button">Following</button>
+    </form>
+  <% else %>
+    <form action="<%= user_subscriptions_url(@user.id) %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
+
+      <button class="button">Follow</button>
+    </form>
+  <% end %>
 
   <h3><%= @user.username %>'s Recent Posts</h3>
   <ul>

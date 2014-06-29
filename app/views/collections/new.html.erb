@@ -2,6 +2,7 @@
 
 </header>
 
+<%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
 <div class="view-content">
   <%= form_for @collection, url: user_collections_url(current_user.id) do |f| %>
     <%= f.file_field :collection_photo %>

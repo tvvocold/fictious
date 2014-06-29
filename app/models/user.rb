@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   validates :username, :email, presence: true, uniqueness: true
   validate :password, length: { minimum: 6, allow_nil: true }
+  has_attached_file :profile_picture, :styles => { :thumb => "64x64#", :regular => "300x300#" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
 
   has_many :posts, class_name: "Post", foreign_key: :author_id
   has_many :liked_posts, class_name: "Like", foreign_key: :user_id

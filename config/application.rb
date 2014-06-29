@@ -9,6 +9,8 @@ module FictiousApp
     config.assets.initialize_on_precompile = false
     #config.assets.path needed for templates
 
+    Paperclip.options[:command_path] = "/usr/local/bin/"
+
     config.paperclip_defaults = {
       :storage => :s3,
       :s3_credentials => {

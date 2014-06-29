@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 <header class="image-container-post">
-  <%= image_tag @post.image.url %>
+  <%= image_tag @post.image.url() %>
   <h1 class="post-title"><%= @post.title %> by <%= link_to @author.username, user_url(@author.id) %></h1>
 </header>
 
