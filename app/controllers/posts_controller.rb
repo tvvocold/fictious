@@ -35,6 +35,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @author = User.find(@post.author_id)
     @collections = current_user.collections
+    @comment = current_user.comments.new()
     @comments = @post.comments
   end
 

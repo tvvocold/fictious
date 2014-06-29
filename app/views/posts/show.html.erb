@@ -71,6 +71,25 @@
       $(".collection-list").toggleClass("hidden");
       $("#find-posts-for-collection").toggleClass("hidden");
     });
+    // 
+    // $('.new_comment').on('submit', function(event) {
+    //   event.preventDefault();
+    //   alert("IN HERE")
+    //
+    //   var data = $(event.currentTarget).serializeJSON();
+    //
+    //   $.ajax({
+    //     url: '/posts/<%= @post.id %>/comments',
+    //     type: 'POST',
+    //     data: data,
+    //     success: function(data) {
+    //       $('#comments').append(data);
+    //     }
+    //   });
+    //   // $.post('/posts/' + <%= @post.id %> + '/comments', function(data) {
+    //   //   console.log(data);
+    //   // });
+    // });
 
     var comments = [];
 
@@ -81,11 +100,8 @@
       });
     });
 
-    // $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
-    //   _(data).each(function(comment) {
-    //     console.log(comment.paragraph_index);
-    //   });
-    // });
+    // FASTER COMMENTING
+    // var commentObj = _(comments).groupBy('paragraph_index');
 
     var paras = $('#post-show-content').find('p');
     $.each(paras, function(i, val) {
@@ -95,11 +111,11 @@
         $(val).append('<%= escape_javascript("#{render :partial => 'shared/comment_form' }").html_safe %>')
       }
 
-
-
       $('.new-comment-form').each(function(i, comForm) {
         var comId = $(comForm).parent().attr('data-id')
+        $('.new-comment-form').find('.comment-form').attr('id', comId)
         $(comForm).addClass(comId);
+        $(comForm).find('#p-data').attr('value', comId);
       });
 
       _(comments).each(function(comment) {
@@ -120,7 +136,7 @@
     });
 
     $('.comment-caller').on('click', function(event) {
-      console.log($(event.target).prev().attr('data-id'));
+      console.log("TARGET", $(event.target).prev().attr('data-id'));
       $('.view-post-content').toggleClass('moved');
       var commentClass = $(event.target).prev().attr('data-id')
       $('.' + commentClass).toggleClass('hidden-comment');

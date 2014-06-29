@@ -1,14 +1,12 @@
 <div class="hidden-comment new-comment-form">
   <h5><%= current_user.username %></h5>
-  <form action="<%= post_comments_url(@post.id) %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
-    <input type="hidden" name="comment[user_id]" value="1">
-    <input type="hidden" id="p-data" name="comment[paragraph_index]" value="">
-    <textarea placeholder="Leave note..." id="comment-content" name="comment[content]" value="<%= current_user.id %>"></textarea>
+  <%= form_for @comment, url: post_comments_url(@post.id) do |f| %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.hidden_field :paragraph_index, id: "p-data" %>
+    <%= f.text_area :content, id: "comment-content" %>
+    <%= f.submit "Leave Comment" %>
+  <% end %>
 
-    <button>Leave Comment</button>
-  </form>
 
   <div id="comments">
 
