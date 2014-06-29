@@ -15,5 +15,6 @@
 //= require jquery.remotipart
 //= require serialize_json
 //= require underscore
+//= require medium-editor
 //= require backbone
 //= require fictious_app

@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   def create
-    @user = User.find(subscription_params[:user_id])
+    @user = User.find(params[:user_id])
     @subscription = Subscription.new(subscription_params)
     @subscription.subscriber_id = current_user.id
     if @subscription.save

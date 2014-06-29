@@ -1,14 +1,18 @@
 <header class="image-container-home">
   <%= image_tag "http://s3.amazonaws.com/Fictious-dev/posts/images/000/000/002/original/13681949513_85b2cc7ff5_o.jpg?1403793056" %>
-  <nav class="home-nav">
-    <ul class="clearfix">
-      <li><%= link_to "Top 100", root_url %></li>
-      <li><%= link_to "Reading List", reading_list_url %></li>
-    </ul>
-  </nav>
+  <div class="view-header">
+    <h1>Fictious</h1>
+    <h3>A Medium clone for fiction</h3>
+    <nav class="home-nav">
+      <ul class="clearfix">
+        <li><%= link_to "Top 100", root_url %></li>
+        <li><%= link_to "Reading List", reading_list_url %></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<div class="view-content">
+<div class="view-content posts-index">
 
   <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button" %>
 
@@ -17,7 +21,7 @@
       <li class="post-list">
         <a href="<%= post_url(post.id) %>">
           <h3><%= post.title %><h3>
-          <%= post.subtitle %>
+          <h4><%= post.subtitle %></h4>
 
           <h5><%= post.author.username %></h5>
         </a>

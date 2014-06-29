@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require medium-editor/medium-editor
+ *= require medium-editor/themes/flat
  */
 
   html, body, h1, h3, h5, form, label, div, li, ul, a {
@@ -170,8 +172,6 @@
     border-top: 1px solid #ccc;
     max-width: 640px;
     width: 100%;
-    left: 20%;
-    right: 10%;
   }
 
   .home-nav > ul > li {
@@ -191,14 +191,42 @@
     clear: both;
   }
 
+  .view-header {
+    position: relative;
+    width: 640px;
+    margin: auto;
+    height: 437px;
+  }
+
+  .view-header h1 {
+    position: relative;
+    display: block;
+    width: 200px;
+    font-size: 50px;
+    font-weight: 700;
+    top: 150px;
+    margin: 0 auto -100px auto;
+  }
+
+  .view-header h3 {
+    position: relative;
+    display: block;
+    width: 225px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: serif;
+    top: 250px;
+    margin: 0 auto -100px auto;
+  }
+
   .image-container-home {
     height: 437px;
     position: relative;
     overflow: hidden;
-    background-image: url('app/assets/images/13681949513_85b2cc7ff5_o.jpg');
   }
 
   .image-container-home img {
+    position: absolute;
     width: 100%;
     height: auto;
   }
@@ -226,6 +254,36 @@
     -webkit-transition: right .5s ease;
   }
 
+  .posts-index {
+    margin-top: 78px;
+  }
+
+  .posts-index h3 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: -10px;
+  }
+
+  .posts-index h4 {
+    font-size: 20px;
+    font-weight: 100;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    color: rgba(0,0,0,0.6);
+  }
+
+  .posts-index h5 {
+    font-size: 14px;
+    font-weight: 100;
+    margin-bottom: 40px;
+    color: rgba(0,0,0,0.3);
+  }
+
+  .post-list {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
   .post-title {
     position: absolute;
     width: 640px;
@@ -237,12 +295,20 @@
     left: 27%;
   }
 
-  .post-list {
-    margin-bottom: 20px;
-  }
-
   .notification-button {
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  #medium-editor-toolbar-1 {
+    background-color: black;
+  }
+
+  #medium-editor-toolbar-actions button {
+    border-color: white;
+  }
+
+  #medium-editor-toolbar-1.medium-toolbar-arrow-under:after {
+    border-color: black transparent transparent transparent;
   }
