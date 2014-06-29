@@ -48,6 +48,6 @@ class CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:collection).permit(:title, :owner_id)
+    params.require(:collection).permit(:title, :owner_id, :collection_photo)
   end
 end

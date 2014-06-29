@@ -20,83 +20,70 @@
       <li class="undo">Undo</li>
     </ul>
   </div>
-  
-  <div id="content" contenteditable="true"><%= @post.content.html_safe %></div>
+
+  <div class="editable" id="content" contenteditable="true"><%= @post.content.html_safe %></div>
 </div>
 
 <script>
   $(document).ready(function() {
-    $('#content').focus(function() {
-      $('#content').mouseup(function() {
-        if (window.getSelection()) {
-          var test = window.getSelection().toString();
-          if (test.length > 3) {
-            $(".edit-bar").addClass('revealed');
-            $(document.activeElement).addClass('styled');
-            // $('#content').keydown(function(event) {
-            //   if (event.keyCode == '66' && event.shiftKey) {
-            //     event.preventDefault();
-            //     var selected = '<strong>' + test + '</strong>';
-            //     document.activeElement.innerHTML =
-            //     document.activeElement.innerHTML.replace (test, selected);
-            //     test = ''
-            //   } else if (event.keyCode == '85' && event.shiftKey) {
-            //     event.preventDefault();
-            //     var selected = '<u>' + test + '</u>';
-            //     document.activeElement.innerHTML =
-            //     document.activeElement.innerHTML.replace (test, selected);
-            //     test = ''
-            //   }
-            // });
-            $('.bold').click(function() {
-              var $element = $('#content').find('styled');
-              console.log($element.prevObject[0].innerHTML);
-              var selected = '<strong>' + test + '</strong>';
-              $element.prevObject[0].innerHTML =
-              $element.prevObject[0].innerHTML.replace (test, selected);
-              $element.removeClass('styled');
-              test = '';
-              $('.edit-bar').removeClass('revealed')
-            });
-
-            $('.italics').click(function() {
-              var $element = $('#content').find('styled');
-              console.log($element.prevObject[0].innerHTML);
-              var selected = '<em>' + test + '</em>';
-              $element.prevObject[0].innerHTML =
-              $element.prevObject[0].innerHTML.replace (test, selected);
-              $element.removeClass('styled');
-              test = '';
-              $('.edit-bar').removeClass('revealed')
-            });
-
-            $('.undo').click(function() {
-              var $element = $('#content').find('styled');
-              console.log($element.prevObject[0].innerHTML);
-              var selected = test;
-              $element.prevObject[0].innerHTML =
-              $element.prevObject[0].innerHTML.replace (test, selected);
-              $element.removeClass('styled');
-              test = '';
-              $('.edit-bar').removeClass('revealed')
-            });
-
-            $('.underline').click(function() {
-              var $element = $('#content').find('styled');
-              console.log($element.prevObject[0].innerHTML);
-              var selected = '<u>' + test + '</u>';
-              $element.prevObject[0].innerHTML =
-              $element.prevObject[0].innerHTML.replace (test, selected);
-              $element.removeClass('styled');
-              test = '';
-              $('.edit-bar').removeClass('revealed')
-            });
-          } else if (test.length < 3 && $('.edit-bar').hasClass('revealed')) {
-            $('.edit-bar').removeClass('revealed');
-          }
-        }
-      });
-    });
+    var editor = new MediumEditor('.editable');
+    // $('#content').focus(function() {
+    //   $('#content').mouseup(function() {
+    //     if (window.getSelection()) {
+    //       var test = window.getSelection().toString();
+    //       if (test.length > 3) {
+    //         $(".edit-bar").addClass('revealed');
+    //         $(document.activeElement).addClass('styled');
+    //
+    //         $('.bold').click(function() {
+    //           var $element = $('#content').find('styled');
+    //           console.log($element.prevObject[0].innerHTML);
+    //           var selected = '<strong>' + test + '</strong>';
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //
+    //         $('.italics').click(function() {
+    //           var $element = $('#content').find('styled');
+    //           console.log($element.prevObject[0].innerHTML);
+    //           var selected = '<em>' + test + '</em>';
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //
+    //         $('.undo').click(function() {
+    //           var $element = $('#content').find('styled');
+    //           console.log($element.prevObject[0].innerHTML);
+    //           var selected = test;
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //
+    //         $('.underline').click(function() {
+    //           var $element = $('#content').find('styled');
+    //           console.log($element.prevObject[0].innerHTML);
+    //           var selected = '<u>' + test + '</u>';
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //       } else if (test.length < 3 && $('.edit-bar').hasClass('revealed')) {
+    //         $('.edit-bar').removeClass('revealed');
+    //       }
+    //     }
+    //   });
+    // });
 
     $('#publish').hover(function() {
       var paragraphs = $('#content').find('p');

@@ -241,6 +241,16 @@
     overflow: hidden;
   }
 
+  /*.image-container-post.collection {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 847px;
+    overflow: hidden;
+  }*/
+
   .image-container-post img {
     display: block;
     width: 100%;

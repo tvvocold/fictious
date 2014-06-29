@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626182645) do
+ActiveRecord::Schema.define(version: 20140629024219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,14 @@ ActiveRecord::Schema.define(version: 20140626182645) do
   add_index "collection_feeds", ["post_id", "collection_id"], name: "index_collection_feeds_on_post_id_and_collection_id", unique: true, using: :btree
 
   create_table "collections", force: true do |t|
-    t.integer  "owner_id",   null: false
-    t.string   "title",      null: false
+    t.integer  "owner_id",                      null: false
+    t.string   "title",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "collection_photo_file_name"
+    t.string   "collection_photo_content_type"
+    t.integer  "collection_photo_file_size"
+    t.datetime "collection_photo_updated_at"
   end
 
   add_index "collections", ["owner_id", "title"], name: "index_collections_on_owner_id_and_title", unique: true, using: :btree

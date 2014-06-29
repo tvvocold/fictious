@@ -4,6 +4,7 @@
 
 <div class="view-content">
   <%= form_for @collection, url: user_collections_url(current_user.id) do |f| %>
+    <%= f.file_field :collection_photo %>
     <%= f.text_field :title, placeholder: 'Title', id: 'title-input' %>
     <%= f.submit "Create Collection", class: 'button new-post-button', id: 'publish' %>
   <% end %>
