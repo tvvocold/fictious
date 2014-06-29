@@ -43,6 +43,9 @@ class CollectionsController < ApplicationController
     @posts = current_user.posts
     @collection = Collection.find(params[:id])
     @collection_posts = @collection.posts
+    @subscription = Subscription.find_by(collection_id: params[:id],
+                                         subscriber_id: current_user.id
+                                         )
   end
 
   private

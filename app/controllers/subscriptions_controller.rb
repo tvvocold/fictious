@@ -1,11 +1,14 @@
 class SubscriptionsController < ApplicationController
   def create
-    @user = User.find(params[:user_id])
-    @subscription = Subscription.new(subscription_params)
+    if subscription_params[:user_id]
+      @subscription = Subscription.new(user_id: subscription_params[:user_id])
+    else
+      @subscription = Subscription.new(collection_id: subscription_params[:collection_id])
+    end
     @subscription.subscriber_id = current_user.id
     if @subscription.save
       message = current_user.username + " subscribed to your posts!"
-      @subscription.notifications.create(content: message, user_id: @user.id)
+      @subscription.notifications.create(content: message, user_id: subscription_params[:user_id])
       redirect_to :back
     else
       flash.now[:errors] = @subscription.errors.full_messages

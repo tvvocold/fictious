@@ -87,18 +87,19 @@
   text-align: center;
 }
 
-#new-comment-form {
+.new-comment-form {
   position: absolute;
   margin-top: -20px;
   top: 0;
-  left: 0;
+  right: -250px;
+  width: 236px;
 
 }
 
-#new-comment-form.hidden {
+.new-comment-form.hidden-comment {
   display: none;
   top: 0;
-  left: 0;
+  right: -250px;
 }
 
 #post-show-content {

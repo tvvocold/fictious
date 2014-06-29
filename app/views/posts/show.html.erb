@@ -29,23 +29,6 @@
 <div class="view-post-content">
   <div id="post-show-content">
     <p><%= @post.content.html_safe %></p>
-    <div id="new-comment-form" class="hidden">
-      <h5><%= current_user.username %></h5>
-      <form action="<%= post_comments_url(@post.id) %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
-        <input type="hidden" name="comment[user_id]" value="1">
-        <input type="hidden" id="p-data" name="comment[paragraph_index]" value="">
-        <textarea placeholder="Leave note..." id="comment-content" name="comment[content]" value="<%= current_user.id %>"></textarea>
-
-        <button>Leave Comment</button>
-      </form>
-
-      <div id="comments">
-
-      </div>
-
-    </div>
 
   </div>
 
@@ -79,7 +62,7 @@
 </div>
 
 <script type="application/json" id="bootstrapped_comments_json">
-  { "comments": <%= @comments.to_json.html_safe %> }
+  { "comments": <%= @post.comments.to_json.html_safe %> }
 </script>
 
 <script>
@@ -89,26 +72,45 @@
       $("#find-posts-for-collection").toggleClass("hidden");
     });
 
-    var strapped_comments = JSON.parse($("#bootstrapped_comments_json").html());
-    _(strapped_comments).each(function(com) {
+    var comments = [];
+
+    var strappedComments = JSON.parse($("#bootstrapped_comments_json").html());
+    _(strappedComments).each(function(com) {
       _(com).each(function(c) {
-        // console.log(c);
+        comments.push(c);
       });
-      // console.log(com);
     });
 
-    $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
-      _(data).each(function(comment) {
-        console.log(comment.paragraph_index);
-      });
-    });
+    // $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
+    //   _(data).each(function(comment) {
+    //     console.log(comment.paragraph_index);
+    //   });
+    // });
 
     var paras = $('#post-show-content').find('p');
     $.each(paras, function(i, val) {
       if($(val).hasClass('commentable')) {
         $(val).wrap('<div class="commentable-paragraph"></div>');
         $(val).parent().append('<div class="comment-caller hidden"></div>')
+        $(val).append('<%= escape_javascript("#{render :partial => 'shared/comment_form' }").html_safe %>')
       }
+
+
+
+      $('.new-comment-form').each(function(i, comForm) {
+        var comId = $(comForm).parent().attr('data-id')
+        $(comForm).addClass(comId);
+      });
+
+      _(comments).each(function(comment) {
+        if (comment.paragraph_index === $(val).attr('data-id')) {
+          $.get('/comments/' + comment.id, function(userData) {
+            console.log($(comment).parent())
+            $('.' + comment.paragraph_index).append('<h5>' + userData.username + '</h5>' + comment.content + '<br>')
+          });
+        };
+      });
+
     });
 
     $('.commentable-paragraph').hover(function(event) {
@@ -118,37 +120,37 @@
     });
 
     $('.comment-caller').on('click', function(event) {
+      console.log($(event.target).prev().attr('data-id'));
       $('.view-post-content').toggleClass('moved');
-
-      $('#new-comment-form').toggleClass('hidden');
+      var commentClass = $(event.target).prev().attr('data-id')
+      $('.' + commentClass).toggleClass('hidden-comment');
       $('#comments').empty();
 
-      var y = ((event.pageY - $('#post-show-content').offset().top) / $('#post-show-content').outerHeight()) * 100;
+      // var y = ((event.pageY - $('#post-show-content').offset().top) / $('#post-show-content').outerHeight()) * 100;
+      //
+      // $('#new-comment-form').css({
+      //   "left": 110 + "%",
+      //   "top": y + "%"
+      // });
+      //
+      // if ($('#new-comment-form').hasClass('hidden')) {
+      //   $('#new-comment-form').css({
+      //     "left": 0,
+      //     "top": 0
+      //   });
+      // }
 
-      $('#new-comment-form').css({
-        "left": 110 + "%",
-        "top": y + "%"
-      });
-
-      if ($('#new-comment-form').hasClass('hidden')) {
-        $('#new-comment-form').css({
-          "left": 0,
-          "top": 0
-        });
-      }
-
-      $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
-        _(data).each(function(comment) {
-          console.log(comment.paragraph_index);
-          console.log($(event.target).prev());
-          if (comment.paragraph_index === $(event.target).prev().attr('data-id')) {
-            $.get('/comments/' + comment.id, function(userData) {
-              console.log(userData, comment)
-              $('#comments').append('<h5>' + userData.username + '</h5>' + comment.content + '<br>')
-            });
-          };
-        });
-      });
+      // $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
+        // _(comments).each(function(comment) {
+        //   // console.log($(event.target).prev());
+        //   if (comment.paragraph_index === $(event.target).prev().attr('data-id')) {
+        //     $.get('/comments/' + comment.id, function(userData) {
+        //       console.log(userData, comment)
+        //       $('#comments').append('<h5>' + userData.username + '</h5>' + comment.content + '<br>')
+        //     });
+        //   };
+        // });
+      // });
 
       var targetPara = $(event.target).prev();
       var data = $(targetPara).attr('data-id');

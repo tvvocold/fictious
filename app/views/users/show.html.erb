@@ -1,35 +1,53 @@
 <section class="view-content profile-content">
-  <%= image_tag @user.profile_picture.url(:regular), class: "profile-picture"%>
-  <h1 class="username"><%= @user.username %></h1>
+  <div class="about">
+    <%= image_tag @user.profile_picture.url(:regular), class: "profile-picture"%>
+    <h1 class="username"><%= @user.username %></h1>
 
-  <% if @subscription %>
-    <form action="<%= subscription_url(@subscription.id) %>" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="_method" value="delete">
-      <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
+    <% if @subscription %>
+      <form action="<%= subscription_url(@subscription.id) %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
 
-      <button class="button">Following</button>
-    </form>
-  <% else %>
-    <form action="<%= user_subscriptions_url(@user.id) %>" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
+        <button class="button button-centered">Following</button>
+      </form>
+    <% else %>
+      <form action="<%= user_subscriptions_url(current_user.id) %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
 
-      <button class="button">Follow</button>
-    </form>
-  <% end %>
+        <button class="button button-centered">Follow</button>
+      </form>
+    <% end %>
+  </div>
 
-  <h3><%= @user.username %>'s Recent Posts</h3>
-  <ul>
+  <div class="section-label">
+    <h5>Latest</h5>
+  </div>
+
+  <ul class="posts-index profile-posts">
     <% @posts.each do |post| %>
-      <li><%= link_to post.title, post_url(post.id) %></li>
+      <li class="post-list">
+        <a href="<%= post_url(post.id) %>">
+          <h3><%= post.title %><h3>
+          <h4><%= post.subtitle %></h4>
+
+          <h5><%= post.author.username %></h5>
+        </a>
+      </li>
     <% end %>
   </ul>
 
-  <h3><%= @user.username %>'s Collections</h3>
-  <ul>
+  <div class="section-label">
+    <h5>Collections</h5>
+  </div>
+
+  <ul class="posts-index">
     <% @collections.each do |collection| %>
-      <li><%= link_to collection.title, collection_url(collection.id) %></li>
+      <li>
+        <a href="<%= collection_url(collection.id) %>">
+          <h3><%= collection.title %></h3>
+        </a>
+      </li>
     <% end %>
   </ul>
 </section>
