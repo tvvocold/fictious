@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
   def log_out
     session[:token] = nil
   end
+
+  def ensure_logged_in
+    redirect_to new_user_url unless logged_in? 
+  end
 end

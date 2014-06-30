@@ -29,7 +29,7 @@
 <div class="view-post-content">
   <div id="post-show-content">
     <p><%= @post.content.html_safe %></p>
-
+    <%= render 'shared/comment_form' %>
   </div>
 
   <!-- DO LATER: GET THIS INTO THE SHOW CONTROLLER -->
@@ -71,25 +71,31 @@
       $(".collection-list").toggleClass("hidden");
       $("#find-posts-for-collection").toggleClass("hidden");
     });
-    // 
-    // $('.new_comment').on('submit', function(event) {
-    //   event.preventDefault();
-    //   alert("IN HERE")
-    //
-    //   var data = $(event.currentTarget).serializeJSON();
-    //
-    //   $.ajax({
-    //     url: '/posts/<%= @post.id %>/comments',
-    //     type: 'POST',
-    //     data: data,
-    //     success: function(data) {
-    //       $('#comments').append(data);
-    //     }
-    //   });
-    //   // $.post('/posts/' + <%= @post.id %> + '/comments', function(data) {
-    //   //   console.log(data);
-    //   // });
-    // });
+
+    $('#new_comment').on('submit', function(event) {
+      event.preventDefault();
+
+      var data = $(this).serialize();
+      console.log(data);
+
+      $.ajax({
+        url: '/posts/<%= @post.id %>/comments/',
+        type: 'POST',
+        data: data,
+        dataType: "json",
+        success: function(data) {
+          $('#comment-content').val('');
+          $('#comments').prepend('<h5><%= current_user.username %></h5>' + data.content);
+        },
+        error: function(data) {
+          debugger
+        }
+      });
+      // $.post('/posts/' + <%= @post.id %> + '/comments', function(data) {
+      //   console.log(data);
+      // });
+      return false;
+    });
 
     var comments = [];
 
@@ -108,20 +114,39 @@
       if($(val).hasClass('commentable')) {
         $(val).wrap('<div class="commentable-paragraph"></div>');
         $(val).parent().append('<div class="comment-caller hidden"></div>')
-        $(val).append('<%= escape_javascript("#{render :partial => 'shared/comment_form' }").html_safe %>')
+        // $(val).append('<%= escape_javascript("#{render :partial => 'shared/comment_form' }").html_safe %>')
       }
 
-      $('.new-comment-form').each(function(i, comForm) {
-        var comId = $(comForm).parent().attr('data-id')
-        $('.new-comment-form').find('.comment-form').attr('id', comId)
-        $(comForm).addClass(comId);
-        $(comForm).find('#p-data').attr('value', comId);
-      });
+      // $('.new-comment-form').each(function(i, comForm) {
+      //   var comId = $(comForm).parent().attr('data-id')
+      //   $(comForm).find('.new_comment').attr('id', comId)
+      //   $(comForm).addClass(comId);
+      //   $(comForm).find('#p-data').attr('value', comId);
+      //   $('#' + comId).on("submit", function(event) {
+      //     event.preventDefault();
+      //     var data = $(this).serializeJSON();
+      //     console.log('this', this);
+      //     console.log('data', data);
+      //     $.ajax({
+      //       url: '/posts/<%= @post.id %>/comments',
+      //       type: 'POST',
+      //       data: data,
+      //       contentType: "application/json; charset=utf-8",
+      //       dataType: "json",
+      //       success: function(data) {
+      //         $('#comments').append(data);
+      //       },
+      //       error: function() {
+      //         console.log('error');
+      //       }
+      //     });
+      //   });
+      // });
 
       _(comments).each(function(comment) {
         if (comment.paragraph_index === $(val).attr('data-id')) {
           $.get('/comments/' + comment.id, function(userData) {
-            console.log($(comment).parent())
+            console.log('comment parent', $(comment).parent())
             $('.' + comment.paragraph_index).append('<h5>' + userData.username + '</h5>' + comment.content + '<br>')
           });
         };
@@ -139,34 +164,34 @@
       console.log("TARGET", $(event.target).prev().attr('data-id'));
       $('.view-post-content').toggleClass('moved');
       var commentClass = $(event.target).prev().attr('data-id')
-      $('.' + commentClass).toggleClass('hidden-comment');
+      $('.new-comment-form').toggleClass('hidden-comment');
       $('#comments').empty();
 
-      // var y = ((event.pageY - $('#post-show-content').offset().top) / $('#post-show-content').outerHeight()) * 100;
-      //
-      // $('#new-comment-form').css({
-      //   "left": 110 + "%",
-      //   "top": y + "%"
-      // });
-      //
-      // if ($('#new-comment-form').hasClass('hidden')) {
-      //   $('#new-comment-form').css({
-      //     "left": 0,
-      //     "top": 0
-      //   });
-      // }
+      var y = ((event.pageY - $('#post-show-content').offset().top) / $('#post-show-content').outerHeight()) * 100;
 
-      // $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
-        // _(comments).each(function(comment) {
-        //   // console.log($(event.target).prev());
-        //   if (comment.paragraph_index === $(event.target).prev().attr('data-id')) {
-        //     $.get('/comments/' + comment.id, function(userData) {
-        //       console.log(userData, comment)
-        //       $('#comments').append('<h5>' + userData.username + '</h5>' + comment.content + '<br>')
-        //     });
-        //   };
-        // });
-      // });
+      $('.new-comment-form').css({
+        "left": 110 + "%",
+        "top": y + "%"
+      });
+
+      if ($('.new-comment-form').hasClass('hidden')) {
+        $('.new-comment-form').css({
+          "left": 0,
+          "top": 0
+        });
+      }
+
+      $.get('/posts/' + <%= @post.id %> + '/comments', function(data) {
+        _(comments).each(function(comment) {
+          // console.log($(event.target).prev());
+          if (comment.paragraph_index === $(event.target).prev().attr('data-id')) {
+            $.get('/comments/' + comment.id, function(userData) {
+              console.log(userData, comment)
+              $('#comments').append('<h5>' + userData.username + '</h5>' + comment.content + '<br>')
+            });
+          };
+        });
+      });
 
       var targetPara = $(event.target).prev();
       var data = $(targetPara).attr('data-id');
