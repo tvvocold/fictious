@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    resources :users
+    shallow do
+      get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
+      resources :posts do
+        resources :comments
+      end
+    end
+  end
+
   root :to => "posts#recent"
   get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
-  get 'posts/:id/json_content', :to => "posts#json_content", :as => "json_content"
   shallow do
     resources :users do
       resources :posts do

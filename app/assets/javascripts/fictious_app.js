@@ -4,7 +4,26 @@ window.FictiousApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    FictiousApp.posts = new FictiousApp.Collections.Posts();
+    FictiousApp.users = new FictiousApp.Collections.Users();
+    FictiousApp.users.fetch();
+    
+    var $rootEl = $('.view-content');
+
+    FictiousApp.posts.fetch({
+      success: function() {
+        new FictiousApp.Routers.Posts({
+          $rootEl: $rootEl,
+          posts: FictiousApp.posts
+        });
+        Backbone.history.start();
+      },
+
+      error: function() {
+        alert("NO!");
+      }
+    });
+
   }
 };
 

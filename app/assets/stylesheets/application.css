@@ -147,6 +147,11 @@
     right: 20px;
   }
 
+  .white-button {
+    border-color: white;
+    color: white;
+  }
+
   .edit-post-button {
     position: absolute;
     top: 20px;

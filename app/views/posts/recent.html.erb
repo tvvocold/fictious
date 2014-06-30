@@ -10,11 +10,13 @@
       </ul>
     </nav>
   </div>
+  <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button white-button" %>
+
 </header>
 
 <div class="view-content posts-index">
 
-  <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button" %>
+  <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button white-button" %>
 
   <ul>
     <% @posts.each do |post| %>

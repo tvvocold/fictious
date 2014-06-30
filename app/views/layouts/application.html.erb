@@ -5,6 +5,9 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <script>
+    window.FictiousApp.currentUser = <%= current_user.id %>
+  </script>
 </head>
 <body>
 
