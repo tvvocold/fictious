@@ -17,10 +17,6 @@ window.FictiousApp = {
           posts: FictiousApp.posts
         });
         Backbone.history.start();
-      },
-
-      error: function() {
-        alert("NO!");
       }
     });
 

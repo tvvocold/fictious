@@ -1,12 +1,12 @@
-<h1>Sign In</h1>
+<h1 class="landing-text username">Sign In</h1>
 
 <%= flash[:errors] if flash[:errors] %>
 <%= form_for @user, url: session_url do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit %>
+  <%= f.label :username %><br>
+  <%= f.text_field :username %><br>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <%= f.submit "Sign In", class: "button"%>
 <% end %>

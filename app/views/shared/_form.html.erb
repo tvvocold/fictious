@@ -1,13 +1,13 @@
 
 
 <%= form_for @user do |f| %>
-  <%= f.label :profile_picture %>
-  <%= f.file_field :profile_picture %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit %>
+  <%= f.label :profile_picture %><br>
+  <%= f.file_field :profile_picture %><br>
+  <%= f.label :username %><br>
+  <%= f.text_field :username %><br>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <%= f.submit "Create Account", class: "button" %>
 <% end %>

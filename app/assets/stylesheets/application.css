@@ -373,3 +373,40 @@
     display: inline-block;
     margin-top: 40px;
   }
+
+  /* SIGN IN */
+
+
+  .new_user {
+    width: 400px;
+    margin: auto;
+  }
+
+  .new_user > input[type="submit"] {
+    display: block;
+    border-color: rgba(87,173,104,.8);
+    color: rgba(87,173,104,0.8);
+    margin: auto;
+  }
+
+  .new_user > input {
+    margin-bottom: 20px;
+  }
+
+  .new_user > input[type="text"] {
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 3px;
+    padding: 5px 10px;
+  }
+
+  .new_user > input[type="password"] {
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 3px;
+    padding: 5px 10px;
+  }
+
+  .landing-text {
+    padding-top: 50px;
+  }
