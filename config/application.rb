@@ -7,7 +7,7 @@ Bundler.require(*Rails.groups)
 module FictiousApp
   class Application < Rails::Application
     config.assets.initialize_on_precompile = false
-    config.assets.path << "app/assets/templates"
+    config.assets.paths << "app/assets/templates"
 
     Paperclip.options[:command_path] = "/usr/local/bin/"
 
