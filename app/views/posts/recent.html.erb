@@ -5,8 +5,8 @@
     <h3>A Medium clone for fiction</h3>
     <nav class="home-nav">
       <ul class="clearfix">
-        <li><%= link_to "Top 100", root_url %></li>
-        <li><%= link_to "Reading List", reading_list_url %></li>
+        <li><a href="#/">Top 100</a></li>
+        <li><a href="#/subscriptions">Reading List</a></li>
       </ul>
     </nav>
   </div>
@@ -14,7 +14,7 @@
 
 </header>
 
-<div class="view-content posts-index">
+<div class="view-content posts-index home-page-content">
 
   <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button white-button" %>
 

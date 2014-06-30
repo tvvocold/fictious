@@ -7,8 +7,8 @@ window.FictiousApp = {
     FictiousApp.posts = new FictiousApp.Collections.Posts();
     FictiousApp.users = new FictiousApp.Collections.Users();
     FictiousApp.users.fetch();
-    
-    var $rootEl = $('.view-content');
+
+    var $rootEl = $('.home-page-content');
 
     FictiousApp.posts.fetch({
       success: function() {

@@ -1,14 +1,13 @@
-FictiousApp.Views.UsersIndex = Backbone.View.extend({
+FictiousApp.Views.PostsFeed = Backbone.View.extend({
 
-  template: JST['users/index'],
+  template: JST['posts/feed'],
 
   render: function() {
     var renderedContent = this.template({
-      users: this.collection
+      posts: this.collection
     });
 
     this.$el.html(renderedContent);
     return this;
   }
-
 });
