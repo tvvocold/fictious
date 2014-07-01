@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :ensure_logged_in
-  
+
   def index
     @posts = current_user.posts
   end

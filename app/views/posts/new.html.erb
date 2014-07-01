@@ -3,6 +3,9 @@
 </header> -->
 
 <div class="view-content">
+
+  <div class="dropzone-previews preview-zone"></div>
+
   <%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
 
   <%= form_for @post, url: user_posts_url(current_user.id) do |f| %>
@@ -30,6 +33,15 @@
 
 <script>
   $(document).ready(function() {
+    Dropzone.options.newPost = {
+      // headers: { “X-CSRF-Token” : $(‘meta[name=”csrf-token”]’).attr(‘content’) },
+      paramName: "upload[image]", // The name that will be used to transfer the file
+      previewsContainer: '.preview-zone',
+      maxFilesize: 2, // MB
+      accept: function(file, done) {
+        done();
+      }
+    };
     var editor = new MediumEditor('.editable');
 
     $('#content').focus(function() {

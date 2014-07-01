@@ -2,29 +2,28 @@
 <header class="image-container-post">
   <%= image_tag @post.image.url() %>
   <h1 class="post-title"><%= @post.title %> by <%= link_to @author.username, user_url(@author.id) %></h1>
+  <button class="button new-post-button white-button" id="find-posts-for-collection">Add To Collection</button>
+  <% if current_user == @author %>
+    <a class="button edit-post-button white-button" href="<%= edit_post_url(@post.id) %>">Edit Post</a>
+  <% end %>
+  <div class="collection-list hidden">
+    <div class="collection-list-container">
+      <h5>Publish in a collection</h5>
+      <ul>
+        <% @collections.each do |collection| %>
+          <li><form action="<%= post_collection_feeds_url(@post.id) %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
+            <input type="hidden" name="collection_feed[post_id]" value="<%= @post.id %>">
+
+            <button class="collection-button"><%= collection.title %></button>
+          </form></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </header>
 
-<button class="button new-post-button white-button" id="find-posts-for-collection">Add To Collection</button>
-<% if current_user == @author %>
-  <a class="button edit-post-button white-button" href="<%= edit_post_url(@post.id) %>">Edit Post</a>
-<% end %>
-
-<div class="collection-list hidden">
-  <div class="collection-list-container">
-    <h5>Publish in a collection</h5>
-    <ul>
-      <% @collections.each do |collection| %>
-        <li><form action="<%= post_collection_feeds_url(@post.id) %>" method="post">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
-          <input type="hidden" name="collection_feed[post_id]" value="<%= @post.id %>">
-
-          <button class="collection-button"><%= collection.title %></button>
-        </form></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
 
 <div class="view-post-content">
   <div id="post-show-content">

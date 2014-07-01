@@ -1,59 +1,7 @@
 == README
 
-== RAILS-COMPLETE (still need backbone, css, js, refactoring)
-1. Users
-  - username
-  - password
+== BACKBONE
 
-2. Posts
-  - user_id
-  - title
-  - subtitle
-  - image
-  - content
-
-3. Collections
-  - user_id
-  - ??
-
-4. Comments
-  - user_id
-  - post_id/parent_id
-  - content
-
-5. Subscriptions
-  - content_id
-  - subscriber_id
-
-5.5 Collection_Subscriptions
-  - collection_id
-  - subscriber_id
-
-6. Likes
-  - user_id
-  - post_id
-
-== TODO
-
-1. Groups
-  - mostly done, just need to accept request (tied to notifications)
-
-1.5 Notifications
-  - polymorphic
-  - likes
-  - follows
-  - group requests
-
-2. Add cancan authorization
-
-3. OAuth
-
-4. Rich Text Editor
-
-5. Javascript for add collection/posts popups
-
-6. Auto-save for "Drafts"
-
-7. CSS
-
-8. Backbone views for index
+1. New Post page, image preview
+2. Comments
+3. Notifications
