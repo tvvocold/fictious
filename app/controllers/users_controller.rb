@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.profile_picture_url = @user.profile_picture.url
       log_in(@user)
       redirect_to :root
     else

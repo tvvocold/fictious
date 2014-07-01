@@ -1,15 +1,15 @@
 <h1>This is other backbone</h1>
 <ul>
   <% posts.each(function(post) { %>
-    <% var authorId = post.get('author_id') %>
-    <% var author = FictiousApp.users.get(authorId) %>
-    <% var profilePic = author.get('profile_picture_url') %>
+    <% var author_id = post.get('author_id') %>
+    <% var user = FictiousApp.users.get(author_id) %>
+    <% var profilePic = user.get('profile_picture_url_thumb') %>
     <li class="post-list">
-      <a href="/posts/<%= post.get('id') %>">
+      <a href="#posts/<%= post.get('id') %>">
         <h3><%= post.get('title') %></h3>
         <h4><%= post.get('subtitle') %></h4>
         <img src="<%= profilePic %>">
-        <h5><%= author.get('username') %></h5>
+        <h5><%= user.get('username') %></h5>
       </a>
     </li>
   <% }) %>

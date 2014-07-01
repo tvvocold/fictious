@@ -1,7 +1,9 @@
 class Api::UsersController < ApplicationController
   def index
     @users = User.all
-    render :json => @users
+    respond_to do |format|
+      format.json
+    end
   end
 
   def show
@@ -11,6 +13,7 @@ class Api::UsersController < ApplicationController
     @subscription = Subscription.find_by(user_id: params[:id],
                                          subscriber_id: current_user.id
                                          )
+
   end
 
   private

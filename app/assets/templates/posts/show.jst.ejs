@@ -1,1 +1,82 @@
-<H1>WHY GOD>>></h1>
+<div class="content-wrapper">
+  <header class="image-container-post">
+    <img src="<%= post.get('image_url') %>">
+    <h1 class="post-title"><%= post.escape('title') %> by <%= post.get('author').username %></h1>
+    <button class="button new-post-button white-button" id="find-posts-for-collection">Add To Collection</button>
+    <% if(FictiousApp.current_user === post.author) { %>
+      <a class="button edit-post-button white-button" href="posts/<%= post.id %>/edit">Edit Post</a>
+    <% } %>
+    <div class="collection-list hidden">
+      <div class="collection-list-container">
+        <h5>Publish in a collection</h5>
+        <ul>
+          <!-- collections list -->
+        </ul>
+      </div>
+    </div>
+
+  </header>
+
+  <div class="view-post-content">
+    <div id="post-show-content">
+      <p><%= post.get('content') %></p>
+      <!-- render comment form -->
+    </div>
+  </div>
+
+</div>
+
+<script>
+$(document).ready(function() {
+  $("#find-posts-for-collection").on("click", function() {
+    $(".collection-list").toggleClass("hidden");
+    $("#find-posts-for-collection").toggleClass("hidden");
+  });
+
+  var paras = $('#post-show-content').find('p');
+  $.each(paras, function(i, val) {
+    if($(val).hasClass('commentable')) {
+      $(val).wrap('<div class="commentable-paragraph"></div>');
+      $(val).parent().append('<div class="comment-caller hidden"></div>')
+    }
+
+    // COMMENTS WENT HERE
+  });
+
+  $('.commentable-paragraph').hover(function(event) {
+    $($(event.currentTarget).find('div')).removeClass('hidden');
+  }, function() {
+    $('.comment-caller').addClass('hidden');
+  });
+
+  $('.comment-caller').on('click', function(event) {
+    $('.view-post-content').toggleClass('moved');
+    var commentClass = $(event.target).prev().attr('data-id')
+    $('.new-comment-form').toggleClass('hidden-comment');
+    $('#comments').empty();
+
+    var y = ((event.pageY - $('#post-show-content').offset().top) / $('#post-show-content').outerHeight()) * 100;
+
+    $('.new-comment-form').css({
+      "left": 110 + "%",
+      "top": y + "%"
+    });
+
+    if ($('.new-comment-form').hasClass('hidden')) {
+      $('.new-comment-form').css({
+        "left": 0,
+        "top": 0
+      });
+    }
+
+    // GET COMMENTS HERE
+  });
+
+  var targetPara = $(event.target).prev();
+  var data = $(targetPara).attr('data-id');
+  $('#p-data').attr('value', data);
+
+});
+
+
+</script>

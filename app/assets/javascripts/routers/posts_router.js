@@ -28,7 +28,7 @@ FictiousApp.Routers.Posts = Backbone.Router.extend({
 
     this.currentView && this.currentView.remove();
     this.currentView = showView;
-    $('body').html(showView.render().$el);
+    $('.content').html(showView.render().$el);
   },
 
   feed: function() {

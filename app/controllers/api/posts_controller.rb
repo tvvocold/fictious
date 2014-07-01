@@ -3,7 +3,9 @@ class Api::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    render :json => @posts
+    respond_to do |format|
+      format.json
+    end
   end
 
   def new
@@ -40,6 +42,8 @@ class Api::PostsController < ApplicationController
     @collections = current_user.collections
     @comment = current_user.comments.new()
     @comments = @post.comments
+    #render jbuilder template
+    # or overwrite as json method
     render :json => @post
   end
 
