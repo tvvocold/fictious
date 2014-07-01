@@ -11,23 +11,50 @@
     </nav>
   </div>
   <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button white-button" %>
+  <a href="#" class="button new-post-button notifications-button white-button"><%= current_user.notifications.count %></a>
+  <ul class="notifications hidden">
+    <div class="notifications-container">
+      <% if current_user.notifications.count > 0 %>
+        <% current_user.notifications.each do |notification| %>
+          <% if notification.notifiable_type == "GroupRequest" %>
+            <li><h5><%= notification.content %></h5></li>
+            <form action="<%= user_group_users_url(current_user.id) %>" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="group_user[group_id]" value="<%= notification.content_id %>">
 
+              <button>Accept Invitation</button>
+            </form>
+            <%= button_to "Decline Invitation", group_request_url(notification.content_id), method: :delete %>
+          <% else %>
+            <li><%= notification.content %></li>
+          <% end %>
+        <% end %>
+      <% else %>
+        <li><h5>You have no new notifications</h5></li>
+      <% end %>
+    </div>
+  </ul>
 </header>
 
 <div class="view-content posts-index home-page-content">
-
-  <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button white-button" %>
-
   <ul>
     <% @posts.each do |post| %>
       <li class="post-list">
         <a href="<%= post_url(post.id) %>">
           <h3><%= post.title %><h3>
           <h4><%= post.subtitle %></h4>
-
+          <%= image_tag post.author.profile_picture.url(:thumb), class: "profile-picture"%>
           <h5><%= post.author.username %></h5>
         </a>
       </li>
     <% end %>
   </ul>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $(".notifications-button").on('click', function() {
+      $(".notifications").toggleClass("hidden");
+    });
+  });
+</script>

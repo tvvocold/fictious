@@ -19,7 +19,6 @@
       <li><%= link_to 'Collections', user_collections_url(current_user.id) %></li>
       <li><%= link_to 'Subscriptions', user_subscriptions_url(current_user.id) %></li>
       <li><%= link_to 'Groups', user_groups_url(current_user.id) %></li>
-      <li><a href="<%= notifications_url %>">You have <%= current_user.notifications.count %> notifications</a></li>
     </ul>
     <%= button_to 'Sign Out', session_url, method: :delete %>
   <% else %>

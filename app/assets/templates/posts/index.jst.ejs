@@ -3,10 +3,12 @@
   <% posts.each(function(post) { %>
     <% var authorId = post.get('author_id') %>
     <% var author = FictiousApp.users.get(authorId) %>
+    <% var profilePic = author.get('profile_picture_url') %>
     <li class="post-list">
       <a href="/posts/<%= post.get('id') %>">
         <h3><%= post.get('title') %></h3>
         <h4><%= post.get('subtitle') %></h4>
+        <img src="<%= profilePic %>">
         <h5><%= author.get('username')  %></h5>
       </a>
     </li>
