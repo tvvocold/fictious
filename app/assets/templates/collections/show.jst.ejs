@@ -1,0 +1,20 @@
+<header class="image-container-home collection">
+  <img src="<%= collection.get('collection_photo') %>">
+  <div id="view-collection" class="view-header view-collection">
+    <h1><%= collection.get('title') %></h1>
+    <nav class="home-nav">
+      <ul class="clearfix">
+        <li><a href="#">Top 100</a></li>
+        <li></li>
+      </ul>
+    </nav>
+    <% if (collection.owner_id !== FictiousApp.currentUser) { %>
+      <% if (collection.get('subscription')) { %>
+        <!-- FOLLOW && FOLLOWING BUTTONS GO HERE -->
+      <% } else { %>
+        <% console.log("no sub") %>
+      <% } %>
+    <% } %>
+  </div>
+
+</header>

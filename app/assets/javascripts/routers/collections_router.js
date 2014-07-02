@@ -5,7 +5,8 @@ FictiousApp.Routers.Collections = Backbone.Router.extend({
   },
 
   routes: {
-    'collections': 'index'
+    'collections': 'index',
+    'collections/:id': 'show'
   },
 
   index: function() {
@@ -13,6 +14,15 @@ FictiousApp.Routers.Collections = Backbone.Router.extend({
       collection: this.collections
     });
     this._swapView(indexView);
+  },
+
+  show: function(id) {
+    var collection = this.collections.get(id);
+    var showView = new FictiousApp.Views.CollectionShow({
+      model: collection
+    });
+
+    this._swapView(showView);
   },
 
   _swapView: function(view) {

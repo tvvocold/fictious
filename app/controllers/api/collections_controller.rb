@@ -49,6 +49,7 @@ class Api::CollectionsController < ApplicationController
     @subscription = Subscription.find_by(collection_id: params[:id],
                                          subscriber_id: current_user.id
                                          )
+    render :json => @collection
   end
 
   private
