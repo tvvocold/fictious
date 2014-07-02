@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :subscriptions
+    resources :collections
     resources :users
     resources :comments
     get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"

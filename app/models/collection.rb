@@ -2,7 +2,7 @@ class Collection < ActiveRecord::Base
   validates :owner_id, uniqueness: { scope: :title }
   validates :owner_id, :title, presence: true
 
-  has_attached_file :collection_photo, :styles => { :thumb => "32x32#", :small => "200x260#" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :collection_photo, :styles => { :thumb => "64x64#", :small => "400x520#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :collection_photo, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id

@@ -1,0 +1,16 @@
+<a class="button new-post-button" href="users/<%= FictiousApp.currentUser %>/collections/new">Create Collection</a>
+<div class="view-content profile-content">
+  <h1 class="username">Your Backbone Collections</h1>
+    <ul class="clearfix">
+      <% collections.each(function(collection) { %>
+        <div class="collections-list-container clearfix">
+          <li>
+            <a href="/collections/<%= collection.get('id') %>">
+              <img class="collection-small-image" src="<%= collection.get('collection_photo_small') %>">
+              <h5><%= collection.get('title') %></h5>
+            </a>
+          </li>
+        </div>
+      <% }) %>
+    </ul>
+</div>
