@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
 
   namespace :api do
     resources :subscriptions
