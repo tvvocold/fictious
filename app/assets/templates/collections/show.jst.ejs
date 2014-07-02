@@ -8,13 +8,65 @@
         <li></li>
       </ul>
     </nav>
+  </div>
+  <!-- currently doesn't work, need to work on subscriptions -->
     <% if (collection.owner_id !== FictiousApp.currentUser) { %>
       <% if (collection.get('subscription')) { %>
-        <!-- FOLLOW && FOLLOWING BUTTONS GO HERE -->
+        <form action="#/subscriptions/<%= subscription.get('id') %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+
+          <button class="button new-post-button">Following Collection</button>
+        </form>
       <% } else { %>
-        <% console.log("no sub") %>
+        <form action="#/subscriptions" method="post">
+          <input type="hidden" name="subscription[collection_id]" value="<%= collection.get('id') %>">
+          <button class="button new-post-button">Follow Collection</button>
+        </form>
       <% } %>
+    <% } else { %>
+      <button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
+
+      <div class="collection-list hidden">
+        <div class="collection-list-container">
+          <h5>Select Post</h5>
+          <ul>
+            <!-- List of posts goes here -->
+          </ul>
+        </div>
+      </div>
     <% } %>
-  </div>
 
 </header>
+
+<div class="view-content">
+    <ul class="collection-posts posts-index">
+      <% var posts = collection.get('posts') %>
+      <% _(posts).each(function(post) { %>
+        <% var user = FictiousApp.users.get(post.author_id) %>
+        <% var profilePic = user.get('profile_picture_url_thumb') %>
+        <li class="post-list collection-post-list">
+          <a href="#/posts/<%= post.id %>">
+            <h2><%= post.title %><h2>
+            <h4><%= post.subtitle %></h4>
+            <img src="<%= profilePic %>">
+            <h5><%= user.get('username') %></h5>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    $("#find-posts-for-collection").on("click", function() {
+      $(".collection-list").toggleClass("hidden");
+      $("#find-posts-for-collection").toggleClass("hidden");
+    });
+
+    $("#hide-collections").on("click", function() {
+      $(".collection-list").addClass("hidden");
+      $("#find-posts-for-collection").removeClass("hidden");
+    });
+  });
+</script>
