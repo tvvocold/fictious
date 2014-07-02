@@ -49,7 +49,7 @@ FictiousApp.Routers.Posts = Backbone.Router.extend({
   _swapView: function(view) {
     this.currentView && this.currentView.remove();
     this.currentView = view;
-    this.$rootEl.html(view.render().$el);
+    $('.view-container').html(view.render().$el);
   }
 
 });

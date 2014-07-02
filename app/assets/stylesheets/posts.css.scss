@@ -93,7 +93,53 @@
   top: 0;
   right: -250px;
   width: 236px;
+}
 
+.new-comment-form h5 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.new-comment-form img {
+  margin-top: 10px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  float: left;
+}
+
+#save-button {
+  display: block;
+  font-size: 12px;
+  margin-top: -10px;
+  color: rgba(87,173,104,0.8);
+}
+
+.comment-content-wrapper {
+  float: right;
+  width: 190px;
+}
+
+#comment-content {
+  border: none;
+  -webkit-appearance: none;
+  outline: none;
+  margin-left: 2px;
+  margin-right: 2px;
+  width: 160px;
+  width: 100%;
+  resize: none;
+}
+
+.new-comment-form li {
+  border-bottom: 1px solid #eee;
+}
+
+.new-comment-form p {
+  font-weight: 200;
+  margin-top: -5px;
+  font-size: 14px;
 }
 
 .new-comment-form.hidden-comment {

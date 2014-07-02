@@ -1,5 +1,13 @@
 <ul>
   <% _(comments).each(function(comment) { %>
-    <li><%= comment.get('content') %></li>
+    <li class="clearfix">
+      <% var user = FictiousApp.users.get(comment.get('user_id')) %>
+      <% var profilePic = user.get('profile_picture_url_thumb') %>
+      <img src="<%= profilePic %>">
+      <div class="comment-content-wrapper">
+        <h5><%= user.get('username') %></h5>
+        <p><%= comment.get('content') %></p>
+      </div>
+    </li>
   <% }) %>
 </ul>

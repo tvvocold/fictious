@@ -1,10 +1,10 @@
 <div class="new-comment-form <%= pIndex %>">
-  <h5><%= FictiousApp.currentUser.username %></h5>
+  <h5><%= currentUser.get('username') %></h5>
   <form action="/posts/<%= post.id %>/comments" method="post" class="comment-submit">
     <input type="hidden" name="comment[post_id]" value="<%= post.id %>">
     <input type="hidden" name="comment[paragraph_index]" id="p-data" value="<%= pIndex %>">
-    <textarea name="comment[content]" id="comment-content"></textarea>
-    <input type="submit" value="Leave Comment">
+    <textarea placeholder="leave a note..." name="comment[content]" id="comment-content"></textarea>
+    <input type="submit" value="save" id="save-button">
   </form>
 
   <div id="<%= pIndex %>" class="comments-section">

@@ -1,3 +1,40 @@
+<div class="view-container">
+<header class="image-container-home">
+  <% var currentUser = FictiousApp.users.get(FictiousApp.currentUser) %>
+  <% var notifications = currentUser.get('notifications') %>
+  <img src="http://s3.amazonaws.com/Fictious-dev/posts/images/000/000/002/original/13681949513_85b2cc7ff5_o.jpg?1403793056">
+  <div class="view-header">
+    <h1>Fictious</h1>
+    <h3>A Medium clone for fiction</h3>
+    <nav class="home-nav">
+      <ul class="clearfix">
+        <li><a href="#/">Top 100</a></li>
+        <li><a href="#/subscriptions">Reading List</a></li>
+      </ul>
+    </nav>
+  </div>
+  <a class="button new-post-button white-button" href="/users/<%= FictiousApp.currentUser %>/posts/new">New Post</a>
+  <a href="#" class="button new-post-button notifications-button white-button">
+    <%= notifications.length %>
+  </a>
+  <ul class="notifications hidden">
+    <div class="notifications-container">
+      <% if (notifications.length > 0) { %>
+        <% _(notifications).each(function(notification) { %>
+          <li><%= notification.content %></li>
+          
+        <% }) %>
+      <% } else { %>
+        <li><h5>You have no new notifications</h5></li>
+      <% } %>
+    </div>
+  </ul>
+
+
+</header>
+
+<div class="view-content posts-index home-page-content">
+<h1>Backbone</h1>
 <ul>
   <% posts.each(function(post) { %>
     <% var author_id = post.get('author_id') %>
@@ -13,3 +50,5 @@
     </li>
   <% }) %>
 </ul>
+
+</div>

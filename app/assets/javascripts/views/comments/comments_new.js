@@ -2,6 +2,7 @@ FictiousApp.Views.CommentsNew = Backbone.View.extend({
   template: JST["comments/new"],
 
   initialize: function(options) {
+    this.currentUser = FictiousApp.users.get(FictiousApp.currentUser)
     this.pIndex = options.pIndex
     this.showCommentView = new FictiousApp.Views.CommentsShow({
       collection: this.collection,
@@ -16,6 +17,7 @@ FictiousApp.Views.CommentsNew = Backbone.View.extend({
 
   render: function() {
     var renderedContent = this.template({
+      currentUser: this.currentUser,
       pIndex: this.pIndex,
       post: this.model,
       comments: this.collection

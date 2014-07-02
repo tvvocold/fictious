@@ -41,7 +41,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
       this._swapView(newCommentView);
 
       $('.new-comment-form').css({
-        "left": 100 + "%",
+        "left": 105 + "%",
         "top": y + "%"
       });
 
