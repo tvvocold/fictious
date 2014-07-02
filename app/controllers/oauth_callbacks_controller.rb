@@ -1,0 +1,2 @@
+class OauthCallbacksController < ApplicationController
+end
