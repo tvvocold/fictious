@@ -2,13 +2,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :subscriptions
-    resources :users 
-    shallow do
-      get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
-      resources :posts do
-        resources :comments
-      end
-    end
+    resources :users
+    resources :comments
+    get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
+    resources :posts
   end
 
   root :to => "posts#recent"

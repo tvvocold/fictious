@@ -1,11 +1,11 @@
 class Api::CommentsController < ApplicationController
   def new
     @comment = current_user.comments.new()
+    render :json => @comment
   end
 
   def index
-    @post = Post.find(params[:post_id])
-    @comments = @post.comments
+    @comments = Comment.all
     render :json => @comments
   end
 

@@ -22,6 +22,9 @@
       <p><%= post.get('content') %></p>
       <!-- render comment form -->
     </div>
+    <div class="comments-new">
+
+    </div>
   </div>
 
 </div>
@@ -52,22 +55,22 @@ $(document).ready(function() {
   $('.comment-caller').on('click', function(event) {
     $('.view-post-content').toggleClass('moved');
     var commentClass = $(event.target).prev().attr('data-id')
-    $('.new-comment-form').toggleClass('hidden-comment');
+    // $('.new-comment-form').toggleClass('hidden-comment');
     $('#comments').empty();
 
-    var y = ((event.pageY - $('#post-show-content').offset().top) / $('#post-show-content').outerHeight()) * 100;
-
-    $('.new-comment-form').css({
-      "left": 110 + "%",
-      "top": y + "%"
-    });
-
-    if ($('.new-comment-form').hasClass('hidden')) {
-      $('.new-comment-form').css({
-        "left": 0,
-        "top": 0
-      });
-    }
+    // var y = ((event.pageY - $('#post-show-content').offset().top) / $('#post-show-content').outerHeight()) * 100;
+    //
+    // $('.new-comment-form').css({
+    //   "left": 110 + "%",
+    //   "top": y + "%"
+    // });
+    //
+    // if ($('.new-comment-form').hasClass('hidden')) {
+    //   $('.new-comment-form').css({
+    //     "left": 0,
+    //     "top": 0
+    //   });
+    // }
 
     // GET COMMENTS HERE
   });
