@@ -5,6 +5,10 @@ FictiousApp.Views.CommentsNew = Backbone.View.extend({
     this.pIndex = options.pIndex
   },
 
+  events: {
+    'submit form': 'submit'
+  },
+
   render: function() {
     var renderedContent = this.template({
       pIndex: this.pIndex,
@@ -17,12 +21,27 @@ FictiousApp.Views.CommentsNew = Backbone.View.extend({
     // COMMMMENTS ARE DISAPPEARING!!!!!
 
     var showCommentView = new FictiousApp.Views.CommentsShow({
-      collection: this.collection.where({ paragraph_index: this.pIndex })
+      collection: this.collection,
+      posts: this.collection.where({ paragraph_index: this.pIndex })
     });
 
     this._swapView(showCommentView);
 
     return this;
+  },
+
+  submit: function(event) {
+    var that = this;
+    event.preventDefault();
+
+    var params = $(event.currentTarget).serializeJSON();
+    var comment = new FictiousApp.Models.Comment(params["comment"]);
+    comment.save({}, {
+      success: function() {
+        that.collection.add(comment);
+        that.render();
+      }
+    });
   },
 
   _swapView: function(view) {

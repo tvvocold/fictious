@@ -1,8 +1,8 @@
 <div class="new-comment-form <%= pIndex %>">
   <h5><%= FictiousApp.currentUser.username %></h5>
-  <form action="/posts/<%= post.id %>/comments" method="post">
+  <form action="/posts/<%= post.id %>/comments" method="post" class="comment-submit">
     <input type="hidden" name="comment[post_id]" value="<%= post.id %>">
-    <input type="hidden" name="comment[paragraph_index]" id="p-data">
+    <input type="hidden" name="comment[paragraph_index]" id="p-data" value="<%= pIndex %>">
     <textarea name="comment[content]" id="comment-content"></textarea>
     <input type="submit" value="Leave Comment">
   </form>
