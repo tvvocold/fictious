@@ -461,6 +461,13 @@
     border-top: 1px solid rgba(0,0,0,0.15)
   }
 
+  .like-post-button {
+    cursor: pointer;
+    display: block;
+    width: 200px;
+    margin-bottom: 30px;
+  }
+
   .section-label > h5 {
     color: rgba(0,0,0,0.65);
   }

@@ -32,8 +32,19 @@
     <div class="comments-new">
 
     </div>
-  </div>
+    <% var likes = _(post.get('likes')).where({ user_id: FictiousApp.currentUser }) %>
+    <% debugger %>
+    <% if (likes.length > 0) { %>
+      <form action="/likes/<%= likes[0].id %>" method="post" class='button unlike-post like-post-button'>
+        <input type="submit" value="<%= post.get('likes').length %> | &hearts; Recommend">
+      </form>
+    <% } else { %>
+      <form action="/posts/<%= post.id %>/likes" method="post" class="button like-post like-post-button">
+        <input type="submit" value="<%= post.get('likes').length %> | &hearts; Recommend">
+      </form>
+    <% } %>
 
+  </div>
 </div>
 
 <script>

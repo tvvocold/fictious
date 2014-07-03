@@ -3,6 +3,7 @@ json.array! @posts do |post|
   json.title post.title
   json.author_id post.author_id
   json.author post.author
+  json.likes post.likes
   json.content post.content
   json.comments post.comments
   json.collectionFeeds = post.collection_feeds

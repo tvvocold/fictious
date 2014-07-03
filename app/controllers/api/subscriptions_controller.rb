@@ -21,6 +21,11 @@ class Api::SubscriptionsController < ApplicationController
     end
   end
 
+  def show
+    @subscriptions = current_user.subscriptions
+    render :json => @subscriptions
+  end
+
   def destroy
     @subscription = Subscription.find(params[:id])
     @subscription.destroy()

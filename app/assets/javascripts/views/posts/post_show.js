@@ -8,7 +8,9 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
 
   events: {
     'click .comment-caller': 'renderNewComment',
-    'submit .add-to-collection': 'addToCollection'
+    'submit .add-to-collection': 'addToCollection',
+    'submit .like-post': 'likePost',
+    'submit .unlike-post': 'unlikePost'
   },
 
   render: function() {
@@ -68,6 +70,39 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
         debugger
       },
     });
+  },
+
+  likePost: function(event) {
+    event.preventDefault();
+    var $form = $('.like-post');
+    var formData = $form.serialize();
+    $.ajax({
+      type: "POST",
+      url: $form.attr("action"),
+      data: formData,
+      success: function(data) {
+        console.log(data)
+        console.log('liked');
+      }
+    })
+  },
+
+  unlikePost: function(event) {
+    event.preventDefault();
+    var $form = $('.unlike-post');
+    var formData = $form.serialize();
+    $.ajax({
+      type: "DELETE",
+      url: $form.attr("action"),
+      data: formData,
+      success: function(data) {
+        console.log(data)
+        console.log('unliked')
+      },
+      error: function(data) {
+        console.log('error', data)
+      }
+    })
   },
 
   _swapView: function(view) {
