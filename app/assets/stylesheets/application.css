@@ -448,6 +448,11 @@
     margin: auto;
   }
 
+  input.button-centered {
+    display: block;
+    margin: auto;
+  }
+
   .about {
     padding-bottom: 30px;
   }

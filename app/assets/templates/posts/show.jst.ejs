@@ -10,7 +10,14 @@
       <div class="collection-list-container">
         <h5>Publish in a collection</h5>
         <ul>
-          <!-- collections list -->
+          <% _(collections).each(function(collection) { %>
+            <li><form class="add-to-collection" action="/posts/<%= post.id %>/collection_feeds" method="post">
+              <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
+              <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
+
+              <button class="collection-button"><%= collection.title %></button>
+            </form></li>
+          <% }) %>
         </ul>
       </div>
     </div>

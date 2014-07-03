@@ -3,7 +3,20 @@
     <img class="profile-picture" src="<%= user.get('profile_picture_url') %>">
     <h1 class="username"><%= user.get('username') %></h1>
 
-    <!-- SUBSCRIPTION BUTTONS GO HERE -->
+    <% var subscribers = user.get('subscribers') %>
+    <% var user = FictiousApp.users.get(FictiousApp.currentUser) %>
+    <% var subscription = _(subscribers).findWhere({ user_id: user.get('id'), subscriber_id: FictiousApp.currentUser }) %>
+    <% if (subscription) { %>
+      <form class="unfollow-user" action="api/subscriptions/<%= subscription.id %>" method="post">
+        <input type="hidden" name="subscription[user_id]" value="<%= user.get('id') %>">
+        <input type="submit" value="Following User" class="button button-centered">
+      </form>
+    <% } else { %>
+      <form action="api/subscriptions" method="post" class="follow-user">
+        <input type="hidden" name="subscription[user_id]" value="<%= user.get('id') %>">
+        <input type="submit" value="Follow User" class="button button-centered">
+      </form>
+    <% } %>
   </div>
 
   <div class="section-label">
@@ -32,7 +45,6 @@
       <div class="collections-list-container">
         <li>
           <a href="#/collections/<%= collection.id %>">
-            <% debugger %>
             <img class="collection-small-image" src="<%= FictiousApp.collections.get(collection.id).get('collection_photo_small') %>">
             <h5><%= collection.title %></h5>
           </a>

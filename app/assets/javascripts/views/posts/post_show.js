@@ -6,13 +6,16 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
   },
 
   events: {
-    'click .comment-caller': 'renderNewComment'
+    'click .comment-caller': 'renderNewComment',
+    'submit .add-to-collection': 'addToCollection'
   },
 
   render: function() {
     var post = this.model;
+    var userCollections = FictiousApp.users.get(FictiousApp.currentUser).get('collections')
     var renderedContent = this.template({
-      post: this.model
+      post: this.model,
+      collections: userCollections
     });
 
     this.$el.html(renderedContent);
@@ -47,6 +50,22 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
 
     }
     return this;
+  },
+
+  addToCollection: function(event) {
+    event.preventDefault();
+
+    var $form = $('.add-to-collection');
+    var formData = $form.serialize();
+    console.log(formData)
+    $.ajax({
+      type: "POST",
+      url: $form.attr("action"),
+      data: formData,
+      success: function(data) {
+        console.log(data)
+      }
+    });
   },
 
   _swapView: function(view) {

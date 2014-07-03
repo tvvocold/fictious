@@ -9,14 +9,13 @@
       </ul>
     </nav>
   </div>
-  <!-- currently doesn't work, need to work on subscriptions -->
     <% if (collection.owner_id !== FictiousApp.currentUser) { %>
       <% var subscribers = collection.get('subscribers') %>
       <% var user = FictiousApp.users.get(FictiousApp.currentUser) %>
       <% var subscription = _(subscribers).findWhere({ collection_id: collection.get('id'), subscriber_id: FictiousApp.currentUser }) %>
       <% if (subscription) { %>
         <form class="unfollow-collection" action="api/subscriptions/<%= subscription.id %>" method="post">
-
+          <input type="hidden" name="subscription[collection_id]" value="<%= collection.get('id') %>">
           <input type="submit" value="Following Collection" class="button new-post-button">
         </form>
       <% } else { %>

@@ -8,14 +8,14 @@
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="delete">
 
-        <button class="button button-centered">Following</button>
+        <button class="button button-centered unfollow-user-button">Following</button>
       </form>
     <% else %>
       <form action="<%= user_subscriptions_url(current_user.id) %>" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="subscription[user_id]" value="<%= @user.id %>">
 
-        <button class="button button-centered">Follow</button>
+        <button class="button button-centered follow-user-button">Follow</button>
       </form>
     <% end %>
   </div>
