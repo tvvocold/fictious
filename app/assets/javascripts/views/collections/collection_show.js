@@ -15,13 +15,16 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
       collection: this.model
     });
 
+    // var collectionSubscribe = new FictiousApp.Views.SubscribeNew({
+    //   collectionId:
+    // });
+
     this.$el.html(renderedContent);
     return this;
   },
 
   subscribe: function(event) {
     event.preventDefault();
-    var view = this.view
     var $form = $('.follow-collection');
     var formData = $('.follow-collection').serialize();
 
@@ -30,15 +33,16 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
       url: $form.attr("action"),
       data: formData,
       success: function(data){
-        debugger
-        view.render();
+        $('.follow-collection').attr('action', 'api/subscriptions/' + data.id);
+        $('.follow-collection').addClass('unfollow-collection');
+        $('.unfollow-collection').removeClass('follow-collection');
+        $('.new-post-button').attr('value', 'Following Collection');
       }
     });
   },
 
   unsubscribe: function(event) {
     event.preventDefault();
-    var view = this.view
     var $form = $('.unfollow-collection');
     var formData = $form.serialize();
 
@@ -47,13 +51,11 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
       url: $form.attr("action"),
       data: formData,
       success: function(data) {
-        debugger
-        view.render();
+        $('.unfollow-collection').attr('action', 'api/subscriptions');
+        $('.unfollow-collection').addClass('follow-collection');
+        $('.follow-collection').removeClass('unfollow-collection');
+        $('.new-post-button').attr('value', 'Follow Collection');
       }
     });
-  },
-
-  swapButtons: function() {
-
   }
 });

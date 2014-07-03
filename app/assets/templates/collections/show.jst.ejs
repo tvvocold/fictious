@@ -17,7 +17,7 @@
       <% if (subscription) { %>
         <form class="unfollow-collection" action="api/subscriptions/<%= subscription.id %>" method="post">
 
-          <button class="button new-post-button">Following Collection</button>
+          <input type="submit" value="Following Collection" class="button new-post-button">
         </form>
       <% } else { %>
         <form action="api/subscriptions" method="post" class="follow-collection">
