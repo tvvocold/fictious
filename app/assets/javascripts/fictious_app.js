@@ -7,7 +7,13 @@ window.FictiousApp = {
     FictiousApp.collections = new FictiousApp.Collections.Collections();
     FictiousApp.posts = new FictiousApp.Collections.Posts();
     FictiousApp.users = new FictiousApp.Collections.Users();
-    FictiousApp.users.fetch();
+    FictiousApp.users.fetch({
+      success: function() {
+        new FictiousApp.Routers.Users({
+          users: FictiousApp.users
+        })
+      }
+    });
     FictiousApp.collections.fetch({
       success: function() {
         new FictiousApp.Routers.Collections({

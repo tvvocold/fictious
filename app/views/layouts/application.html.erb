@@ -14,10 +14,10 @@
 <nav class="main-nav">
   <% if logged_in? %>
     <ul>
-      <li><%= link_to 'Home', root_url %></li>
+      <li><a href="/#/">Home</a></li>
+      <li><a href="/#/users/<%= current_user.id %>"><%= current_user.username %></a></li>
       <li><%= link_to current_user.username, user_url(current_user.id) %></li>
-      <li><a href="#/collections">Collections</a></li>
-      <li><%= link_to 'Collections', user_collections_url(current_user.id) %></li>
+      <li><a href="/#/collections">Collections</a></li>
       <li><%= link_to 'Subscriptions', user_subscriptions_url(current_user.id) %></li>
       <li><%= link_to 'Groups', user_groups_url(current_user.id) %></li>
     </ul>

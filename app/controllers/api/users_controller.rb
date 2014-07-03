@@ -13,6 +13,7 @@ class Api::UsersController < ApplicationController
     @subscription = Subscription.find_by(user_id: params[:id],
                                          subscriber_id: current_user.id
                                          )
+    render :json => @user
 
   end
 

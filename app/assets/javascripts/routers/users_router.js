@@ -1,7 +1,8 @@
 FictiousApp.Routers.Users = Backbone.Router.extend({
 
   routes: {
-    '': 'index'
+    'users': 'index',
+    'users/:user_id': 'show'
   },
 
   index: function() {
@@ -12,9 +13,18 @@ FictiousApp.Routers.Users = Backbone.Router.extend({
     this._swapView(indexView);
   },
 
+  show: function(id) {
+    var user = FictiousApp.users.get(id)
+    var showView = new FictiousApp.Views.UsersShow({
+      model: user
+    });
+
+    this._swapView(showView);
+  },
+
   _swapView: function(view) {
     this.currentView && this.currentView.remove();
     this.currentView = view;
-    this.$rootEl.html(view.render().$el);
+    $('.view-container').html(view.render().$el);
   }
 });
