@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :collections
     resources :users
     resources :comments
+    resources :collection_feeds
     get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
     resources :posts
   end

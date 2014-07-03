@@ -12,7 +12,7 @@ class CollectionsController < ApplicationController
     @collection.owner_id = current_user.id
 
     if @collection.save
-      redirect_to collection_url(@collection)
+      redirect_to '/#/collections/' + @collection.id.to_s
     else
       flash.now[:errors] = @collection.errors.full_messages
       render :new

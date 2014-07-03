@@ -11,7 +11,7 @@
         <h5>Publish in a collection</h5>
         <ul>
           <% _(collections).each(function(collection) { %>
-            <li><form class="add-to-collection" action="/posts/<%= post.id %>/collection_feeds" method="post">
+            <li><form class="add-to-collection" action="/api/collection_feeds" method="post">
               <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
               <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
 

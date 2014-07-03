@@ -41,14 +41,14 @@
 
 <div class="view-content">
     <ul class="collection-posts posts-index">
-      <% var posts = collection.get('posts') %>
       <% _(posts).each(function(post) { %>
-        <% var user = FictiousApp.users.get(post.author_id) %>
+        <% var user = FictiousApp.users.get(post.get('author_id')) %>
+        <% debugger %>
         <% var profilePic = user.get('profile_picture_url_thumb') %>
         <li class="post-list collection-post-list">
           <a href="#/posts/<%= post.id %>">
-            <h2><%= post.title %><h2>
-            <h4><%= post.subtitle %></h4>
+            <h2><%= post.get('title') %><h2>
+            <h4><%= post.get('subtitle') %></h4>
             <img src="<%= profilePic %>">
             <h5><%= user.get('username') %></h5>
           </a>

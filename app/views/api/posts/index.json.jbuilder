@@ -5,6 +5,7 @@ json.array! @posts do |post|
   json.author post.author
   json.content post.content
   json.comments post.comments
+  json.collectionFeeds = post.collection_feeds
   json.subtitle post.subtitle
   json.image_url post.image.url
 end

@@ -1,6 +1,7 @@
 FictiousApp.Views.CollectionShow = Backbone.View.extend({
-  initialize: function() {
+  initialize: function(options) {
     this.view = this;
+    this.listenTo(FictiousApp.collectionFeeds, 'add', this.render)
   },
 
   template: JST["collections/show"],
@@ -11,13 +12,18 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
   },
 
   render: function() {
-    var renderedContent = this.template({
-      collection: this.model
-    });
+    var colFeeds = FictiousApp.collectionFeeds.where({ collection_id: this.model.id });
+    var postIds = [];
+    var posts = [];
 
-    // var collectionSubscribe = new FictiousApp.Views.SubscribeNew({
-    //   collectionId:
-    // });
+    _(colFeeds).map(function(colFeed) { postIds.push(colFeed.get('post_id')) });
+    _(postIds).map(function(postId) { posts.push(FictiousApp.posts.get(postId)) });
+    debugger
+
+    var renderedContent = this.template({
+      collection: this.model,
+      posts: posts
+    });
 
     this.$el.html(renderedContent);
     return this;
@@ -57,5 +63,15 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
         $('.new-post-button').attr('value', 'Follow Collection');
       }
     });
+  },
+
+  addCollectionPost: function() {
+    alert("HELLO!!!")
+    var colFeed = FictiousApp.collectionFeeds.last();
+    var colPost = FictiousApp.posts.get(colFeed.get('post_id'));
+
+    if (colFeed.get('collection_id') === this.model.get('id')) {
+      $('.collection-posts').html('')
+    }
   }
 });

@@ -3,6 +3,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
 
   initialize: function() {
     this.comments = this.model.comments();
+    debugger
   },
 
   events: {
@@ -56,15 +57,16 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
     event.preventDefault();
 
     var $form = $('.add-to-collection');
-    var formData = $form.serialize();
-    console.log(formData)
+    var formData = $(event.currentTarget).serialize();
     $.ajax({
       type: "POST",
       url: $form.attr("action"),
       data: formData,
       success: function(data) {
         console.log(data)
-      }
+        FictiousApp.collectionFeeds.add(new FictiousApp.Models.CollectionFeed(data));
+        debugger
+      },
     });
   },
 
