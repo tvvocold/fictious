@@ -46,7 +46,6 @@
     <% _(collections).each(function(collection) { %>
       <div class="collections-list-container">
         <% if (collection) { %>
-          <% debugger %>
           <li>
             <a href="#/collections/<%= collection.id %>">
               <img class="collection-small-image" src="<%= FictiousApp.collections.get(collection.id).get('collection_photo_small') %>">

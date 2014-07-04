@@ -1,7 +1,8 @@
 FictiousApp.Views.CollectionShow = Backbone.View.extend({
   initialize: function(options) {
     this.view = this;
-    this.listenTo(FictiousApp.collectionFeeds, 'add', this.render)
+    this.listenTo(FictiousApp.collectionFeeds, 'add', this.render);
+    this.listenTo(FictiousApp.subscriptions, 'add remove', this.render);
   },
 
   template: JST["collections/show"],
@@ -40,6 +41,7 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
       data: formData,
       success: function(data){
         console.log(data)
+        FictiousApp.subscriptions.add(data);
         $('.follow-collection').attr('action', 'api/subscriptions/' + data.id);
         $('.follow-collection').addClass('unfollow-collection');
         $('.unfollow-collection').removeClass('follow-collection');
@@ -58,6 +60,7 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
       url: $form.attr("action"),
       data: formData,
       success: function(data) {
+        FictiousApp.subscriptions.remove(data);
         $('.unfollow-collection').attr('action', 'api/subscriptions');
         $('.unfollow-collection').addClass('follow-collection');
         $('.follow-collection').removeClass('unfollow-collection');
@@ -67,7 +70,6 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
   },
 
   addCollectionPost: function() {
-    alert("HELLO!!!")
     var colFeed = FictiousApp.collectionFeeds.last();
     var colPost = FictiousApp.posts.get(colFeed.get('post_id'));
 
