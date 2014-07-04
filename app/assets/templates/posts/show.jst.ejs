@@ -4,8 +4,6 @@
     <h1 class="post-title"><%= post.escape('title') %> by <a href="/#/users/<%= post.get('author_id') %>"><%= post.get('author').username %></a></h1>
     <button class="button new-post-button white-button" id="find-posts-for-collection">Add To Collection</button>
     <% if(FictiousApp.currentUser == post.get('author_id')) { %>
-      <% debugger %>
-
       <a class="button edit-post-button white-button" href="posts/<%= post.id %>/edit">Edit Post</a>
     <% } %>
     <div class="collection-list hidden">
@@ -34,10 +32,10 @@
     <div class="comments-new">
 
     </div>
-    <% var likes = _(post.get('likes')).where({ user_id: FictiousApp.currentUser }) %>
+    <% var likes = _(post.get('likes')).findWhere({ user_id: FictiousApp.currentUser, post_id: post.id }) %>
     <% debugger %>
-    <% if (likes.length > 0) { %>
-      <form action="/likes/<%= likes[0].id %>" method="post" class='button unlike-post like-post-button'>
+    <% if (likes !== undefined) { %>
+      <form action="/likes/<%= likes.id %>" method="post" class='button unlike-post like-post-button'>
         <input type="submit" value="<%= post.get('likes').length %> | &hearts; Recommend">
       </form>
     <% } else { %>

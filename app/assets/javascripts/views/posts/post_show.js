@@ -3,7 +3,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
 
   initialize: function() {
     this.comments = this.model.comments();
-    debugger
+    this.liked = 1;
   },
 
   events: {
@@ -77,6 +77,8 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
     var $form = $('.like-post');
     var formData = $form.serialize();
     var post = this.model;
+    var num = this.liked
+    this.liked = 1;
     $.ajax({
       type: "POST",
       url: $form.attr("action"),
@@ -84,7 +86,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
       success: function(data) {
         console.log('liked')
         $('.like-post').attr('action', '/likes/' + data.id);
-        $('.like-post').find('input').val(post.get('likes').length + 1 + " | ♥ Recommend");
+        $('.like-post').find('input').val(post.get('likes').length + num + " | ♥ Recommend");
         $('.like-post').addClass('unlike-post');
         $('.unlike-post').removeClass('like-post');
       }
@@ -96,6 +98,8 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
     var $form = $('.unlike-post');
     var formData = $form.serialize();
     var post = this.model;
+    var num = this.liked;
+    this.liked = 0;
     $.ajax({
       type: "DELETE",
       url: $form.attr("action"),
@@ -103,7 +107,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
       success: function(data) {
         console.log('unliked')
         $('.unlike-post').attr('action', '/posts/' + post.id + '/likes');
-        $('.unlike-post').find('input').val(post.get('likes').length + " | ♥ Recommend");
+        $('.unlike-post').find('input').val(post.get('likes').length - num + " | ♥ Recommend");
         $('.unlike-post').addClass('like-post');
         $('.like-post').removeClass('unlike-post');
       },
