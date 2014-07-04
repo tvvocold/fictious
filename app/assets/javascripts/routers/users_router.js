@@ -25,10 +25,8 @@ FictiousApp.Routers.Users = Backbone.Router.extend({
 
   subscriptions: function(id) {
     var user = FictiousApp.users.get(id);
-    var subscriptions = user.get('subscriptions');
-    debugger
     var subscriptionsView = new FictiousApp.Views.UserSubscriptions({
-      collection: subscriptions
+      model: user
     });
 
     this._swapView(subscriptionsView);

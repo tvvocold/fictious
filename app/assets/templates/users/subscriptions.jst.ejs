@@ -3,11 +3,12 @@
 
   <ul class="posts-index clearfix">
   <% _(subscriptions).each(function(subscription) { %>
-    <a href="/#users/<%= subscription.id %>" class="subscription-user">
+    <% var user = FictiousApp.users.get(subscription.get('user_id')) %>
+    <a href="/#users/<%= user.id %>" class="subscription-user">
       <div class="subscription-content clearfix">
         <% debugger %>
-        <img src="<%= FictiousApp.users.get(subscription.id).get('profile_picture_url') %>" class="subscription-pic">
-        <h3><li><%= subscription.username %></li></h3>
+        <img src="<%= user.get('profile_picture_url') %>" class="subscription-pic">
+        <h3><li><%= user.get('username') %></li></h3>
       </div>
     </a>
   <% }) %>
