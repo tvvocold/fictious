@@ -22,7 +22,7 @@
       <% if (notifications.length > 0) { %>
         <% _(notifications).each(function(notification) { %>
           <li><%= notification.content %></li>
-          
+
         <% }) %>
       <% } else { %>
         <li><h5>You have no new notifications</h5></li>
@@ -34,7 +34,6 @@
 </header>
 
 <div class="view-content posts-index home-page-content">
-<h1>Backbone</h1>
 <ul>
   <% posts.each(function(post) { %>
     <% var author_id = post.get('author_id') %>
