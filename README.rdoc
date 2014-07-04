@@ -2,8 +2,15 @@
 
 == TODO
 
-Broken Things:
+Backbone:
 
-2. Follow collections
+1. New post
+2. Edit post
+3. New collection
+4. Edit collection
 
-OTHER:
+General:
+1. Fix collections page -- my collections, followed collections
+2. Search collections
+3. Notifications
+4. Add stats page to see followers and stuff
