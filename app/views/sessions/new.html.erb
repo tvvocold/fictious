@@ -1,13 +1,14 @@
 <h1 class="landing-text username">Sign In</h1>
 
 <%= flash[:errors] if flash[:errors] %>
-<%= form_for @user, url: session_url do |f| %>
-  <%= f.label :username %><br>
-  <%= f.text_field :username %><br>
-  <%= f.label :email %><br>
-  <%= f.text_field :email %><br>
-  <%= f.label :password %><br>
-  <%= f.password_field :password %><br>
-  <%= f.submit "Sign In", class: "button"%>
+<form action="<%= session_url %>" method="post" class="new_user" id="new_user">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"><br>
+  <label for="user_username">Username</label><br>
+  <input id="user_username" name="user[username]" type="text"><br>
+  <label for="user_email">Email</label><br>
+  <input id="user_email" name="user[email]" type="text"><br>
+  <label for="user_password">Password</label><br>
+  <input id="user_password" name="user[password]" type="password"><br>
+  <input class="button" name="commit" type="submit" value="Sign In"><br>
   <a href="/auth/facebook" class="button facebook-button">Facebook Login</a>
-<% end %>
+</form>
