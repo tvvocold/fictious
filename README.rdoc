@@ -7,3 +7,7 @@ Broken Things:
 1. Likes no longer working
 2. Follow collections
 3. Edit Post not showing up on show post page
+
+OTHER:
+
+1. Need listeners for anything that needs to be updated. Subscriptions, etc.
