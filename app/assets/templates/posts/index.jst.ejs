@@ -40,7 +40,7 @@
     <% var user = FictiousApp.users.get(author_id) %>
     <% var profilePic = user.get('profile_picture_url_thumb') %>
     <li class="post-list">
-      <a href="#posts/<%= post.get('id') %>">
+      <a href="/#posts/<%= post.get('id') %>">
         <h3><%= post.get('title') %></h3>
         <h4><%= post.get('subtitle') %></h4>
         <img src="<%= profilePic %>">
