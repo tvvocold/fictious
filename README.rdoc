@@ -1,7 +1,9 @@
 == README
 
-== BACKBONE
+== TODO
 
-1. New Post page, image preview
-2. Comments
-3. Notifications
+Broken Things:
+
+1. Likes no longer working
+2. Follow collections
+3. Edit Post not showing up on show post page

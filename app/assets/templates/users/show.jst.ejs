@@ -5,10 +5,10 @@
     <% if (user.id !== FictiousApp.currentUser) { %>
       <% var subscribers = user.get('subscribers') %>
       <% var currentUser = FictiousApp.users.get(FictiousApp.currentUser) %>
-      <% var subscription = _(subscribers).findWhere({ user_id: user.get('id'), subscriber_id: FictiousApp.currentUser }) %>
+      <% var subscription = FictiousApp.subscriptions.findWhere({ user_id: user.get('id'), subscriber_id: FictiousApp.currentUser }) %>
       <% debugger %>
       <% if (_(subNames).contains(user.get('username'))) { %>
-        <form class="unfollow-user" action="api/subscriptions" method="post">
+        <form class="unfollow-user" action="api/subscriptions/<%= subscription.id %>" method="post">
           <input type="hidden" name="subscription[user_id]" value="<%= user.get('id') %>">
           <input type="submit" value="Following User" class="button button-centered">
         </form>
