@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     if @like.save
       message = current_user.username + " liked your post: " + @post.title
       @like.notifications.create(content: message, user_id: @user.id)
-      redirect_to @post
+      render :json => @like
     else
       redirect_to @post
     end
