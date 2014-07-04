@@ -8,6 +8,9 @@ window.FictiousApp = {
     FictiousApp.posts = new FictiousApp.Collections.Posts();
     FictiousApp.users = new FictiousApp.Collections.Users();
 
+    FictiousApp.subscriptions = new FictiousApp.Collections.Subscriptions();
+    FictiousApp.subscriptions.fetch();
+
     FictiousApp.collectionFeeds = new FictiousApp.Collections.CollectionFeeds();
     FictiousApp.collectionFeeds.fetch();
 

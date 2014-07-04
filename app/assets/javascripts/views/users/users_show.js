@@ -9,11 +9,21 @@ FictiousApp.Views.UsersShow = Backbone.View.extend({
   render: function() {
     var userPosts = this.model.get('posts');
     var userCollections = this.model.get('collections');
+    var currentUser = FictiousApp.users.get(FictiousApp.currentUser);
+    var currentSubscriptions = currentUser.get('subscriptions');
+    var subNames = [];
+
+    _(currentSubscriptions).each(function(sub) {
+      subNames.push(sub.username);
+    });
+
+    FictiousApp.collections.fetch();
 
     var renderedContent = this.template({
       user: this.model,
       posts: userPosts,
-      collections: userCollections
+      collections: userCollections,
+      subNames: subNames
     });
 
     this.$el.html(renderedContent);
@@ -30,6 +40,7 @@ FictiousApp.Views.UsersShow = Backbone.View.extend({
       url: $form.attr("action"),
       data: formData,
       success: function(data){
+        console.log(data)
         $('.follow-user').attr('action', 'api/subscriptions/' + data.id);
         $('.follow-user').addClass('unfollow-user');
         $('.unfollow-user').removeClass('follow-user');

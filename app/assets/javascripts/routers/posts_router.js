@@ -7,7 +7,7 @@ FictiousApp.Routers.Posts = Backbone.Router.extend({
 
   routes: {
     '': 'index',
-    'subscriptions': 'feed',
+    'feed': 'feed',
     'posts/:post_id': 'show'
   },
 
@@ -33,16 +33,13 @@ FictiousApp.Routers.Posts = Backbone.Router.extend({
 
   feed: function() {
     var that = this;
-    var user = FictiousApp.users.fetch({id: FictiousApp.currentUser });
-    var posts = new FictiousApp.Collections.Subscriptions();
-    posts.fetch({
-      success: function() {
-        var feedView = new FictiousApp.Views.PostsFeed({
-          collection: posts
-        });
-        that._swapView(feedView);
-      }
+    var user = FictiousApp.users.get(FictiousApp.currentUser);
+    debugger
+    var posts = user.get('subscription_posts')
+    var feedView = new FictiousApp.Views.PostsFeed({
+      collection: posts
     });
+    that._swapView(feedView);
   },
 
 

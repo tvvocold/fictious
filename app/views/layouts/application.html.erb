@@ -17,8 +17,7 @@
       <li><a href="/#/">Home</a></li>
       <li><a href="/#/users/<%= current_user.id %>"><%= current_user.username %></a></li>
       <li><a href="/#/collections">Collections</a></li>
-      <li><a href="/#/subscriptions/<%= current_user.id %>">Subscriptions</a></li>
-      <li><%= link_to 'Subscriptions', user_subscriptions_url(current_user.id) %></li>
+      <li><a href="/#/users/<%= current_user.id %>/subscriptions">Subscriptions</a></li>
       <li><%= link_to 'Groups', user_groups_url(current_user.id) %></li>
     </ul>
     <%= button_to 'Sign Out', session_url, method: :delete %>

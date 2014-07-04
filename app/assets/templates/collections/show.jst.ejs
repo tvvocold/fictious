@@ -9,10 +9,11 @@
       </ul>
     </nav>
   </div>
-    <% if (collection.owner_id !== FictiousApp.currentUser) { %>
+    <% if (collection.get('owner_id') !== FictiousApp.currentUser) { %>
       <% var subscribers = collection.get('subscribers') %>
       <% var user = FictiousApp.users.get(FictiousApp.currentUser) %>
       <% var subscription = _(subscribers).findWhere({ collection_id: collection.get('id'), subscriber_id: FictiousApp.currentUser }) %>
+      <% debugger %>
       <% if (subscription) { %>
         <form class="unfollow-collection" action="api/subscriptions/<%= subscription.id %>" method="post">
           <input type="hidden" name="subscription[collection_id]" value="<%= collection.get('id') %>">

@@ -39,6 +39,7 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
       url: $form.attr("action"),
       data: formData,
       success: function(data){
+        console.log(data)
         $('.follow-collection').attr('action', 'api/subscriptions/' + data.id);
         $('.follow-collection').addClass('unfollow-collection');
         $('.unfollow-collection').removeClass('follow-collection');

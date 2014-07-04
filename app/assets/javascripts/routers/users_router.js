@@ -2,7 +2,8 @@ FictiousApp.Routers.Users = Backbone.Router.extend({
 
   routes: {
     'users': 'index',
-    'users/:user_id': 'show'
+    'users/:user_id': 'show',
+    'users/:user_id/subscriptions': 'subscriptions'
   },
 
   index: function() {
@@ -20,6 +21,17 @@ FictiousApp.Routers.Users = Backbone.Router.extend({
     });
 
     this._swapView(showView);
+  },
+
+  subscriptions: function(id) {
+    var user = FictiousApp.users.get(id);
+    var subscriptions = user.get('subscriptions');
+    debugger
+    var subscriptionsView = new FictiousApp.Views.UserSubscriptions({
+      collection: subscriptions
+    });
+
+    this._swapView(subscriptionsView);
   },
 
   _swapView: function(view) {

@@ -9,7 +9,7 @@
     <nav class="home-nav">
       <ul class="clearfix">
         <li><a href="#/">Top 100</a></li>
-        <li><a href="#/subscriptions">Reading List</a></li>
+        <li><a href="#/feed">Reading List</a></li>
       </ul>
     </nav>
   </div>
@@ -30,18 +30,19 @@
     </div>
   </ul>
 
+
 </header>
 
 <div class="view-content posts-index home-page-content">
 <ul>
-  <% posts.each(function(post) { %>
-    <% var author_id = post.get('author_id') %>
+  <% _(posts).each(function(post) { %>
+    <% var author_id = post.author_id %>
     <% var user = FictiousApp.users.get(author_id) %>
     <% var profilePic = user.get('profile_picture_url_thumb') %>
     <li class="post-list">
-      <a href="#posts/<%= post.get('id') %>">
-        <h3><%= post.get('title') %></h3>
-        <h4><%= post.get('subtitle') %></h4>
+      <a href="#posts/<%= post.id %>">
+        <h3><%= post.title %></h3>
+        <h4><%= post.subtitle %></h4>
         <img src="<%= profilePic %>">
         <h5><%= user.get('username') %></h5>
       </a>

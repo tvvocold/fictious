@@ -1,6 +1,6 @@
 class Api::CollectionsController < ApplicationController
   def index
-    @collections = current_user.collections
+    @collections = Collection.all
     respond_to do |format|
       format.json
     end
@@ -49,7 +49,9 @@ class Api::CollectionsController < ApplicationController
     @subscription = Subscription.find_by(collection_id: params[:id],
                                          subscriber_id: current_user.id
                                          )
-    render :json => @collection
+    respond_to do |format|
+      format.json
+    end
   end
 
   private
