@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <header class="image-container-post">
     <img src="<%= post.get('image_url') %>">
-    <h1 class="post-title"><%= post.escape('title') %> by <%= post.get('author').username %></h1>
+    <h1 class="post-title"><%= post.escape('title') %> by <a href="/#/users/<%= post.get('author_id') %>"><%= post.get('author').username %></a></h1>
     <button class="button new-post-button white-button" id="find-posts-for-collection">Add To Collection</button>
     <% if(FictiousApp.current_user === post.get('author_id')) { %>
       <a class="button edit-post-button white-button" href="posts/<%= post.id %>/edit">Edit Post</a>
