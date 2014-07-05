@@ -1,7 +1,7 @@
   json.array! @users do |user|
     json.id user.id
     json.username user.username
-    json.notifications user.notifications
+    json.notifications user.notifications.where({ new: true })
     json.posts user.posts
     json.collections user.collections
     json.subscriptions user.subscriptions

@@ -13,12 +13,12 @@
   </div>
   <a href="/#posts/new" class="button new-post-button white-button">New Post</a>
   <button class="button new-post-button notifications-button white-button">
-    <%= current_user.notifications.count %>
+    <%= @notifications.count %>
   </button>
   <ul class="notifications hidden">
     <div class="notifications-container">
-      <% if current_user.notifications.count > 0 %>
-        <% current_user.notifications.each do |notification| %>
+      <% if @notifications.count > 0 %>
+        <% @notifications.each do |notification| %>
           <% if notification.notifiable_type == "GroupRequest" %>
             <li><h5><%= notification.content %></h5></li>
             <form action="<%= user_group_users_url(current_user.id) %>" method="post">
@@ -29,7 +29,9 @@
             </form>
             <%= button_to "Decline Invitation", group_request_url(notification.content_id), method: :delete %>
           <% else %>
-            <li><%= notification.content %></li>
+            <a class="note" data-id="<%= notification.id %>" href="<%= notification.url %>">
+              <li><%= notification.content %></li>
+            </a>
           <% end %>
         <% end %>
       <% else %>

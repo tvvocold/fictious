@@ -55,6 +55,7 @@ class PostsController < ApplicationController
 
   def recent
     @posts = Post.all
+    @notifications = current_user.notifications.where({ new: true })
   end
 
   def subscription_feed

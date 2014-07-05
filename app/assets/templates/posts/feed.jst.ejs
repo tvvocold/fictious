@@ -21,7 +21,9 @@
     <div class="notifications-container">
       <% if (notifications.length > 0) { %>
         <% _(notifications).each(function(notification) { %>
-          <li class="note"><%= notification.content %></li>
+          <a class="note" data-id="<%= notification.id %>" href="<%= notification.url %>">
+            <li><%= notification.content %></li>
+          </a>
 
         <% }) %>
       <% } else { %>

@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
     @subscription.subscriber_id = current_user.id
     if @subscription.save
       message = current_user.username + " subscribed to your posts!"
-      @subscription.notifications.create(content: message, user_id: subscription_params[:user_id])
+      @subscription.notifications.create(content: message, user_id: subscription_params[:user_id], new: true, url: "/#/users/" + current_user.id.to_s)
       redirect_to :back
     else
       flash.now[:errors] = @subscription.errors.full_messages

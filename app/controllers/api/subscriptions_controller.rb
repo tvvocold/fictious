@@ -14,7 +14,9 @@ class Api::SubscriptionsController < ApplicationController
     @subscription.subscriber_id = current_user.id
     if @subscription.save
       message = current_user.username + " subscribed to your posts!"
-      @subscription.notifications.create(content: message, user_id: subscription_params[:user_id])
+      if !Notification.find_by(user_id: subscription_params[:user_id], content: message)
+        @subscription.notifications.create(content: message, user_id: subscription_params[:user_id], new: true, url: "/#/users/" + current_user.id.to_s)
+      end
       render :json => @subscription
     else
       flash.now[:errors] = @subscription.errors.full_messages
