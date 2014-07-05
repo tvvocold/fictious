@@ -1,5 +1,6 @@
 class Api::PostsController < ApplicationController
   before_action :ensure_logged_in
+  wrap_parameters false
 
   def index
     @posts = Post.all
@@ -16,7 +17,7 @@ class Api::PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to :root
+      render :json => @post
     else
       flash.now[:errors] = @post.errors.full_messages
       render :new

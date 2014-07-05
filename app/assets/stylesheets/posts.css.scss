@@ -178,12 +178,13 @@
 }
 
 #new_post {
+  position: relative;
   padding-top: 150px;
   margin-left: -40px;
+  z-index: 1000;
 }
 
 #content {
-  margin-left: -40px;
   font-weight: 400;
   font-size: 22px;
   outline: none;

@@ -7,8 +7,9 @@ FictiousApp.Routers.Posts = Backbone.Router.extend({
 
   routes: {
     '': 'index',
+    'posts/new': 'new',
     'feed': 'feed',
-    'posts/:post_id': 'show'
+    'posts/:post_id': 'show',
   },
 
   index: function() {
@@ -29,6 +30,12 @@ FictiousApp.Routers.Posts = Backbone.Router.extend({
     this.currentView && this.currentView.remove();
     this.currentView = showView;
     $('.view-container').html(showView.render().$el);
+  },
+
+  new: function() {
+    var newView = new FictiousApp.Views.PostNew();
+
+    this._swapView(newView);
   },
 
   feed: function() {

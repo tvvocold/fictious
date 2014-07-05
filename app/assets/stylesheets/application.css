@@ -560,3 +560,14 @@
     width: 200px;
     border-radius: 3px;
   }
+
+  #post-image-preview {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .post-image-preview {
+    position: absolute;
+    z-index: 1;
+  }

@@ -21,6 +21,7 @@ window.FictiousApp = {
         })
       }
     });
+    
     FictiousApp.collections.fetch({
       success: function() {
         new FictiousApp.Routers.Collections({

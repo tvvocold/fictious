@@ -1,0 +1,145 @@
+<header class="post-image-preview">
+  <img id="post-image-preview">
+</header>
+
+<div class="view-content">
+
+  <form action="/users/<%= FictiousApp.currentUser %>/posts/new" method="post" class="new_post" id="new_post">
+    <input type="file" name="post[image]" id="post-file-input"><br>
+    <input type="text" name="post[title]" placeholder="Title" class="title-input" id="post_title" tabindex="1"><br>
+    <input type="text" name="post[subtitle]" placeholder="Subtitle" tabindex="2" id="post_subtitle"><br>
+    <input type="hidden" name="post[content]" id="content-input"><br>
+    <input type="submit" value="Publish" class="button new-post-button" id="publish">
+    <p class="editable" id="content" tabindex="3" contenteditable="true">Write your story</p>
+  </form>
+
+  <div class="edit-bar">
+    <ul class="clearfix">
+      <li class="bold">Bold</li>
+      <li class="italics">Italics</li>
+      <li class="underline">Underline</li>
+      <li class="undo">Undo</li>
+    </ul>
+  </div>
+
+
+<!-- <div class="editable"></div> -->
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    Dropzone.options.newPost = {
+      // headers: { “X-CSRF-Token” : $(‘meta[name=”csrf-token”]’).attr(‘content’) },
+      paramName: "upload[image]", // The name that will be used to transfer the file
+      previewsContainer: '.preview-zone',
+      maxFilesize: 2, // MB
+      accept: function(file, done) {
+        done();
+      }
+    };
+    var editor = new MediumEditor('.editable');
+
+    $('#content').focus(function() {
+      if ($('#content').text() === "Write your story") {
+        $('#content').html('<p><br></p>')
+      }
+    });
+
+    $('#content').focusout(function() {
+      if ($('#content').text() === "") {
+        $('#content').html('<p>Write your story</p>')
+      }
+    });
+
+    var contents = $('#content').contents();
+    $(contents).wrap('<p></p>')
+
+    // $('#content').focus(function() {
+    //   $('#content').mouseup(function() {
+    //     if (window.getSelection()) {
+    //       var sel = window.getSelection();
+    //       var test = sel.toString();
+    //       if (test.length > 3) {
+    //         $(".edit-bar").addClass('revealed');
+    //         $(window.getSelection().baseNode.parentElement).addClass('styled');
+    //         // $(document.activeElement).addClass('styled');
+    //
+    //         $('.bold').click(function() {
+    //           var $element = $('#content').find('.styled');
+    //           var selected = '<strong>' + test + '</strong>';
+    //           console.log(test);
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //
+    //         $('.italics').click(function() {
+    //           var $element = $('#content').find('.styled');
+    //           var selected = '<em>' + test + '</em>';
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //
+    //         $('.undo').click(function() {
+    //           var $element = $('#content');
+    //           var selected = test;
+    //           console.log(selected);
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //
+    //         $('.underline').click(function() {
+    //           var $element = $('#content').find('.styled');
+    //           var selected = '<u>' + test + '</u>';
+    //           var string = $element.html()
+    //           console.log("u", string.replace(test, selected));
+    //           $element.prevObject[0].innerHTML =
+    //           $element.prevObject[0].innerHTML.replace (test, selected);
+    //           $element.removeClass('styled');
+    //           test = '';
+    //           $('.edit-bar').removeClass('revealed')
+    //         });
+    //       } else if (window.getSelection().toString().length < 3) {
+    //         // console.log(window.getSelection());
+    //         // $('#post_title').focus();
+    //         // var $element = $('#content').find('.styled');
+    //         // var selected = test;
+    //         // $element.prevObject[0].innerHTML =
+    //         // $element.prevObject[0].innerHTML.replace (test, test);
+    //         // $element.removeClass('styled');
+    //         // test = '';
+    //         $('.edit-bar').removeClass('revealed');
+    //       }
+    //     }
+    //
+    //   });
+    // });
+
+    $('#publish').hover(function() {
+      var paragraphs = $('#content').find('p');
+      _(paragraphs).each(function(paragraph) {
+        if($(paragraph).html() !== "<br>") {
+          $(paragraph).addClass('commentable');
+          $(paragraph).attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
+        } else if ($(paragraph).html() === "<br>") {
+          $(paragraph).removeClass('commentable');
+        } else {
+          console.log("WHAT?")
+        }
+      });
+      var content = $('#content').html();
+      $("#content-input").attr('value', content);
+    });
+
+
+  });
+</script>
