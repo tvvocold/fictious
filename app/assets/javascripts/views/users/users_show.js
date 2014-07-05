@@ -11,8 +11,8 @@ FictiousApp.Views.UsersShow = Backbone.View.extend({
   },
 
   render: function() {
-    var userPosts = this.model.get('posts');
-    var userCollections = this.model.get('collections');
+    var userPosts = FictiousApp.posts.where({ author_id: this.model.id });
+    var userCollections = FictiousApp.collections.where({ owner_id: this.model.id });
     var currentUser = FictiousApp.users.get(FictiousApp.currentUser);
     var currentSubscriptions = FictiousApp.subscriptions.where({ subscriber_id: FictiousApp.currentUser });
     var subNames = [];
@@ -24,7 +24,7 @@ FictiousApp.Views.UsersShow = Backbone.View.extend({
 
     var renderedContent = this.template({
       user: this.model,
-      posts: userPosts,
+      posts: _(userPosts).first(5),
       collections: userCollections,
       subNames: subNames
     });

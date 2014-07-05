@@ -3,7 +3,12 @@ class Api::PostsController < ApplicationController
   wrap_parameters false
 
   def index
-    @posts = Post.all
+    @posts = Post.select('posts.*, count(likes.id)')
+                 .joins('LEFT OUTER JOIN likes ON likes.post_id = posts.id')
+                 .group('posts.id')
+                 .order('count(likes.id) DESC')
+                 .limit(20)
+
     respond_to do |format|
       format.json
       format.html

@@ -29,10 +29,10 @@
     <% _(posts).each(function(post) { %>
       <li class="post-list">
         <a href="#/posts/<%= post.id %>">
-          <h3><%= post.title %><h3>
-          <h4><%= post.subtitle %></h4>
+          <h3><%= post.get('title') %><h3>
+          <h4><%= post.get('subtitle') %></h4>
 
-          <h5><%= FictiousApp.users.get(post.author_id).get('username') %></h5>
+          <h5><%= FictiousApp.users.get(post.get('author_id')).get('username') %></h5>
         </a>
       </li>
     <% }) %>
@@ -49,7 +49,7 @@
           <li>
             <a href="#/collections/<%= collection.id %>">
               <img class="collection-small-image" src="<%= FictiousApp.collections.get(collection.id).get('collection_photo_small') %>">
-              <h5><%= collection.title %></h5>
+              <h5><%= collection.get('title') %></h5>
             </a>
           </li>
         <% } %>

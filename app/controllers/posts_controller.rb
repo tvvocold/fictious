@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :ensure_logged_in
 
+  # Post.select('posts.*, count(likes.id)').joins('LEFT OUTER JOIN likes ON likes.post_id = posts.id').group('posts.id').order('count(likes.id) DESC').limit(5)
   def index
     @posts = current_user.posts
   end
