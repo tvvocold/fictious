@@ -1,0 +1,52 @@
+<div class="view-content">
+  <form action="/posts/<%= post.id %>" method="post" class="new_post" id="new_post">
+    <input type="file" name="post[image]" id="post-file-input"><br>
+    <input type="text" name="post[title]" class="title-input" value="<%= post.get('title') %>" id="post_title" tabindex="1"><br>
+    <input type="text" name="post[subtitle]" tabindex="2" value="<%= post.get('title') %>" id="post_subtitle"><br>
+    <input type="hidden" name="post[content]" id="content-input"><br>
+    <input type="submit" value="Publish" class="button new-post-button" id="publish">
+    <% debugger %>
+    <div class="editable" id="content" tabindex="3" contenteditable="true"><%= post.get('content') %></div>
+  </form>
+  <div class="edit-bar">
+    <ul class="clearfix">
+      <li class="bold">Bold</li>
+      <li class="italics">Italics</li>
+      <li class="underline">Underline</li>
+      <li class="undo">Undo</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    var editor = new MediumEditor('.editable');
+
+    $('#publish').hover(function() {
+      var paragraphs = $('#content').find('p');
+      var repeatData = _(paragraphs).filter(function(paragraph) {
+        return $(paragraph).attr('data-id') === $(paragraph).prev().attr('data-id');
+      });
+
+      _(repeatData).each(function(paragraph) {
+        $(paragraph).removeClass('commentable');
+        $(paragraph).removeAttr('data-id');
+      });
+
+      _(paragraphs).each(function(paragraph) {
+        if($(paragraph).hasClass('commentable') == false && $(paragraph).html() !== "<br>") {
+          $(paragraph).addClass('commentable');
+          $(paragraph).attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
+        } else if ($(paragraph).hasClass('commentable')) {
+          if ($(paragraph).attr('data-id') === $(paragraph).prev().attr('data-id')) {
+            console.log("Yup");
+          }
+        }
+      });
+      var content = $('#content').html();
+      $("#content-input").removeAttr('value');
+      $("#content-input").attr('value', content);
+    });
+  });
+</script>

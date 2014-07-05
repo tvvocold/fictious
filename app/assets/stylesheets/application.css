@@ -217,6 +217,10 @@
     right: 20px;
   }
 
+  #publish {
+    right: -220px
+  }
+
   .notifications-button {
     right: 125px;
   }
