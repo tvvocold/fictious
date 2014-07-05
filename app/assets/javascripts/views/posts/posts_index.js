@@ -2,6 +2,10 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
 
   template: JST['posts/index'],
 
+  events: {
+    'click .notifications-button': 'revealNotifications'
+  },
+
   render: function() {
     var renderedContent = this.template({
       posts: this.collection
@@ -9,5 +13,9 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  revealNotifications: function() {
+    $('.notifications').toggleClass('hidden');
   }
 });

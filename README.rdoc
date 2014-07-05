@@ -4,9 +4,6 @@
 
 Backbone:
 
-3. New collection
-4. Edit collection
-
 General:
 1. Fix collections page -- my collections, followed collections
 2. Search collections

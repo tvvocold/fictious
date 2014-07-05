@@ -14,14 +14,14 @@
     </nav>
   </div>
   <a class="button new-post-button white-button" href="/#posts/new">New Post</a>
-  <a href="#" class="button new-post-button notifications-button white-button">
+  <button class="button new-post-button notifications-button white-button">
     <%= notifications.length %>
-  </a>
+  </button>
   <ul class="notifications hidden">
     <div class="notifications-container">
       <% if (notifications.length > 0) { %>
         <% _(notifications).each(function(notification) { %>
-          <li><%= notification.content %></li>
+          <li class="note"><%= notification.content %></li>
 
         <% }) %>
       <% } else { %>

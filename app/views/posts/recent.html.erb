@@ -12,7 +12,9 @@
     </nav>
   </div>
   <a href="/#posts/new" class="button new-post-button white-button">New Post</a>
-  <a href="#" class="button new-post-button notifications-button white-button"><%= current_user.notifications.count %></a>
+  <button class="button new-post-button notifications-button white-button">
+    <%= current_user.notifications.count %>
+  </button>
   <ul class="notifications hidden">
     <div class="notifications-container">
       <% if current_user.notifications.count > 0 %>
