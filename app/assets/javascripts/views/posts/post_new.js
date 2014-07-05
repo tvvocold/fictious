@@ -32,7 +32,7 @@ FictiousApp.Views.PostNew = Backbone.View.extend({
         delete that.model.attributes.image;
         console.log(that.model);
 
-        Backbone.history.navigate("", { trigger: true });
+        Backbone.history.navigate("posts/" + that.model.id, { trigger: true });
       },
 
       error: function() {

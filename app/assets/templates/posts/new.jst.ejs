@@ -4,7 +4,7 @@
 
 <div class="view-content">
 
-  <form action="/users/<%= FictiousApp.currentUser %>/posts/new" method="post" class="new_post" id="new_post">
+  <form action="/users/<%= FictiousApp.currentUser %>/posts" method="post" class="new_post" id="new_post">
     <input type="file" name="post[image]" id="post-file-input"><br>
     <input type="text" name="post[title]" placeholder="Title" class="title-input" id="post_title" tabindex="1"><br>
     <input type="text" name="post[subtitle]" placeholder="Subtitle" tabindex="2" id="post_subtitle"><br>

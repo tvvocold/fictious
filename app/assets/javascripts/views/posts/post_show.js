@@ -67,7 +67,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
       success: function(data) {
         console.log(data)
         FictiousApp.collectionFeeds.add(new FictiousApp.Models.CollectionFeed(data));
-        debugger
+        
       },
     });
   },

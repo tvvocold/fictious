@@ -36,7 +36,7 @@ class Api::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
-      redirect_to :root
+      render :json => @post
     else
       flash.now[:errors] = @post.errors.full_messages
       render :edit
