@@ -24,7 +24,7 @@
         </form>
       <% } %>
     <% } else { %>
-      <button class="button new-post-button" id="find-posts-for-collection">Add To Collection</button>
+      <button class="button new-post-button white-button" id="find-posts-for-collection">Add To Collection</button>
 
       <div class="collection-list hidden">
         <div class="collection-list-container">
@@ -34,6 +34,8 @@
           </ul>
         </div>
       </div>
+
+      <a class="button edit-post-button white-button" href="/#/collections/<%= collection.id %>/edit">Edit Collection</a>
     <% } %>
 
 </header>

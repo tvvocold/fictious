@@ -29,7 +29,7 @@ class Api::CollectionsController < ApplicationController
   def update
     @collection = Collection.find(params[:id])
     if @collection.update_attributes(collection_params)
-      redirect_to collection_url(@collection)
+      render :json => @collection
     else
       flash.now[:errors] = @collection.errors.full_messages
       render :edit

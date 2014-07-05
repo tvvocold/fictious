@@ -40,6 +40,15 @@ FictiousApp.Routers.Collections = Backbone.Router.extend({
     });
   },
 
+  edit: function(id) {
+    var collection = FictiousApp.collections.get(id);
+    var editView = new FictiousApp.Views.CollectionEdit({
+      model: collection
+    });
+
+    this._swapView(editView);
+  },
+
   _swapView: function(view) {
     this.currentView && this.currentView.remove();
     this.currentView = view;

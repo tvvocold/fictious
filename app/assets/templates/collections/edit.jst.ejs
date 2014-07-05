@@ -1,0 +1,11 @@
+<header class="post-image-preview">
+  <img id="post-image-preview">
+</header>
+
+<div class="view-content">
+  <form action="/collections/<%= collection.id %>" method="post" class="new_post" id="new_post">
+    <input type="file" name="collection[collection_photo]" id="post-file-input">
+    <input type="text" name="collection[title]" placeholder="Title" id="title-input">
+    <input type="submit" value="Update Collection" class="button new-post-button" id="publish">
+  </form>
+</div>
