@@ -11,7 +11,7 @@
       </ul>
     </nav>
   </div>
-  <%= link_to "New Post", new_user_post_url(current_user.id), class: "button new-post-button white-button" %>
+  <a href="/#posts/new" class="button new-post-button white-button">New Post</a>
   <a href="#" class="button new-post-button notifications-button white-button"><%= current_user.notifications.count %></a>
   <ul class="notifications hidden">
     <div class="notifications-container">

@@ -21,7 +21,7 @@ window.FictiousApp = {
         })
       }
     });
-    
+
     FictiousApp.collections.fetch({
       success: function() {
         new FictiousApp.Routers.Collections({
@@ -38,7 +38,6 @@ window.FictiousApp = {
           $rootEl: $rootEl,
           posts: FictiousApp.posts
         });
-        Backbone.history.start();
       }
     });
 
@@ -47,4 +46,5 @@ window.FictiousApp = {
 
 $(document).ready(function(){
   FictiousApp.initialize();
+  Backbone.history.start();
 });

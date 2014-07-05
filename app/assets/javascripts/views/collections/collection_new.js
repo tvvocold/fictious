@@ -1,20 +1,19 @@
-FictiousApp.Views.PostNew = Backbone.View.extend({
-  template: JST['posts/new'],
+FictiousApp.Views.CollectionNew = Backbone.View.extend({
+  template: JST['collections/new'],
 
   events: {
     "submit form": "submit",
     "change #post-file-input": "fileSelect"
   },
 
-  initialize: function(){
-    this.model = new FictiousApp.Models.Post();
-    this.collection = FictiousApp.posts;
+  initialize: function() {
+    this.collection = FictiousApp.collections;
   },
 
-  render: function(){
-    var html = this.template();
+  render: function() {
+    var renderedContent = this.template();
 
-    this.$el.html(html);
+    this.$el.html(renderedContent);
     return this;
   },
 
@@ -24,15 +23,13 @@ FictiousApp.Views.PostNew = Backbone.View.extend({
 
     event.preventDefault();
 
-    this.model.save(formData.post, {
+    this.model.save(formData.collection, {
       success: function(){
-        FictiousApp.posts.add(that.model);
-        // Remove the image attribute with raw data
-        // from the model after uploading it.
-        delete that.model.attributes.image;
+        FictiousApp.collections.add(that.model);
+        delete that.model.attributes.collection_photo;
         console.log(that.model);
 
-        Backbone.history.navigate("posts/" + that.model.id, { trigger: true });
+        Backbone.history.navigate("collections/" + that.model.id, { trigger: true });
       },
 
       error: function() {
@@ -46,7 +43,7 @@ FictiousApp.Views.PostNew = Backbone.View.extend({
     var reader = new FileReader();
 
     reader.onloadend = function(){
-      that.model.set("image", this.result);
+      that.model.set("collection_photo", this.result);
       that._updatePreview(this.result);
     }
 
@@ -62,6 +59,4 @@ FictiousApp.Views.PostNew = Backbone.View.extend({
     this.$el.find('.image-container-home').toggleClass('.post-image-preview');
     this.$el.find("#post-image-preview").attr("src", imageData);
   }
-
-
 });

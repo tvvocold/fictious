@@ -4,8 +4,6 @@
 
 Backbone:
 
-1. New post
-2. Edit post
 3. New collection
 4. Edit collection
 

@@ -25,7 +25,7 @@ class Api::PostsController < ApplicationController
       render :json => @post
     else
       flash.now[:errors] = @post.errors.full_messages
-      render :new
+      render :json => "Error"
     end
   end
 

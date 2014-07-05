@@ -6,7 +6,9 @@ FictiousApp.Routers.Collections = Backbone.Router.extend({
 
   routes: {
     'collections': 'index',
-    'collections/:id': 'show'
+    'collections/new': 'new',
+    'collections/:id': 'show',
+    'collections/:id/edit': 'edit'
   },
 
   index: function() {
@@ -16,13 +18,26 @@ FictiousApp.Routers.Collections = Backbone.Router.extend({
     this._swapView(indexView);
   },
 
-  show: function(id) {
-    var collection = this.collections.get(id);
-    var showView = new FictiousApp.Views.CollectionShow({
+  new: function() {
+    var collection = new FictiousApp.Models.Collection();
+    var newView = new FictiousApp.Views.CollectionNew({
       model: collection
     });
 
-    this._swapView(showView);
+    this._swapView(newView);
+  },
+
+  show: function(id) {
+    var that = this;
+    FictiousApp.collections.fetch({
+      success: function() {
+        var collection = FictiousApp.collections.get(id);
+        var showView = new FictiousApp.Views.CollectionShow({
+          model: collection
+        });
+        that._swapView(showView);
+      }
+    });
   },
 
   _swapView: function(view) {

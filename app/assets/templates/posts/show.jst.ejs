@@ -33,7 +33,7 @@
 
     </div>
     <% var likes = _(post.get('likes')).findWhere({ user_id: FictiousApp.currentUser, post_id: post.id }) %>
-    
+
     <% if (likes !== undefined) { %>
       <form action="/likes/<%= likes.id %>" method="post" class='button unlike-post like-post-button'>
         <input type="submit" value="<%= post.get('likes').length %> | &hearts; Recommend">

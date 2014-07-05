@@ -3,6 +3,7 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
     this.view = this;
     this.listenTo(FictiousApp.collectionFeeds, 'add', this.render);
     this.listenTo(FictiousApp.subscriptions, 'add remove', this.render);
+    this.listenTo(FictiousApp.collections, 'all', this.render);
   },
 
   template: JST["collections/show"],
@@ -19,7 +20,6 @@ FictiousApp.Views.CollectionShow = Backbone.View.extend({
 
     _(colFeeds).map(function(colFeed) { postIds.push(colFeed.get('post_id')) });
     _(postIds).map(function(postId) { posts.push(FictiousApp.posts.get(postId)) });
-    debugger
 
     var renderedContent = this.template({
       collection: this.model,
