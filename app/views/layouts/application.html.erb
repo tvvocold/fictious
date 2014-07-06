@@ -16,14 +16,20 @@
 
 <nav class="main-nav">
   <% if logged_in? %>
-    <ul>
-      <li><a href="/#/">Home</a></li>
-      <li><a href="/#/users/<%= current_user.id %>"><%= current_user.username %></a></li>
-      <li><a href="/#/collections">Collections</a></li>
-      <li><a href="/#/users/<%= current_user.id %>/subscriptions">Subscriptions</a></li>
-      <li><%= link_to 'Groups', user_groups_url(current_user.id) %></li>
+    <ul class="main-nav-container">
+      <li><a href="/#/"><span class="home"></span>Home</a></li>
+      <li>
+        <a href="/#/users/<%= current_user.id %>">
+          <span class="profile">
+            <img src="<%= current_user.profile_picture(:thumb) %>">
+          </span>
+          <%= current_user.username %>
+        </a>
+      </li>
+      <li><a href="/#/collections"><%= fa_icon "columns" %>Collections</a></li>
+      <li><a href="/#/users/<%= current_user.id %>/subscriptions"><%= fa_icon "users" %>Subscriptions</a></li>
     </ul>
-    <%= button_to 'Sign Out', session_url, method: :delete %>
+    <%= fa_icon "sign-out" %><%= button_to 'Sign Out', session_url, id: "sign-out", method: :delete %>
   <% else %>
     <%= link_to 'Sign In', new_session_url %>
     <%= link_to 'Sign Up', new_user_url %>

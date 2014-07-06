@@ -15,6 +15,7 @@
  *= require medium-editor/medium-editor
  *= require medium-editor/themes/flat
  *= require dropzone/dropzone
+ *= require font-awesome
  */
 
   html, body, h1, h3, h5, form, label, div, li, ul, a {
@@ -98,12 +99,57 @@
   }
 
   .main-nav > ul > li {
-
+    position: relative;
   }
 
   .main-nav > ul > li > a {
     display: inline-block;
     padding: 15px;
+    font-weight: 200;
+    font-size: 16px;
+  }
+
+  .main-nav li:nth-child(2) a {
+    padding-left: 50px;
+  }
+
+  .home:before {
+    content: 'F';
+    font-weight: 700;
+    font-size: 16px;
+    font-family: serif;
+    padding: 15px 15px 15px 10px;
+  }
+
+  .profile > img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  .profile {
+    overflow: hidden;
+    display: block;
+    background-position: center;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+  }
+
+  .fa-columns, .fa-users {
+    padding: 0 14px 0 6px;
+  }
+
+  .fa-sign-out{
+    padding: 15px 15px 0 20px;
+  }
+
+  .main-nav .button_to {
+    display: inline-block;
+  }
+
+  .main-nav-container {
+    margin-top: 20px;
   }
 
   .slide-out-nav {
