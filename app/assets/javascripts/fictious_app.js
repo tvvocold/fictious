@@ -4,6 +4,7 @@ window.FictiousApp = {
   Views: {},
   Routers: {},
   initialize: function() {
+    FictiousApp.collectionSubs = new FictiousApp.Collections.CollectionSubscriptions();
     FictiousApp.collections = new FictiousApp.Collections.Collections();
     FictiousApp.posts = new FictiousApp.Collections.Posts();
     FictiousApp.users = new FictiousApp.Collections.Users();

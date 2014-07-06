@@ -1,4 +1,7 @@
 class Collection < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_title, :against => :title
+
   validates :owner_id, uniqueness: { scope: :title }
   validates :owner_id, :title, presence: true
 

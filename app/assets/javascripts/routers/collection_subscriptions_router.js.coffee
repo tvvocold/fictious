@@ -1,0 +1,1 @@
+class FictiousApp.Routers.CollectionSubscriptions extends Backbone.Router

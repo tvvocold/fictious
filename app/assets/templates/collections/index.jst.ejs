@@ -1,12 +1,43 @@
-<a class="button new-post-button" href="/#/collections/new">Create Collection</a>
+<header class="header-container-collections">
+  <a class="button new-post-button" href="/#/collections/new">Create Collection</a>
+  <div class="view-header collections-header">
+    <h1>Collections</h1>
+    <h3>Stories grouped by theme or topic</h3>
+  </div>
+</header>
+
 <div class="view-content profile-content">
-  <h1 class="username">Your Collections</h1>
-    <ul class="clearfix">
-      <% collections.each(function(collection) { %>
+  <form action="#/search" method="post">
+    <i class="fa fa-search text-muted"></i>
+    <input type="search" class="text-input" placeholder="Search">
+  </form>
+    <div class="section-label">
+      <h5>Followed Collections</h5>
+    </div>
+    <ul class="clearfix collections-index">
+      <% _(followedCollections).each(function(collectionSub) { %>
+        <% var collection = FictiousApp.collections.get(collectionSub.get('collection_id')) %>
         <div class="collections-list-container clearfix">
           <li>
-            <a href="#/collections/<%= collection.get('id') %>">
-              <img class="collection-small-image" src="<%= collection.get('collection_photo_small') %>">
+            <a href="#/collections/<%= collection.id %>">
+              <% var colPhoto = collection.get('collection_photo_small') %>
+              <img class="collection-small-image" src="<%= colPhoto %>">
+              <h5><%= collection.get('title') %></h5>
+            </a>
+          </li>
+        </div>
+      <% }) %>
+    </ul>
+    <div class="section-label">
+      <h5>My Collections</h5>
+    </div>
+    <ul class="clearfix">
+      <% _(collections).each(function(collection) { %>
+        <div class="collections-list-container clearfix">
+          <li>
+            <a href="#/collections/<%= collection.id %>">
+              <% var colPhoto = FictiousApp.collections.get(collection.id).get('collection_photo_small') %>
+              <img class="collection-small-image" src="<%= colPhoto %>">
               <h5><%= collection.get('title') %></h5>
             </a>
           </li>

@@ -1,7 +1,7 @@
 FictiousApp.Routers.Collections = Backbone.Router.extend({
   initialize: function(options) {
     // this.collections is NOT the same as this.collection
-    this.collections = options.collections
+    this.collections = options.collections;
   },
 
   routes: {
