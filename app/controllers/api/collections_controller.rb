@@ -10,6 +10,11 @@ class Api::CollectionsController < ApplicationController
     @collection = Collection.new()
   end
 
+  def search
+    @results = Collection.search_title(collection_params[:query])
+    render :json => @results
+  end
+
   def create
     @collection = Collection.new(collection_params)
     @collection.owner_id = current_user.id
@@ -57,6 +62,6 @@ class Api::CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:collection).permit(:title, :owner_id, :collection_photo)
+    params.require(:collection).permit(:title, :owner_id, :collection_photo, :query)
   end
 end

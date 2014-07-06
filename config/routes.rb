@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
 
   namespace :api do
-    resources :collection_subscriptions
     resources :subscriptions
     resources :collections
+    post 'collections/search', :to => "collections#search"
     resources :users
     resources :comments
     resources :collection_feeds

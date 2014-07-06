@@ -1,0 +1,20 @@
+<div class="section-label">
+  <h5>Search Results</h5>
+</div>
+<ul class="clearfix collections-index">
+  <% if (results.length === 0) { %>
+    <h5 class="no-results">We couldn’t find any collections about <strong><%= $('.text-input').val() %></strong></h5>
+  <% } %>
+  <% results.each(function(collection) { %>
+    <% debugger %>
+    <div class="collections-list-container clearfix">
+      <li>
+        <a href="#/collections/<%= collection.id %>">
+          <% var colPhoto = FictiousApp.collections.get(collection.id).get('collection_photo_small') %>
+          <img class="collection-small-image" src="<%= colPhoto %>">
+          <h5><%= collection.get('title') %></h5>
+        </a>
+      </li>
+    </div>
+  <% }) %>
+</ul>

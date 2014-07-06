@@ -668,4 +668,13 @@
     font-weight: 400;
     border-radius: 999em;
     padding-left: 25px;
+    padding-right: 10px;
+  }
+
+  .no-results {
+    color: #999;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 30px;
   }

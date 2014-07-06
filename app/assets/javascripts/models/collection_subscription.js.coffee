@@ -1,1 +1,0 @@
-class FictiousApp.Models.CollectionSubscription extends Backbone.Model
