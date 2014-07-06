@@ -4,7 +4,8 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
   initialize: function() {
     this.comments = this.model.comments();
     this.currentUser = FictiousApp.users.get(FictiousApp.currentUser);
-    this.liked = 1;
+    this.liked = false;
+    this.unliked = false;
   },
 
   events: {
@@ -74,27 +75,33 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
   },
 
   likePost: function(event) {
+    var that = this;
     event.preventDefault();
     var $form = $('.like-post');
     var formData = $form.serialize();
     var post = this.model;
-    var num = this.liked;
     var notification = new FictiousApp.Models.Notification({
       user_id: post.get('author_id'),
       content: this.currentUser.get('username') + " liked your post: " + post.get('title'),
       post_id: post.id
     });
-    this.liked = 1;
+    if (this.unliked) {
+      var num = 0;
+      this.unliked = false;
+    } else {
+      var num = 1;
+      this.liked = true;
+    }
+
     $.ajax({
       type: "POST",
       url: $form.attr("action"),
       data: formData,
       success: function(data) {
-        console.log('liked')
+        console.log('liked', that.liked, that.unliked)
         notification.save()
         FictiousApp.notifications.add(notification);
         // FictiousApp.notifications.add(notification);
-        debugger
         $('.like-post').attr('action', '/likes/' + data.id);
         $('.like-post').find('input').val(post.get('likes').length + num + " | ♥ Recommend");
         $('.like-post').addClass('unlike-post');
@@ -104,18 +111,25 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
   },
 
   unlikePost: function(event) {
+    var that = this;
     event.preventDefault();
     var $form = $('.unlike-post');
     var formData = $form.serialize();
     var post = this.model;
-    var num = this.liked;
-    this.liked = 0;
+    if (this.liked) {
+      var num = 0;
+      this.liked;
+    } else {
+      var num = 1;
+      this.unliked = true;
+    }
+
     $.ajax({
       type: "DELETE",
       url: $form.attr("action"),
       data: formData,
       success: function(data) {
-        console.log('unliked')
+        console.log('unliked', that.unliked, that.liked)
         $('.unlike-post').attr('action', '/posts/' + post.id + '/likes');
         $('.unlike-post').find('input').val(post.get('likes').length - num + " | ♥ Recommend");
         $('.unlike-post').addClass('like-post');

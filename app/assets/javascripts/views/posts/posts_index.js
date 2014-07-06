@@ -54,7 +54,6 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
     var that = this;
     FictiousApp.notifications.fetch({
       success: function() {
-        alert("WORKING")
         that.render();
       }
     });

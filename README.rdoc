@@ -2,7 +2,10 @@
 
 == TODO
 
-Backbone:
+1. Finish notifications (html and feed, note order in html)
+2. Fix Collections page
+3. Add search to collections
+4. Add pagination
 
 General:
 1. Fix collections page -- my collections, followed collections
