@@ -13,7 +13,23 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
     'click .comment-caller': 'renderNewComment',
     'submit .add-to-collection': 'addToCollection',
     'click .like-post': 'likePost',
-    'click .unlike-post': 'unlikePost'
+    'click .unlike-post': 'unlikePost',
+    'mouseenter .commentable-paragraph': 'revealCaller',
+    'mouseleave .commentable-paragraph': 'hideCaller',
+    'click #find-posts-for-collection': 'revealCollections'
+  },
+
+  revealCollections: function(event) {
+    $(".collection-list").toggleClass("hidden");
+    $("#find-posts-for-collection").toggleClass("hidden");
+  },
+
+  revealCaller: function(event) {
+    $($(event.currentTarget).find('div')).removeClass('hidden');
+  },
+
+  hideCaller: function(event) {
+    $($(event.currentTarget).find('div')).addClass('hidden');
   },
 
   fetchCollections: function() {
@@ -27,23 +43,37 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
   render: function() {
     var post = this.model;
     var userCollections = FictiousApp.collections.where({ owner_id: FictiousApp.currentUser });
+    this.comments.fetch();
     var renderedContent = this.template({
       post: this.model,
       collections: userCollections
     });
 
     this.$el.html(renderedContent);
+    var paras = $(this.el).find('p');
+    $.each(paras, function(i, val) {
+      if($(val).hasClass('commentable')) {
+        $(val).wrap('<div class="commentable-paragraph"></div>');
+        $(val).parent().append('<div class="comment-caller hidden"></div>')
+      }
+    });
+
+    debugger
 
     return this;
   },
 
   renderNewComment: function(event) {
     console.log(event);
+    $('.view-post-content').toggleClass('moved');
+    // var commentClass = $(event.target).prev().attr('data-id')
+    // // $('#comments').empty();
     comments = this.comments;
     var paragraphIndex = $(event.toElement.previousSibling).attr('data-id');
     console.log(paragraphIndex);
     if($('.moved').length === 0) {
       $('.new-comment-form').toggleClass('hidden-comment');
+      $('#comments').empty();
     } else {
 
       var newCommentView = new FictiousApp.Views.CommentsNew({
@@ -153,7 +183,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
   _swapView: function(view) {
     this.currentView && this.currentView.remove();
     this.currentView = view;
-    this.$('#post-show-content').append(view.render().$el);
+    $('#post-show-content').append(view.render().$el);
   }
 
 

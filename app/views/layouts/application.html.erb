@@ -17,7 +17,7 @@
 <nav class="main-nav">
   <% if logged_in? %>
     <ul class="main-nav-container">
-      <li><a href="/#/"><span class="home"></span>Home</a></li>
+      <li id="home"><a href="/#/"><span class="home"></span>Home</a></li>
       <li>
         <a href="/#/users/<%= current_user.id %>">
           <span class="profile">
@@ -48,8 +48,9 @@
 <script>
   $(document).ready(function() {
     $(".home-button").on("click", function() {
-      $(".push").toggleClass("slide-content")
-      $(".main-nav").toggleClass("slide-out-nav")
+      $(".push").toggleClass("slide-content");
+      $(".main-nav").toggleClass("slide-out-nav");
+
 
     });
   });

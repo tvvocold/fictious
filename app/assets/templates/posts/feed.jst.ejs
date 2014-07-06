@@ -8,8 +8,8 @@
     <h3>A Medium clone for fiction</h3>
     <nav class="home-nav">
       <ul class="clearfix">
-        <li><a href="#/">Top 100</a></li>
-        <li><a href="#/feed">Reading List</a></li>
+        <li><a href="/#/">Top 100</a></li>
+        <li><a href="/#/feed">Reading List</a></li>
       </ul>
     </nav>
   </div>
@@ -42,7 +42,7 @@
     <% var user = FictiousApp.users.get(author_id) %>
     <% var profilePic = user.get('profile_picture_url_thumb') %>
     <li class="post-list">
-      <a href="#posts/<%= post.id %>">
+      <a href="/#/posts/<%= post.id %>">
         <h3><%= post.title %></h3>
         <h4><%= post.subtitle %></h4>
         <img src="<%= profilePic %>">

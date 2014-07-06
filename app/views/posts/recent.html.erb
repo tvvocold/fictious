@@ -11,7 +11,7 @@
       </ul>
     </nav>
   </div>
-  <a href="/#posts/new" class="button new-post-button white-button">New Post</a>
+  <a href="/#/posts/new" class="button new-post-button white-button">New Post</a>
   <a href="/#/" class="button new-post-button notifications-button white-button">
     <%= @notifications.count %>
   </a>
@@ -45,7 +45,7 @@
   <ul>
     <% @posts.each do |post| %>
       <li class="post-list">
-        <a href="/#posts/<%= post.id %>">
+        <a href="/#/posts/<%= post.id %>">
           <h3><%= post.title %><h3>
           <h4><%= post.subtitle %></h4>
           <%= image_tag post.author.profile_picture.url(:thumb), class: "profile-picture"%>
@@ -61,6 +61,8 @@
   $(document).ready(function() {
     $(".notifications-button").on('click', function() {
       $(".notifications").toggleClass("hidden");
+
+      $('#home')[0].click();
     });
   });
 </script>

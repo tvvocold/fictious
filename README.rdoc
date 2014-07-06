@@ -2,6 +2,7 @@
 
 == TODO
 
+-1. FIX STUPID HOME PAGE PROBLEMS
 0. Missing.png
 1. Pagination
 2. Landing page/CSS (hover effects, response to errors, etc)
