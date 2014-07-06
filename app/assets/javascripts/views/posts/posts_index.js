@@ -3,7 +3,8 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
   template: JST['posts/index'],
 
   initialize: function() {
-    this.listenTo(FictiousApp.notifications, 'all', this.render)
+    FictiousApp.notifications.fetch();
+    this.listenTo(FictiousApp.notifications, 'add change', this.getNotes)
   },
 
   events: {
@@ -33,7 +34,7 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
     var url = notification.get('url');
     notification.save({ new: false }, {
       success: function() {
-        
+
       }
     });
     // $.ajax({
@@ -47,5 +48,15 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
     //     debugger
     //   }
     // });
+  },
+
+  getNotes: function() {
+    var that = this;
+    FictiousApp.notifications.fetch({
+      success: function() {
+        alert("WORKING")
+        that.render();
+      }
+    });
   }
 });

@@ -3,6 +3,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
 
   initialize: function() {
     this.comments = this.model.comments();
+    this.currentUser = FictiousApp.users.get(FictiousApp.currentUser);
     this.liked = 1;
   },
 
@@ -67,7 +68,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
       success: function(data) {
         console.log(data)
         FictiousApp.collectionFeeds.add(new FictiousApp.Models.CollectionFeed(data));
-        
+
       },
     });
   },
@@ -77,7 +78,12 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
     var $form = $('.like-post');
     var formData = $form.serialize();
     var post = this.model;
-    var num = this.liked
+    var num = this.liked;
+    var notification = new FictiousApp.Models.Notification({
+      user_id: post.get('author_id'),
+      content: this.currentUser.get('username') + " liked your post: " + post.get('title'),
+      post_id: post.id
+    });
     this.liked = 1;
     $.ajax({
       type: "POST",
@@ -85,6 +91,10 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
       data: formData,
       success: function(data) {
         console.log('liked')
+        notification.save()
+        FictiousApp.notifications.add(notification);
+        // FictiousApp.notifications.add(notification);
+        debugger
         $('.like-post').attr('action', '/likes/' + data.id);
         $('.like-post').find('input').val(post.get('likes').length + num + " | ♥ Recommend");
         $('.like-post').addClass('unlike-post');
