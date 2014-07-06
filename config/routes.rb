@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :collection_feeds
     get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
     resources :posts
+    resources :notifications
   end
 
   root :to => "posts#recent"

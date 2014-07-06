@@ -1,7 +1,7 @@
 <div class="view-container">
 <header class="image-container-home">
   <% var currentUser = FictiousApp.users.get(FictiousApp.currentUser) %>
-  <% var notifications = currentUser.get('notifications') %>
+  <% debugger %>
   <img src="http://s3.amazonaws.com/Fictious-dev/posts/images/000/000/002/original/13681949513_85b2cc7ff5_o.jpg?1403793056">
   <div class="view-header">
     <h1>Fictious</h1>
@@ -21,8 +21,8 @@
     <div class="notifications-container">
       <% if (notifications.length > 0) { %>
         <% _(notifications).each(function(notification) { %>
-          <a class="note" data-id="<%= notification.id %>" href="<%= notification.url %>">
-            <li><%= notification.content %></li>
+          <a class="note" data-id="<%= notification.id %>" href="<%= notification.get('url') %>">
+            <li><%= notification.get('content') %></li>
           </a>
 
         <% }) %>

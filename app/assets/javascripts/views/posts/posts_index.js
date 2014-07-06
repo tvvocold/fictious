@@ -2,14 +2,20 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
 
   template: JST['posts/index'],
 
+  initialize: function() {
+    this.listenTo(FictiousApp.notifications, 'all', this.render)
+  },
+
   events: {
     'click .notifications-button': 'revealNotifications',
     'click .note': 'markSeen'
   },
 
   render: function() {
+    var notifications = FictiousApp.notifications.where({ new: true });
     var renderedContent = this.template({
-      posts: this.collection
+      posts: this.collection,
+      notifications: notifications
     });
 
     this.$el.html(renderedContent);
@@ -22,15 +28,24 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
 
   markSeen: function(event) {
     var noteId = $(event.currentTarget).attr('data-id');
-    $.ajax({
-      type: "PUT",
-      url: "/notifications/" + noteId,
-      data: { new: false },
-      success: function(data) {
-        console.log(data)
+
+    var notification = FictiousApp.notifications.get(noteId);
+    var url = notification.get('url');
+    notification.save({ new: false }, {
+      success: function() {
+        
       }
     });
-    console.log($(event.currentTarget))
-    debugger
+    // $.ajax({
+    //   type: "PUT",
+    //   url: "api/notifications/" + noteId,
+    //   data: notification,
+    //   success: function(data) {
+    //     console.log(data)
+    //   },
+    //   error: function(data) {
+    //     debugger
+    //   }
+    // });
   }
 });
