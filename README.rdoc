@@ -2,13 +2,8 @@
 
 == TODO
 
-1. Finish notifications (html and feed, note order in html)
-2. Fix Collections page
-3. Add search to collections
-4. Add pagination
-
-General:
-1. Fix collections page -- my collections, followed collections
-2. Search collections
-3. Notifications
-4. Add stats page to see followers and stuff
+0. Missing.png
+1. Pagination
+2. Landing page/CSS (hover effects, response to errors, etc)
+3. Stats page
+4. Action Mailer
