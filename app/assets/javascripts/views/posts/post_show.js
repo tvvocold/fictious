@@ -6,6 +6,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
     this.currentUser = FictiousApp.users.get(FictiousApp.currentUser);
     this.liked = false;
     this.unliked = false;
+    this.listenTo(FictiousApp.collections, 'add', this.fetchCollections);
   },
 
   events: {
@@ -15,9 +16,17 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
     'click .unlike-post': 'unlikePost'
   },
 
+  fetchCollections: function() {
+    FictiousApp.collections.fetch({
+      success: function() {
+        this.render();
+      }
+    });
+  },
+
   render: function() {
     var post = this.model;
-    var userCollections = FictiousApp.users.get(FictiousApp.currentUser).get('collections')
+    var userCollections = FictiousApp.collections.where({ owner_id: FictiousApp.currentUser });
     var renderedContent = this.template({
       post: this.model,
       collections: userCollections

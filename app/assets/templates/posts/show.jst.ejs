@@ -15,7 +15,7 @@
               <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
               <input type="hidden" name="collection_feed[post_id]" value="<%= post.id %>">
 
-              <button class="collection-button"><%= collection.title %></button>
+              <button class="collection-button"><%= collection.get('title') %></button>
             </form></li>
           <% }) %>
         </ul>
