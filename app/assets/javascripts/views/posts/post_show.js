@@ -101,6 +101,7 @@ FictiousApp.Views.PostShow = Backbone.View.extend({
 
     var $form = $('.add-to-collection');
     var formData = $(event.currentTarget).serialize();
+    $(event.currentTarget).addClass('checked')
     $.ajax({
       type: "POST",
       url: $form.attr("action"),

@@ -3,8 +3,8 @@ FictiousApp.Views.PostsFeed = Backbone.View.extend({
   template: JST['posts/feed'],
 
   initialize: function() {
-    FictiousApp.notifications.fetch();
-    this.listenTo(FictiousApp.notifications, 'add change', this.getNotes)
+    this.listenTo(FictiousApp.notifications, 'add change', this.getNotes);
+    this.listenTo(FictiousApp.subscriptionPosts, 'add change remove', this.render)
   },
 
   events: {
@@ -13,12 +13,21 @@ FictiousApp.Views.PostsFeed = Backbone.View.extend({
   },
 
   render: function() {
-    var renderedContent = this.template({
-      posts: this.collection
+    // FictiousApp.notifications.fetch();
+    FictiousApp.subscriptionPosts.fetch();
+    var that = this;
+    var user = FictiousApp.users.get(FictiousApp.currentUser);
+    // var posts = user.get('subscription_posts')
+    var subPosts = FictiousApp.subscriptionPosts
+    var notifications = FictiousApp.notifications.where({ new: true });
+    var renderedContent = that.template({
+      posts: subPosts,
+      notifications: notifications
     });
 
-    this.$el.html(renderedContent);
-    return this;
+    that.$el.html(renderedContent);
+    return that;
+
   },
 
   revealNotifications: function() {

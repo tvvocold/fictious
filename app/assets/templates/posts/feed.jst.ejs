@@ -1,50 +1,15 @@
-<div class="view-container">
-<header class="image-container-home">
-  <% var currentUser = FictiousApp.users.get(FictiousApp.currentUser) %>
-  <% var notifications = currentUser.get('notifications') %>
-  <img src="http://s3.amazonaws.com/Fictious-dev/posts/images/000/000/002/original/13681949513_85b2cc7ff5_o.jpg?1403793056">
-  <div class="view-header">
-    <h1>Fictious</h1>
-    <h3>A Medium clone for fiction</h3>
-    <nav class="home-nav">
-      <ul class="clearfix">
-        <li><a href="/#/">Top 100</a></li>
-        <li><a href="/#/feed">Reading List</a></li>
-      </ul>
-    </nav>
-  </div>
-  <a class="button new-post-button white-button" href="/users/<%= FictiousApp.currentUser %>/posts/new">New Post</a>
-  <button class="button new-post-button notifications-button white-button">
-    <%= notifications.length %>
-  </button>
-  <ul class="notifications hidden">
-    <div class="notifications-container">
-      <% if (notifications.length > 0) { %>
-        <% _(notifications).each(function(notification) { %>
-          <a class="note" data-id="<%= notification.id %>" href="<%= notification.url %>">
-            <li><%= notification.content %></li>
-          </a>
 
-        <% }) %>
-      <% } else { %>
-        <li><h5>You have no new notifications</h5></li>
-      <% } %>
-    </div>
-  </ul>
-
-
-</header>
 
 <div class="view-content posts-index home-page-content">
 <ul>
-  <% _(posts).each(function(post) { %>
-    <% var author_id = post.author_id %>
+  <% posts.each(function(post) { %>
+    <% var author_id = post.get('author_id') %>
     <% var user = FictiousApp.users.get(author_id) %>
     <% var profilePic = user.get('profile_picture_url_thumb') %>
     <li class="post-list">
       <a href="/#/posts/<%= post.id %>">
-        <h3><%= post.title %></h3>
-        <h4><%= post.subtitle %></h4>
+        <h3><%= post.get('title') %></h3>
+        <h4><%= post.get('subtitle') %></h4>
         <img src="<%= profilePic %>">
         <h5><%= user.get('username') %></h5>
       </a>

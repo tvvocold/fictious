@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+  def landing
+
+  end
+  
   def new
     @user = User.new()
     render :new

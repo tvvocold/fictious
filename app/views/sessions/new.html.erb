@@ -1,14 +1,27 @@
-<h1 class="landing-text username">Sign In</h1>
+<div class="login-container">
+  <h1 class="landing-text username">Sign In</h1>
+  <h5 class="demo">Just want to test things out? <a class="demo-user" href="#">Demo User</a></h5>
+  <%= flash[:errors] if flash[:errors] %>
+  <form action="<%= session_url %>" method="post" class="new_user" id="new_user">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"><br>
+    <label for="user_username">Username</label><br>
+    <input id="user_username" name="user[username]" type="text"><br>
+    <label for="user_email">Email</label><br>
+    <input id="user_email" name="user[email]" type="text"><br>
+    <label for="user_password">Password</label><br>
+    <input id="user_password" name="user[password]" type="password"><br>
+    <input class="button" name="commit" type="submit" value="Sign In"><br>
+    <a href="/auth/facebook" class="button facebook-button">Facebook Login</a>
+  </form>
+</div>
 
-<%= flash[:errors] if flash[:errors] %>
-<form action="<%= session_url %>" method="post" class="new_user" id="new_user">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"><br>
-  <label for="user_username">Username</label><br>
-  <input id="user_username" name="user[username]" type="text"><br>
-  <label for="user_email">Email</label><br>
-  <input id="user_email" name="user[email]" type="text"><br>
-  <label for="user_password">Password</label><br>
-  <input id="user_password" name="user[password]" type="password"><br>
-  <input class="button" name="commit" type="submit" value="Sign In"><br>
-  <a href="/auth/facebook" class="button facebook-button">Facebook Login</a>
-</form>
+<script>
+  $(document).ready(function() {
+    $('.demo-user').click(function(event) {
+      event.preventDefault();
+      $('#user_username').val('HPLovecraft');
+      $('#user_email').val('HPLovecraft@gmail.com');
+      $('#user_password').val('HPLovecraft4Life');
+    });
+  });
+</script>

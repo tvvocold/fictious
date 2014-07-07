@@ -35,7 +35,7 @@
 
 <div class="view-content posts-index home-page-content">
 <ul>
-  <% posts.each(function(post) { %>
+  <% _(posts).each(function(post) { %>
     <% var author_id = post.get('author_id') %>
     <% var user = FictiousApp.users.get(author_id) %>
     <% var profilePic = user.get('profile_picture_url_thumb') %>

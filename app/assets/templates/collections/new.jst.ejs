@@ -5,7 +5,7 @@
 <div class="view-content">
   <form action="/users/<%= FictiousApp.currentUser %>/collections" method="post" class="new_post" id="new_post">
     <input type="file" name="collection[collection_photo]" id="post-file-input">
-    <input type="text" name="collection[title]" placeholder="Title" id="title-input">
+    <input type="text" name="collection[title]" autocomplete="off" placeholder="Title" id="title-input">
     <input type="submit" value="Create Collection" class="button new-post-button" id="publish">
   </form>
 </div>

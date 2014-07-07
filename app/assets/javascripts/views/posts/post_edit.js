@@ -59,5 +59,8 @@ FictiousApp.Views.PostEdit = Backbone.View.extend({
     this.$el.find('.post-image-preview').toggleClass('image-container-post');
     this.$el.find('.image-container-home').toggleClass('.post-image-preview');
     this.$el.find("#post-image-preview").attr("src", imageData);
+    this.$el.find('#new_post').css("color", "white");
+    this.$el.find('#publish').css("border-color", "white");
+    this.$el.find('p').css("color", "white");
   }
 });

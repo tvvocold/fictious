@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
 
   namespace :api do
+    resources :subscription_posts
     resources :subscriptions
     resources :collections
     post 'collections/search', :to => "collections#search"
@@ -14,7 +15,8 @@ Rails.application.routes.draw do
   end
 
   root :to => "posts#recent"
-  
+  # root :to => "sessions#landing"
+
   get 'posts/subscription_feed', :to => "posts#subscription_feed", :as => "reading_list"
   shallow do
     resources :users do

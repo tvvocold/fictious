@@ -31,12 +31,14 @@
           <h5>Select Post</h5>
           <ul>
             <% _(userPosts).each(function(userPost) { %>
-              <li><form class="add-to-collection" action="/api/collection_feeds" method="post">
-                <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
-                <input type="hidden" name="collection_feed[post_id]" value="<%= userPost.id %>">
+              <% if (!FictiousApp.collectionFeeds.findWhere({ collection_id: collection.id, post_id: userPost.id})) { %>
+                <li><form class="add-to-collection" action="/api/collection_feeds" method="post">
+                  <input type="hidden" name="collection_feed[collection_id]" value="<%= collection.id %>">
+                  <input type="hidden" name="collection_feed[post_id]" value="<%= userPost.id %>">
 
-                <button class="collection-button"><%= userPost.get('title') %></button>
-              </form></li>
+                  <button class="collection-button"><%= userPost.get('title') %></button>
+                </form></li>
+              <% } %>
             <% }) %>
           </ul>
         </div>

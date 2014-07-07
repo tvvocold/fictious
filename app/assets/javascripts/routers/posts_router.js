@@ -52,12 +52,17 @@ FictiousApp.Routers.Posts = Backbone.Router.extend({
   feed: function() {
     var that = this;
     var user = FictiousApp.users.get(FictiousApp.currentUser);
-
-    var posts = user.get('subscription_posts')
-    var feedView = new FictiousApp.Views.PostsFeed({
-      collection: posts
+    var posts = user.get('subscription_posts');
+    // var subs = FictiousApp.subscriptions.where({ subscriber_id: user.id})
+    subscriptionPosts = new FictiousApp.Collections.SubscriptionPosts();
+    subscriptionPosts.fetch({
+      success: function() {
+        var feedView = new FictiousApp.Views.PostsFeed({
+          collection: posts
+        });
+        $('.view-content').html(feedView.render().$el);
+      }
     });
-    that._swapView(feedView);
   },
 
 

@@ -3,12 +3,13 @@ class Api::PostsController < ApplicationController
   wrap_parameters false
 
   def index
-    @posts = Post.select('posts.*, count(likes.id)')
-                 .joins('LEFT OUTER JOIN likes ON likes.post_id = posts.id')
-                 .group('posts.id')
-                 .order('count(likes.id) DESC')
-                 .limit(20)
+    # @posts = Post.select('posts.*, count(likes.id)')
+    #              .joins('LEFT OUTER JOIN likes ON likes.post_id = posts.id')
+    #              .group('posts.id')
+    #              .order('count(likes.id) DESC')
+    #              .limit(20)
 
+    @posts = Post.all
     respond_to do |format|
       format.json
       format.html
@@ -66,7 +67,11 @@ class Api::PostsController < ApplicationController
   # end
 
   def recent
-    @posts = Post.all
+    @posts = Post.select('posts.*, count(likes.id)')
+                 .joins('LEFT OUTER JOIN likes ON likes.post_id = posts.id')
+                 .group('posts.id')
+                 .order('count(likes.id) DESC')
+                 .limit(20)
   end
 
   def subscription_feed

@@ -14,8 +14,11 @@ FictiousApp.Views.PostsIndex = Backbone.View.extend({
 
   render: function() {
     var notifications = FictiousApp.notifications.where({ new: true });
+    var posts = FictiousApp.posts.sortBy(function(post) {
+      return -(post.get('likes').length);
+    });
     var renderedContent = this.template({
-      posts: this.collection,
+      posts: posts,
       notifications: notifications
     });
 

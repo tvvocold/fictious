@@ -14,6 +14,9 @@ window.FictiousApp = {
     FictiousApp.subscriptions = new FictiousApp.Collections.Subscriptions();
     FictiousApp.subscriptions.fetch();
 
+    FictiousApp.subscriptionPosts = new FictiousApp.Collections.SubscriptionPosts();
+    FictiousApp.subscriptionPosts.fetch();
+
     FictiousApp.collectionFeeds = new FictiousApp.Collections.CollectionFeeds();
     FictiousApp.collectionFeeds.fetch();
 

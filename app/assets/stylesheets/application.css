@@ -406,8 +406,9 @@
 
   .image-container-post img {
     display: block;
-    width: 100%;
-    height: auto;
+    min-width: 100%;
+    max-width: 120%;
+    height: 100%;
 
   }
 
@@ -647,8 +648,9 @@
 
   #post-image-preview {
     display: block;
-    width: 100%;
-    height: auto;
+    min-width: 100%;
+    max-width: 120%;
+    height: 100%;
   }
 
   .post-image-preview {
@@ -677,4 +679,24 @@
     font-size: 14px;
     text-align: center;
     margin-top: 30px;
+  }
+
+  .checked button:before {
+    content: '✓';
+    size: 12px;
+    color: rgba(87,173,104,0.8);
+    display: block;
+    float: left;
+    padding-left: 20px;
+    margin-right: -32px;
+  }
+
+  .demo, .sign {
+    font-size: 12px;
+    text-align: center;
+    color: #999;
+  }
+
+  .demo a, .sign a {
+    text-decoration: underline;
   }
