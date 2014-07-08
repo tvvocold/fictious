@@ -1,6 +1,6 @@
 <div class="login-container">
   <h1 class="landing-text username">Fictious</h1>
-  <h5 class="sign">Already a user? <%= link_to "Sign In", new_session_url %></h5>
+  <h5 class="sign">Want to use a demo user? <%= link_to "Sign In", new_session_url %></h5>
 
   <%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
   <%= render "shared/form" %>

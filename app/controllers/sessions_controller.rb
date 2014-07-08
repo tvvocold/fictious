@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def landing
 
   end
-  
+
   def new
     @user = User.new()
     render :new
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(user_params[:username], user_params[:password])
     if @user
       log_in(@user)
-      redirect_to :root
+      redirect_to "/#/"
     else
       flash.now[:errors] = "Invalid username/password combination."
       render :new

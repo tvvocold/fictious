@@ -3,8 +3,67 @@ FictiousApp.Views.PostNew = Backbone.View.extend({
 
   events: {
     "submit form": "submit",
-    "change #post-file-input": "fileSelect"
+    "change #post-file-input": "fileSelect",
+    "focus #content": "wrapBR",
+    "focusout #content": "wrapPara",
+    "mouseenter #publish": "setContent"
   },
+
+  setContent: function() {
+    var paragraphs = $('#content').find('p');
+    _(paragraphs).each(function(paragraph) {
+      if($(paragraph).html() !== "<br>") {
+        $(paragraph).addClass('commentable');
+        $(paragraph).attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
+      } else if ($(paragraph).html() === "<br>") {
+        $(paragraph).removeClass('commentable');
+      } else {
+        console.log("WHAT?")
+      }
+    });
+    var content = $('#content').html();
+    $("#content-input").attr('value', content);
+  },
+
+  wrapBR: function() {
+    if ($('#content').text() === "Write your story") {
+      $('#content').html('<p><br></p>')
+    }
+  },
+
+  wrapPara: function() {
+    if ($('#content').text() === "") {
+      $('#content').html('<p>Write your story</p>')
+    }
+  },
+
+  // $('#publish').hover(function() {
+  //   var paragraphs = $('#content').find('p');
+  //   _(paragraphs).each(function(paragraph) {
+  //     if($(paragraph).html() !== "<br>") {
+  //       $(paragraph).addClass('commentable');
+  //       $(paragraph).attr("data-id", (Math.random()*0xFFFFFF<<0).toString(16));
+  //     } else if ($(paragraph).html() === "<br>") {
+  //       $(paragraph).removeClass('commentable');
+  //     } else {
+  //       console.log("WHAT?")
+  //     }
+  //   });
+  //   var content = $('#content').html();
+  //   $("#content-input").attr('value', content);
+  // });
+
+  // $('#content').focus(function() {
+  //   if ($('#content').text() === "Write your story") {
+  //     $('#content').html('<p><br></p>')
+  //   }
+  // });
+
+  // $('#content').focusout(function() {
+  //   if ($('#content').text() === "") {
+  //     $('#content').html('<p>Write your story</p>')
+  //   }
+  // });
 
   initialize: function(){
     this.model = new FictiousApp.Models.Post();
@@ -15,6 +74,11 @@ FictiousApp.Views.PostNew = Backbone.View.extend({
     var html = this.template();
 
     this.$el.html(html);
+
+    var editor = new MediumEditor($(this.el).find('.editable'));
+    var contents = $(this.el).find('#content').contents();
+    $(contents).wrap('<p></p>');
+    
     return this;
   },
 
