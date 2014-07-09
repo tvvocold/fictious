@@ -2,6 +2,17 @@
 
 Fictious is a Ruby on Rails + Backbone.js clone of [Medium](medium.com).
 
+## Features
+
+### Authentication
+
+### Javascript
+
+### 
+
+
+
+
 - Hidden navigation and comment form, revealed on click through custom jQuery/CSS animations.
 - Customized JSON serializers support image upload and preview in backbone.
 - Complex commenting allows users to comment on individual paragraphs in each post, utilizes a custom parse method on the post model to pull comment data.
