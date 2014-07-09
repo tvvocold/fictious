@@ -8,7 +8,7 @@ Fictious is a Ruby on Rails + Backbone.js clone of [Medium](medium.com).
 Custom, hand-written user authentication and session management, utilizing BCrypt for secure password storage. Facebook login with OAuth.
 
 ### Javascript
-Extensive JavaScript manages posts, scanning content for paragraph tags and assigns each paragraph a unique, randomly generated hex-code upon submission. On the post show page, the comments and comment form are associated with this unique identifier, and are revealed when the user clicks the comment-reveal ("+") button. Additionally, these hex-IDs maintain comment associations even after the post has been edited, where they would, otherwise, be lost.
+Extensive JavaScript manages posts, scanning content for paragraph tags and assigns each paragraph a unique, randomly generated hex-code upon submission. On the post show page, the comments and comment form are associated with this unique identifier, and are revealed when the user clicks the comment-reveal ("+") button. Additionally, these hex-IDs maintain comment associations even after the post has been edited, where they would otherwise be lost.
 
 Nav and comment reveal animations are handled by custom JavaScript and CSS.
 
